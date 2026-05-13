@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인테리어 첫단추 — 로그인</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== GNB (로그인 페이지: 로그인/회원가입 버튼 대신 홈으로) ===== -->
+<header class="gnb">
+  <div class="gnb-left">
+    <a href="1_랜딩.html" class="logo">
+      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+    </a>
+    <nav class="gnb-nav">
+      <a href="1_랜딩.html">서비스 소개</a>
+      <a href="3_결과.html?sample=true#report">샘플 리포트</a>
+      <a href="4_마이페이지.html#plans">가격</a>
+      <a href="6_고객센터.html">고객센터</a>
+    </nav>
+  </div>
+  <div class="gnb-actions">
+    <a href="1_랜딩.html" class="btn btn-ghost btn-sm">홈으로</a>
+  </div>
+</header>
+
+<main class="main-min-h">
+
+<!-- ============================================================
+     SCREEN 1 — 로그인
+============================================================ -->
+<section class="screen" id="login">
+  <div class="page-narrow">
+    <div class="text-center mb-32">
+      <span class="eyebrow">LOG IN</span>
+      <h1 class="page-title text-32 mt-8">다시 오신 것을 환영합니다</h1>
+      <p class="page-subtitle">이메일과 비밀번호로 로그인하세요.</p>
+    </div>
+
+    <div class="card mx-auto max-w-480">
+      <!-- 탭 전환 -->
+      <div class="flex gap-8 mb-24">
+        <span class="chip chip-lg is-selected flex-1 justify-center" data-go="login">로그인</span>
+        <span class="chip chip-lg flex-1 justify-center" data-go="signup">회원가입</span>
+      </div>
+
+      <div>
+        <label class="field-label">이메일</label>
+        <div class="relative mb-16">
+          <span data-icon="mail" data-size="18" class="input-icon-left"></span>
+          <input type="email" class="input input-with-icon" placeholder="email@example.com" />
+        </div>
+
+        <label class="field-label">비밀번호</label>
+        <div class="relative mb-12">
+          <span data-icon="lock" data-size="18" class="input-icon-left"></span>
+          <input type="password" class="input input-with-icon" placeholder="비밀번호 입력" />
+        </div>
+
+        <div class="flex justify-between items-center mb-24">
+          <label class="flex items-center gap-6 text-13 text-muted">
+            <input type="checkbox"/> 로그인 상태 유지
+          </label>
+          <a href="#" class="text-13">비밀번호 찾기</a>
+        </div>
+
+        <button class="btn btn-primary btn-md w-full">로그인</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="text-center text-13 text-muted">
+        계정이 없으신가요? <a href="#signup" data-go="signup">회원가입</a>
+      </div>
+    </div>
+
+    <div class="text-center text-12 text-subtle mt-24">
+      로그인하면 <a href="9_약관.html#terms">이용약관</a> 및 <a href="9_약관.html#privacy">개인정보처리방침</a>에 동의한 것으로 간주됩니다.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 2 — 회원가입
+============================================================ -->
+<section class="screen" id="signup">
+  <div class="page-narrow">
+    <div class="text-center mb-32">
+      <span class="eyebrow">SIGN UP</span>
+      <h1 class="page-title text-32 mt-8">인테리어 첫단추 시작하기</h1>
+      <p class="page-subtitle">가입 즉시 무료 진단 1건이 발급됩니다.</p>
+    </div>
+
+    <div class="card mx-auto max-w-480">
+      <!-- 탭 전환 -->
+      <div class="flex gap-8 mb-24">
+        <span class="chip chip-lg flex-1 justify-center" data-go="login">로그인</span>
+        <span class="chip chip-lg is-selected flex-1 justify-center" data-go="signup">회원가입</span>
+      </div>
+
+      <div>
+        <label class="field-label">이름 <span class="req">*</span></label>
+        <div class="relative mb-16">
+          <span data-icon="user" data-size="18" class="input-icon-left"></span>
+          <input type="text" class="input input-with-icon" placeholder="홍길동" />
+        </div>
+
+        <label class="field-label">이메일 <span class="req">*</span></label>
+        <div class="relative mb-16">
+          <span data-icon="mail" data-size="18" class="input-icon-left"></span>
+          <input type="email" class="input input-with-icon" placeholder="email@example.com" />
+        </div>
+
+        <label class="field-label">비밀번호 <span class="req">*</span></label>
+        <div class="relative mb-6">
+          <span data-icon="lock" data-size="18" class="input-icon-left"></span>
+          <input type="password" class="input input-with-icon" placeholder="8자 이상 (영문, 숫자, 특수문자)" />
+        </div>
+        <div class="text-12 text-subtle mb-24">영문·숫자·특수문자 포함 8자 이상</div>
+
+        <label class="flex items-start gap-8 mb-12 text-13 text-muted">
+          <input type="checkbox" class="mt-4"/>
+          <span><a href="9_약관.html#terms">이용약관</a> 및 <a href="9_약관.html#privacy">개인정보처리방침</a>에 동의합니다 <span class="req">*</span></span>
+        </label>
+        <label class="flex items-start gap-8 mb-24 text-13 text-muted">
+          <input type="checkbox" class="mt-4"/>
+          <span>마케팅 정보 수신에 동의합니다 (선택)</span>
+        </label>
+
+        <button class="btn btn-primary btn-md w-full">회원가입 완료</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="text-center text-13 text-muted">
+        이미 계정이 있으신가요? <a href="#login" data-go="login">로그인</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="flex gap-24">
+    <span>© 2026 CONVIL DESIGN Inc.</span>
+    <a href="9_약관.html#terms">이용약관</a>
+    <a href="9_약관.html#privacy">개인정보처리방침</a>
+    <a href="#">사업자정보</a>
+  </div>
+  <span>support@convil.aiapp.help</span>
+</footer>
+
+<script src="js/shared.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

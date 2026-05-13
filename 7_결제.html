@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인테리어 첫단추 — 결제</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== GNB ===== -->
+<header class="gnb">
+  <div class="gnb-left">
+    <a href="1_랜딩.html" class="logo">
+      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+    </a>
+    <nav class="gnb-nav">
+      <a href="1_랜딩.html">서비스 소개</a>
+      <a href="3_결과.html?sample=true#report">샘플 리포트</a>
+      <a href="4_마이페이지.html#plans">가격</a>
+      <a href="6_고객센터.html">고객센터</a>
+    </nav>
+  </div>
+  <div class="gnb-actions">
+    <a href="4_마이페이지.html#mypage" class="gnb-mypage-link">마이페이지</a>
+    <a class="btn btn-ghost btn-sm" href="5_로그인.html">로그아웃</a>
+  </div>
+</header>
+
+<main class="main-min-h">
+
+<section class="screen is-active" id="checkout">
+  <div class="page">
+
+    <a href="4_마이페이지.html#plans" class="inline-flex items-center gap-4 text-13 text-muted mb-16">
+      <span data-icon="arrowLeft" data-size="14"></span> 가격 플랜으로
+    </a>
+
+    <div class="text-center mb-32">
+      <span class="eyebrow">CHECKOUT</span>
+      <h1 class="page-title text-32 mt-8">결제 진행</h1>
+      <p class="page-subtitle">결제 즉시 잠금이 해제되며, 단건은 자동 갱신되지 않습니다.</p>
+    </div>
+
+    <div class="grid cols-2fr-1fr gap-24 mx-auto max-w-1000">
+
+      <!-- 좌측: 결제 폼 -->
+      <div>
+        <!-- 1. 결제 수단 -->
+        <div class="card mb-16">
+          <div class="section-title">① 결제 수단</div>
+          <div class="grid cols-3 gap-12 mb-16">
+            <div class="card card-compact choice-card is-selected">
+              <div class="cc-head">
+                <span class="cc-radio"><span class="cc-radio-dot"></span></span>
+                <span class="cc-label">신용·체크카드</span>
+              </div>
+              <div class="cc-desc">국내 모든 카드사</div>
+            </div>
+            <div class="card card-compact choice-card">
+              <div class="cc-head">
+                <span class="cc-radio"></span>
+                <span class="cc-label">계좌이체</span>
+              </div>
+              <div class="cc-desc">실시간 계좌이체</div>
+            </div>
+            <div class="card card-compact choice-card">
+              <div class="cc-head">
+                <span class="cc-radio"></span>
+                <span class="cc-label">간편결제</span>
+              </div>
+              <div class="cc-desc">카카오·네이버·토스</div>
+            </div>
+          </div>
+
+          <div class="field-label">카드 번호 <span class="req">*</span></div>
+          <input class="input mb-16" placeholder="1234 5678 9012 3456" value="4242 4242 4242 4242"/>
+
+          <div class="grid cols-1fr-1fr-1fr gap-12 mb-16">
+            <div>
+              <div class="field-label">유효기간 <span class="req">*</span></div>
+              <input class="input" placeholder="MM/YY" value="12/28"/>
+            </div>
+            <div>
+              <div class="field-label">CVC <span class="req">*</span></div>
+              <input class="input" placeholder="3자리" value="123"/>
+            </div>
+            <div>
+              <div class="field-label">생년월일 6자리</div>
+              <input class="input" placeholder="YYMMDD" value="900101"/>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-8 text-13 text-muted">
+            <input type="checkbox" checked/> 다음 결제를 위해 카드 정보를 저장합니다
+          </label>
+        </div>
+
+        <!-- 2. 사업자 정보 (선택) -->
+        <div class="card mb-16">
+          <div class="flex items-center justify-between mb-12">
+            <div class="section-title mb-0">② 세금계산서 (선택)</div>
+            <label class="flex items-center gap-6 text-13 text-muted">
+              <input type="checkbox" id="biz-toggle"/> 세금계산서 발행
+            </label>
+          </div>
+          <div class="text-12 text-subtle">사업자 등록자는 결제 후 마이페이지에서 발행할 수 있습니다.</div>
+        </div>
+
+        <!-- 3. 약관 동의 -->
+        <div class="card">
+          <div class="section-title">③ 약관 동의</div>
+          <label class="flex items-start gap-8 mb-8 text-13">
+            <input type="checkbox" checked/>
+            <span class="text-default"><strong>[필수]</strong> 결제 서비스 이용약관 <a href="9_약관.html">전문보기</a></span>
+          </label>
+          <label class="flex items-start gap-8 mb-8 text-13">
+            <input type="checkbox" checked/>
+            <span class="text-default"><strong>[필수]</strong> 개인정보 제3자 제공 동의 <a href="9_약관.html#privacy">전문보기</a></span>
+          </label>
+          <label class="flex items-start gap-8 text-13">
+            <input type="checkbox"/>
+            <span class="text-muted"><strong>[선택]</strong> 결제 알림 SMS 수신</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 우측: 주문 요약 -->
+      <div>
+        <div class="card sticky-summary">
+          <div class="section-title">주문 요약</div>
+
+          <div class="flex items-center gap-12 mb-16">
+            <span class="icon-box icon-box-tint-blue"><span data-icon="filePdf" data-size="18"></span></span>
+            <div>
+              <div class="text-14 fw-700" id="order-product">단건 결제</div>
+              <div class="text-12 text-subtle" id="order-subtitle">통합 분석 1건 · 4개 모듈</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="flex justify-between mb-8">
+            <span class="text-13 text-muted">상품 금액</span>
+            <span class="text-13" id="order-price">50,000원</span>
+          </div>
+          <div class="flex justify-between mb-8">
+            <span class="text-13 text-muted">VAT (10%)</span>
+            <span class="text-13" id="order-vat">5,000원</span>
+          </div>
+          <div class="flex justify-between mb-16" id="order-discount-row">
+            <span class="text-13 text-success fw-700">첫 결제 할인</span>
+            <span class="text-13 text-success fw-700" id="order-discount">-5,000원</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="flex justify-between items-end mb-20">
+            <span class="text-13 fw-700">결제 금액</span>
+            <span class="text-26 fw-800 text-brand"><span id="order-total">50,000</span><span class="text-14 text-subtle">원</span></span>
+          </div>
+
+          <button class="btn btn-primary btn-lg w-full mb-12" id="pay-submit-btn">50,000원 결제하기</button>
+          <div class="text-center text-11 text-subtle">결제 즉시 잠금 해제 · 단건은 자동 갱신 없음</div>
+
+          <div class="divider"></div>
+
+          <div class="flex items-center gap-8 mb-8">
+            <span data-icon="shieldCheck" data-size="14" data-color="var(--ws-success)"></span>
+            <span class="text-12 fw-600">결제 정보는 PG사를 통해 암호화 처리됩니다</span>
+          </div>
+          <div class="flex items-center gap-8">
+            <span data-icon="refresh" data-size="14" data-color="var(--ws-fg-subtle)"></span>
+            <span class="text-12 text-subtle">리포트 발행 전까지 100% 환불 가능</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="flex gap-24">
+    <span>© 2026 CONVIL DESIGN Inc.</span>
+    <a href="9_약관.html">이용약관</a>
+    <a href="9_약관.html#privacy">개인정보처리방침</a>
+    <a href="#">사업자정보</a>
+  </div>
+  <span>support@convil.aiapp.help</span>
+</footer>
+
+<script src="js/shared.js"></script>
+<script>
+  // ?plan=single (default) | subscription · ?return=results 처리
+  (function() {
+    const params = new URLSearchParams(location.search);
+    const plan = params.get('plan') || 'single';
+    const ret = params.get('return') || '';
+
+    if (plan === 'subscription') {
+      document.getElementById('order-product').textContent = '시공사 구독';
+      document.getElementById('order-subtitle').textContent = '월간 자동 결제 · 무제한 분석 + 멤버 5인';
+      document.getElementById('order-price').textContent = '140,000원';
+      document.getElementById('order-vat').textContent = '14,000원';
+      document.getElementById('order-discount-row').style.display = 'none';
+      document.getElementById('order-total').textContent = '154,000';
+      document.getElementById('pay-submit-btn').textContent = '154,000원 결제하기 (월간 구독)';
+    }
+
+    document.getElementById('pay-submit-btn').addEventListener('click', function() {
+      // 데모: 결제 완료 후 결과 페이지로 (paid=true 플래그)
+      const target = (ret === 'results')
+        ? '3_결과.html?paid=true#results'
+        : '4_마이페이지.html?paid=true#payment-history';
+      location.href = target;
+    });
+  })();
+</script>
+</body>
+</html>

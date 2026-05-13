@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인테리어 첫단추 — AI 디자인 시안 생성</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== GNB ===== -->
+<header class="gnb">
+  <div class="gnb-left">
+    <a href="1_랜딩.html" class="logo">
+      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+    </a>
+    <nav class="gnb-nav">
+      <a href="1_랜딩.html">서비스 소개</a>
+      <a href="3_결과.html?sample=true#report">샘플 리포트</a>
+      <a href="4_마이페이지.html#plans">가격</a>
+      <a href="6_고객센터.html">고객센터</a>
+    </nav>
+  </div>
+  <div class="gnb-actions">
+    <a href="4_마이페이지.html#mypage" class="gnb-mypage-link">마이페이지</a>
+    <a class="btn btn-ghost btn-sm" href="5_로그인.html">로그아웃</a>
+  </div>
+</header>
+
+<main class="main-min-h">
+
+<!-- ===== 글로벌 스테이지 트래커 (전체 여정 미니맵) ===== -->
+<div class="top-bar-tracker">
+  <div class="page">
+    <div class="stage-tracker">
+      <a class="stage-pill" href="1_랜딩.html"><span data-icon="info" data-size="12"></span> 랜딩</a>
+      <a class="stage-pill" href="2_입력.html#address"><span data-icon="mapPin" data-size="12"></span> 주소 입력</a>
+      <a class="stage-pill" href="2_입력.html#biztype"><span data-icon="briefcase" data-size="12"></span> 업종 선택</a>
+      <a class="stage-pill" href="2_입력.html#basic"><span data-icon="user" data-size="12"></span> 기본정보</a>
+      <a class="stage-pill" href="2_입력.html#reference"><span data-icon="hardHat" data-size="12"></span> 참고요청</a>
+      <a class="stage-pill" href="2_입력.html#design"><span data-icon="palette" data-size="12"></span> 디자인</a>
+      <span class="stage-pill is-active"><span data-icon="sparkles" data-size="12"></span> AI 시안 생성</span>
+      <a class="stage-pill" href="3_결과.html#loading"><span data-icon="refresh" data-size="12"></span> 분석 중</a>
+      <a class="stage-pill" href="3_결과.html#results"><span data-icon="image" data-size="12"></span> 결과 허브</a>
+      <a class="stage-pill" href="3_결과.html#permit"><span data-icon="shieldCheck" data-size="12"></span> 인허가 상세</a>
+    </div>
+  </div>
+</div>
+
+<section class="screen is-active" id="ai-design">
+  <div class="page">
+
+    <!-- 4단계 스텝퍼 (입력 → AI 생성) -->
+    <div class="stepper justify-center">
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본정보 입력</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>참고요청사항</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>디자인정보 입력</span></div><span class="sep"></span>
+      <div class="step is-active"><span class="dot">4</span><span>AI 디자인 생성</span></div>
+    </div>
+
+    <div class="text-center mb-32">
+      <h1 class="page-title text-32 mt-8">AI 디자인 시안 생성</h1>
+      <p class="page-subtitle">AI와 대화하며 콘셉트를 구체화하고, 맞춤 시안을 생성합니다.</p>
+    </div>
+
+    <!-- 2-column main -->
+    <div class="grid cols-1fr-1fr gap-16 mb-24">
+
+      <!-- LEFT: 디자인 AI 어시스턴트 -->
+      <div class="card">
+        <div class="flex items-center justify-between mb-16">
+          <div class="flex items-center gap-12">
+            <span class="icon-box icon-box-tint-purple"><span data-icon="sparkles" data-size="18"></span></span>
+            <div>
+              <div class="text-15 fw-800">디자인 AI 어시스턴트</div>
+              <div class="text-12 text-subtle">콘셉트를 구체화해 드릴게요</div>
+            </div>
+          </div>
+          <span class="badge badge-success"><span class="online-dot"></span> 온라인</span>
+        </div>
+
+        <div class="chat-window">
+          <div class="chat-messages" id="chat-messages">
+            <!-- AI/사용자 메시지는 JS가 삽입 -->
+          </div>
+          <div class="chat-input-wrap">
+            <input class="input input-with-send-btn" id="chat-input" placeholder="디자인 콘셉트에 대해 자유롭게 답변해주세요..."/>
+            <button class="chat-send-btn" id="chat-send" aria-label="전송"><span data-icon="arrowRight" data-size="14"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 생성된 시안 -->
+      <div class="card">
+        <div class="flex items-center justify-between mb-16">
+          <div class="text-15 fw-800">생성된 시안</div>
+          <span class="badge badge-neutral" id="gen-status">대기 중</span>
+        </div>
+
+        <div class="placeholder-image image-display" id="image-display">
+          <span data-icon="image" data-size="32" data-color="var(--ws-fg-subtle)"></span>
+          <div class="text-14 fw-700 text-default">시안이 여기에 표시됩니다</div>
+          <div class="text-12 text-subtle">AI 대화를 완료한 후 "이미지 생성" 버튼을 눌러주세요</div>
+        </div>
+
+        <!-- 분석된 입력 요소 카드 (첫 생성 후 노출) -->
+        <div id="analyzed-card" class="card card-compact mt-12 analyzed-card-style is-hidden">
+          <div class="flex items-center gap-8 mb-12">
+            <span class="icon-box icon-box-28"><span data-icon="sparkles" data-size="14"></span></span>
+            <div class="text-13 fw-700">AI가 분석한 입력 요소</div>
+          </div>
+          <div class="grid cols-2 gap-8 text-12">
+            <div><span class="text-subtle">무드</span> · <span class="fw-600">모던 · 빈티지 한 스푼</span></div>
+            <div><span class="text-subtle">평면</span> · <span class="fw-600">28.5평 (8.4 × 11.2m)</span></div>
+            <div><span class="text-subtle">벽 마감재</span> · <span class="fw-600">벽돌 · 페인트</span></div>
+            <div><span class="text-subtle">바닥 마감</span> · <span class="fw-600">강화마루</span></div>
+            <div><span class="text-subtle">조명 톤</span> · <span class="fw-600">따뜻한 펜던트</span></div>
+            <div><span class="text-subtle">참고 자료</span> · <span class="fw-600">레퍼런스 3장 · 도면 1장</span></div>
+            <div class="col-span-2"><span class="text-subtle">대화 응답</span> · <span class="fw-600" id="analyzed-chat-summary">—</span></div>
+          </div>
+        </div>
+
+        <div class="flex gap-8 mt-16 mb-12 flex-wrap">
+          <button class="btn btn-outline btn-sm"><span data-icon="image" data-size="12"></span> 참고 이미지 추가</button>
+          <button class="btn btn-outline btn-sm"><span data-icon="upload" data-size="12"></span> 평면도 업로드</button>
+        </div>
+
+        <textarea class="input input-multiline" id="extra-request" placeholder="요청사항을 입력해주세요. 예: '창문 쪽에 바 좌석 배치', '벽돌 톤을 좀 더 밝게'"></textarea>
+
+        <div class="flex justify-between items-center mt-16">
+          <div class="text-12 text-subtle" id="gen-hint">AI 대화 완료 후 생성 가능</div>
+          <button class="btn btn-primary btn-md" id="generate-btn" disabled><span data-icon="sparkles" data-size="14"></span> 이미지 생성</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 하단 네비 -->
+    <div class="bottom-nav">
+      <a class="btn btn-secondary btn-md" href="2_입력.html#design"><span data-icon="arrowLeft" data-size="14"></span> 디자인 정보 수정</a>
+      <div class="flex gap-8">
+        <button class="btn btn-outline btn-md" id="save-pdf-btn"><span data-icon="filePdf" data-size="14"></span> AI 리포트 PDF로 저장</button>
+        <a class="btn btn-primary btn-md btn-min-200" href="3_결과.html#loading">통합 분석 완료 <span data-icon="arrowRight" data-size="14"></span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="flex gap-24">
+    <span>© 2026 CONVIL DESIGN Inc.</span>
+    <a href="9_약관.html#terms">이용약관</a>
+    <a href="9_약관.html#privacy">개인정보처리방침</a>
+    <a href="#">사업자정보</a>
+  </div>
+  <span>support@convil.aiapp.help</span>
+</footer>
+
+<script src="js/shared.js"></script>
+<script src="js/aidesign.js"></script>
+</body>
+</html>

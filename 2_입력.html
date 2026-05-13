@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인테리어 첫단추 — 입력</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== GNB ===== -->
+<header class="gnb">
+  <div class="gnb-left">
+    <a href="1_랜딩.html" class="logo">
+      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+    </a>
+    <nav class="gnb-nav">
+      <a href="1_랜딩.html">서비스 소개</a>
+      <a href="3_결과.html?sample=true#report">샘플 리포트</a>
+      <a href="4_마이페이지.html#plans">가격</a>
+      <a href="6_고객센터.html">고객센터</a>
+    </nav>
+  </div>
+  <div class="gnb-actions">
+    <a href="4_마이페이지.html#mypage" class="gnb-mypage-link">마이페이지</a>
+    <a class="btn btn-ghost btn-sm" href="5_로그인.html">로그아웃</a>
+  </div>
+</header>
+
+<main class="main-min-h">
+
+<!-- ===== 상단 진행도 바 (5단계 공통) ===== -->
+<div class="top-bar-progress">
+  <div class="page-narrow pt-0 pb-0">
+    <div class="flex justify-between items-center mb-6">
+      <span class="text-12 fw-700 text-strong" id="top-progress-label">1 / 5 · 주소</span>
+      <span class="text-12 text-subtle" id="top-progress-pct">20%</span>
+    </div>
+    <div class="mod-progress-track mod-progress-track--thin">
+      <div class="mod-bar" id="top-progress-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 1 — 주소 입력 + 건물 정보 확인
+============================================================ -->
+<section class="screen" id="address">
+  <div class="page-narrow">
+    <div class="stepper">
+      <div class="step is-active"><span class="dot">1</span><span>주소</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">2</span><span>업종</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">3</span><span>기본</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+    </div>
+    <div class="step-header">
+      <div class="page-header-row">
+        <span class="icon-box"><span data-icon="mapPin" data-size="20"></span></span>
+        <h1 class="page-title mt-0">주소 입력 + 건물 정보 확인</h1>
+        <span class="badge badge-neutral ml-auto">약 30초 소요</span>
+      </div>
+      <p class="page-subtitle mb-0">주소를 입력하면 건축물대장과 토지이용계획을 자동으로 조회합니다.</p>
+    </div>
+    <div>
+      <label class="field-label">도로명 주소 <span class="req">*</span></label>
+      <div class="relative mb-8">
+        <span data-icon="search" data-size="18" class="input-icon-left"></span>
+        <input class="input input-with-icon" placeholder="예: 부산 해운대구 해운대로 570" value="부산광역시 해운대구 해운대로 570"/>
+      </div>
+      <div class="flex items-center gap-6 text-12 text-subtle"><span data-icon="info" data-size="12"></span> 카카오 주소 API · 건축물대장 API · 토지이용계획 API</div>
+    </div>
+    <div class="card mt-24 card-subtle-bg">
+      <div class="flex items-center gap-8 mb-20">
+        <span data-icon="building" data-size="18" data-color="var(--brand)"></span>
+        <h3 class="section-title mb-0">건축물대장 조회 결과</h3>
+        <span class="badge badge-success ml-auto"><span data-icon="check" data-size="10" data-stroke="3"></span> 자동 매칭 완료</span>
+      </div>
+      <div class="card-row-2">
+        <div><div class="text-12 text-subtle mb-2">건물명</div><div class="text-14 fw-600 text-strong">해운대 비즈빌딩</div></div>
+        <div><div class="text-12 text-subtle mb-2">용도 (현재)</div><div class="text-14 fw-600 text-strong">제2종 근린생활시설 — 사무소</div></div>
+        <div><div class="text-12 text-subtle mb-2">구조</div><div class="text-14 fw-600 text-strong">철근콘크리트조</div></div>
+        <div><div class="text-12 text-subtle mb-2">층수</div><div class="text-14 fw-600 text-strong">지상 5층 / 지하 1층</div></div>
+        <div><div class="text-12 text-subtle mb-2">연면적</div><div class="text-14 fw-600 text-strong">2,840.5㎡</div></div>
+        <div><div class="text-12 text-subtle mb-2">사용승인일</div><div class="text-14 fw-600 text-strong">2008. 11. 23.</div></div>
+      </div>
+    </div>
+
+    <!-- 추가1: 입점 예정 층수 -->
+    <div class="mt-24">
+      <label class="field-label">입점 예정 층수 <span class="req">*</span></label>
+      <div class="grid cols-1fr-1fr gap-12">
+        <div class="select-wrap">
+          <select class="input">
+            <option>1층 (지상)</option>
+            <option>2층 (지상)</option>
+            <option>3층 (지상)</option>
+            <option>4층 (지상)</option>
+            <option>5층 (지상)</option>
+            <option>지하 1층</option>
+          </select>
+          <span data-icon="chevronDown" data-size="16" class="chev"></span>
+        </div>
+        <div class="relative">
+          <input class="input" placeholder="호수 (선택)" value="101호"/>
+          <span class="unit-suffix">호</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-12 text-subtle mt-6">
+        <span data-icon="info" data-size="12"></span> 건축물대장 기준 층 목록 · 소방·마감재·다중이용업 판정에 사용
+      </div>
+    </div>
+
+    <!-- 추가2: 건축물대장 직접 업로드 -->
+    <div class="mt-24">
+      <label class="field-label">건축물대장 직접 업로드 <span class="text-12 fw-400 text-subtle ml-4">(자동 조회가 안 될 때)</span></label>
+      <div class="placeholder-image flex-col h-120">
+        <span data-icon="upload" data-size="22" data-color="var(--ws-fg-subtle)"></span>
+        <div class="text-13 fw-600 text-default mt-8">파일을 끌어 놓거나 클릭하여 업로드</div>
+        <div class="text-11 text-subtle mt-4">PDF / JPG · 세움터에서 다운로드한 파일</div>
+      </div>
+      <div class="flex items-center gap-6 text-12 text-subtle mt-6">
+        <span data-icon="info" data-size="12"></span> <a href="https://www.eais.go.kr" target="_blank">세움터(eais.go.kr)</a>에서 본인 인증 후 다운로드 가능합니다.
+      </div>
+    </div>
+
+    <div class="bottom-nav-end">
+      <button class="btn btn-primary btn-md btn-min-160" data-go="biztype">다음 단계 <span data-icon="arrowRight" data-size="14"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 2 — 업종 선택 + 전환 목표
+============================================================ -->
+<section class="screen" id="biztype">
+  <div class="page-narrow">
+    <div class="stepper">
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
+      <div class="step is-active"><span class="dot">2</span><span>업종</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">3</span><span>기본</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+    </div>
+    <div class="step-header">
+      <div class="page-header-row">
+        <span class="icon-box"><span data-icon="briefcase" data-size="20"></span></span>
+        <h1 class="page-title mt-0">업종 + 사업 형태 + 공사 범위</h1>
+        <span class="badge badge-neutral ml-auto">약 1분 소요</span>
+      </div>
+      <p class="page-subtitle mb-0">희망 업종·사업 형태·공사 범위를 입력하면 인허가·대수선 리스크를 사전 판별합니다.</p>
+    </div>
+
+    <div class="card card-compact card-brand-tint">
+      <div class="text-12 text-brand fw-700 mb-4">현재 용도 (자동 연동)</div>
+      <div class="text-16 fw-700">제2종 근린생활시설 — 사무소</div>
+    </div>
+
+    <div class="mt-24">
+      <label class="field-label">희망 업종 <span class="req">*</span></label>
+      <div class="grid cols-3 gap-8">
+        <div class="select-wrap">
+          <select class="input"><option>대분류 · 요식업</option></select>
+          <span data-icon="chevronDown" data-size="16" class="chev"></span>
+        </div>
+        <div class="select-wrap">
+          <select class="input"><option>중분류 · 음식점업</option></select>
+          <span data-icon="chevronDown" data-size="16" class="chev"></span>
+        </div>
+        <div class="select-wrap">
+          <select class="input"><option>소분류 · 카페/베이커리</option></select>
+          <span data-icon="chevronDown" data-size="16" class="chev"></span>
+        </div>
+      </div>
+      <div class="text-12 text-subtle mt-6">💡 초기 서비스는 요식업·숙박업 소분류, 기타 업종은 대분류 수준으로 제공됩니다.</div>
+    </div>
+
+    <div class="mt-24">
+      <label class="field-label">사업 형태 <span class="req">*</span><span class="text-12 fw-400 text-subtle ml-8">새로 하는지 · 인수하는지 · 리뉴얼인지</span></label>
+      <div class="grid cols-3 gap-12">
+        <div class="card card-compact choice-card">
+          <div class="cc-head">
+            <span class="cc-radio"></span>
+            <span class="cc-label">신규 창업</span>
+          </div>
+          <div class="cc-desc">비어 있는 공간에 처음 입점</div>
+        </div>
+        <div class="card card-compact choice-card is-selected">
+          <div class="cc-head">
+            <span class="cc-radio"><span class="cc-radio-dot"></span></span>
+            <span class="cc-label">기존 가게 인수</span>
+          </div>
+          <div class="cc-desc">운영 중이던 가게를 인수해서 시작</div>
+        </div>
+        <div class="card card-compact choice-card">
+          <div class="cc-head">
+            <span class="cc-radio"></span>
+            <span class="cc-label">리뉴얼</span>
+          </div>
+          <div class="cc-desc">운영 중인 내 공간을 다듬어 재오픈</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24">
+      <label class="field-label">기존 업종 <span class="text-12 fw-400 text-subtle ml-4">(기존 가게 인수 · 리뉴얼 선택 시)</span></label>
+      <input class="input" value="제2종 근린생활시설 — 사무소 (부동산중개업)"/>
+    </div>
+
+    <!-- 추가3: 공사 범위 -->
+    <div class="card mt-24">
+      <div class="section-title">어떤 공사를 할 거예요? <span class="req">*</span><span class="text-12 fw-400 text-subtle ml-8">복수 선택 가능 · 대수선 여부 → 인허가 종류 자동 판정</span></div>
+      <div class="flex flex-wrap gap-10">
+        <span class="chip chip-lg">벽을 허물 거예요? <span class="text-12 fw-400 text-subtle ml-4">(내력벽 수선)</span></span>
+        <span class="chip chip-lg">계단을 바꿀 거예요? <span class="text-12 fw-400 text-subtle ml-4">(주계단·피난계단)</span></span>
+        <span class="chip chip-lg">천장을 뜯을 거예요? <span class="text-12 fw-400 text-subtle ml-4">(지붕틀·천장)</span></span>
+        <span class="chip chip-lg">외벽을 바꿀 거예요? <span class="text-12 fw-400 text-subtle ml-4">(외벽 마감재)</span></span>
+        <span class="chip chip-lg">화장실 위치 바꿀 거예요? <span class="text-12 fw-400 text-subtle ml-4">(급배수 변경)</span></span>
+        <span class="chip chip-lg">기둥·보 건드릴 거예요? <span class="text-12 fw-400 text-subtle ml-4">(구조체 수선)</span></span>
+      </div>
+      <div class="flex items-center gap-6 text-12 text-subtle mt-12">
+        <span data-icon="info" data-size="12"></span> 항목이 많을수록 대수선 신고 또는 건축허가가 필요할 수 있습니다.
+      </div>
+    </div>
+
+    <div class="card alert-warning mt-24">
+      <span data-icon="zap" data-size="22" data-color="#FF5E00" class="mt-2"></span>
+      <div class="flex-1">
+        <div class="aw-title">용도변경 신고가 필요합니다</div>
+        <div class="aw-body">제2종 근린생활시설(사무소) → 일반음식점(카페/베이커리) 전환은 <strong>건축법 제19조</strong>에 따라 동일 시설군 내 용도변경 신고 대상입니다. 자세한 분석은 통합 리포트에서 확인하세요.</div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="btn btn-secondary btn-md" data-go="address"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
+      <button class="btn btn-primary btn-md btn-min-160" data-go="basic">다음 단계 <span data-icon="arrowRight" data-size="14"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 3 — 기본정보
+============================================================ -->
+<section class="screen" id="basic">
+  <div class="page-narrow">
+    <div class="stepper">
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>업종</span></div><span class="sep"></span>
+      <div class="step is-active"><span class="dot">3</span><span>기본</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+    </div>
+    <div class="step-header">
+      <div class="page-header-row">
+        <span class="icon-box"><span data-icon="user" data-size="20"></span></span>
+        <h1 class="page-title mt-0">기본정보</h1>
+        <span class="badge badge-neutral ml-auto">약 1분 소요</span>
+      </div>
+      <p class="page-subtitle mb-0">회원 정보와 분석 범위를 확인해 주세요.</p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">① 응답자 정보 <span class="ml-8"><span class="badge badge-blue">회원 자동 연동</span></span></div>
+      <div class="grid cols-3 gap-16 mb-24">
+        <div><div class="field-label">응답자명</div><input class="input" value="홍길동"/></div>
+        <div><div class="field-label">이메일</div><input class="input" value="hong@convil.help"/></div>
+        <div><div class="field-label">연락처</div><input class="input" value="010-1234-5678"/></div>
+      </div>
+      <div class="divider"></div>
+      <div class="section-title">분석 대상 (이전 단계 연동)</div>
+      <div class="grid cols-1fr-1fr gap-16">
+        <div><div class="field-label">현장 주소</div><input class="input input-readonly" value="부산 해운대구 해운대로 570, 1층 101호" disabled/></div>
+        <div><div class="field-label">공간 용도</div><input class="input input-readonly" value="일반음식점 — 카페/베이커리" disabled/></div>
+      </div>
+    </div>
+
+    <div class="card mt-24">
+      <div class="section-title">② 요청 범위 <span class="req">*</span><span class="text-12 fw-400 text-subtle ml-8">복수 선택 가능</span></div>
+      <div class="flex flex-wrap gap-10">
+        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 실내 디자인</span>
+        <span class="chip chip-lg"> 외관 디자인</span>
+        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 주방</span>
+        <span class="chip chip-lg"> 룸 (독립공간)</span>
+        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 화장실</span>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="btn btn-secondary btn-md" data-go="biztype"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
+      <button class="btn btn-primary btn-md btn-min-160" data-go="reference">다음 단계 <span data-icon="arrowRight" data-size="14"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 4 — 참고요청사항
+============================================================ -->
+<section class="screen" id="reference">
+  <div class="page-narrow">
+    <div class="stepper">
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>업종</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
+      <div class="step is-active"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
+      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+    </div>
+    <div class="step-header">
+      <div class="page-header-row">
+        <span class="icon-box"><span data-icon="hardHat" data-size="20"></span></span>
+        <h1 class="page-title mt-0">참고요청사항</h1>
+        <span class="badge badge-neutral ml-auto">약 3분 소요</span>
+      </div>
+      <p class="page-subtitle mb-0">실측·구조·가구 정보를 받아 AI 모델의 입력 피처로 활용합니다.</p>
+    </div>
+
+    <div class="card collapse is-open">
+      <div class="collapse-header">
+        <div class="section-title mb-0">① 전용면적 · 예산</div>
+        <span data-icon="chevronDown" data-size="18" class="collapse-chev"></span>
+      </div>
+      <div class="collapse-body mt-20">
+        <div class="grid cols-1fr-1fr-1fr gap-16">
+          <div><div class="field-label">전용면적 <span class="req">*</span></div><input class="input" value="94.2㎡ (28.5평)"/></div>
+          <div><div class="field-label">시공 예산 범위</div><input class="input" value="3,500~4,500만"/></div>
+          <div><div class="field-label">예산 우선순위</div><input class="input" value="주방 설비 > 마감재"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card collapse mt-24">
+      <div class="collapse-header">
+        <div class="section-title mb-0">② 실측 및 구조정보</div>
+        <span data-icon="chevronDown" data-size="18" class="collapse-chev"></span>
+      </div>
+      <div class="collapse-body mt-20">
+        <div class="flex items-center justify-between mb-8">
+          <div class="field-label mb-0">평면치수 <span class="req">*</span></div>
+          <div class="flex gap-4">
+            <span class="chip chip-sm is-selected" data-dim-mode="mm">mm 단위</span>
+            <span class="chip chip-sm" data-dim-mode="pyeong">평수만 알아요</span>
+          </div>
+        </div>
+        <div class="grid cols-3 gap-12 mb-24" id="dim-mm-fields">
+          <div class="relative">
+            <input class="input" value="8400"/>
+            <span class="unit-suffix">가로 · mm</span>
+          </div>
+          <div class="relative">
+            <input class="input" value="11200"/>
+            <span class="unit-suffix">세로 · mm</span>
+          </div>
+          <div class="relative">
+            <input class="input" value="2700"/>
+            <span class="unit-suffix">층고 · mm</span>
+          </div>
+        </div>
+        <div class="grid cols-1fr-1fr gap-12 mb-24 is-hidden" id="dim-pyeong-fields">
+          <div class="relative">
+            <input class="input" value="28.5"/>
+            <span class="unit-suffix">평</span>
+          </div>
+          <div class="relative">
+            <input class="input" value="2.7"/>
+            <span class="unit-suffix">층고 · m</span>
+          </div>
+        </div>
+        <div class="grid cols-3 gap-12 mb-24">
+          <div class="placeholder-image flex-col h-120">
+            <span data-icon="filePdf" data-size="22" data-color="var(--ws-fg-subtle)"></span>
+            <div class="text-12 fw-600 text-default mt-8">스케치 도면</div>
+            <div class="text-11 text-subtle">CAD/PDF/JPG</div>
+          </div>
+          <div class="placeholder-image flex-col h-120">
+            <span data-icon="image" data-size="22" data-color="var(--ws-fg-subtle)"></span>
+            <div class="text-12 fw-600 text-default mt-8">현장사진</div>
+            <div class="text-11 text-subtle">공간 전체</div>
+          </div>
+          <div class="placeholder-image flex-col h-120">
+            <span data-icon="image" data-size="22" data-color="var(--ws-fg-subtle)"></span>
+            <div class="text-12 fw-600 text-default mt-8">기둥/벽체</div>
+            <div class="text-11 text-subtle">시공불가 구조물</div>
+          </div>
+        </div>
+        <div class="field-label">입구 및 창 위치</div>
+        <div class="flex flex-wrap gap-8 mb-24">
+          <span class="chip is-selected">정면 우측</span>
+          <span class="chip">정면 좌측</span>
+          <span class="chip is-selected">정면 중간</span>
+          <span class="chip">정면에 없음</span>
+          <span class="chip">기타</span>
+        </div>
+        <div class="field-label">분전함 / 급배수 위치</div>
+        <input class="input" placeholder="설비 위치를 자유롭게 적어주세요" value="분전함은 후면 좌측 벽체, 급배수는 화장실 인접 PD"/>
+      </div>
+    </div>
+
+    <div class="card collapse mt-24">
+      <div class="collapse-header">
+        <div class="section-title mb-0">③ 가구 및 배치</div>
+        <span data-icon="chevronDown" data-size="18" class="collapse-chev"></span>
+      </div>
+      <div class="collapse-body mt-20">
+        <div class="grid cols-2fr-1fr gap-16 mb-16">
+          <div><div class="field-label">가구 구성 <span class="req">*</span></div><input class="input" value="2인 테이블 6개, 4인 테이블 3개, 바 좌석 5석, 윈도우 사이드 카운터"/></div>
+          <div><div class="field-label">수용 인원 <span class="req">*</span></div><input class="input" value="29명"/></div>
+        </div>
+        <div class="field-label">가구 스타일 레퍼런스</div>
+        <div class="grid cols-4 gap-12">
+          <div data-mood="warm" data-hue="30" data-height="100"></div>
+          <div data-mood="modern" data-hue="200" data-height="100"></div>
+          <div data-mood="vintage" data-hue="20" data-height="100"></div>
+          <div class="placeholder-image flex-col h-100"><span data-icon="plus" data-size="18"></span><div class="text-11 mt-4">추가 업로드</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card collapse mt-24">
+      <div class="collapse-header">
+        <div class="section-title mb-0">④ 기타 요청사항</div>
+        <span data-icon="chevronDown" data-size="18" class="collapse-chev"></span>
+      </div>
+      <div class="collapse-body mt-20">
+        <div class="grid cols-2fr-1fr-1fr gap-16">
+          <div><div class="field-label">특이 요청사항</div><input class="input" value="천장에 노출 트러스, 한쪽 벽면은 매대로 활용"/></div>
+          <div><div class="field-label">시공예산 범위</div><input class="input" value="3,500~4,500만"/></div>
+          <div><div class="field-label">예산 우선순위</div><input class="input" value="주방 설비 > 마감재"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="btn btn-secondary btn-md" data-go="basic"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
+      <button class="btn btn-primary btn-md btn-min-160" data-go="design">다음 단계 <span data-icon="arrowRight" data-size="14"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 5 — 디자인 콘셉트
+============================================================ -->
+<section class="screen" id="design">
+  <div class="page-narrow">
+    <div class="stepper">
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>업종</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
+      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>참고</span></div><span class="sep"></span>
+      <div class="step is-active"><span class="dot">5</span><span>디자인</span></div>
+    </div>
+    <div class="step-header">
+      <div class="page-header-row">
+        <span class="icon-box"><span data-icon="palette" data-size="20"></span></span>
+        <h1 class="page-title mt-0">디자인 콘셉트</h1>
+        <span class="badge badge-neutral ml-auto">약 1분 소요</span>
+      </div>
+      <p class="page-subtitle mb-0">AI가 생성할 시안의 무드·마감재·조명을 알려주세요.</p>
+    </div>
+
+    <div class="card">
+      <div class="grid cols-2fr-1fr gap-16 mb-24">
+        <div>
+          <div class="field-label">전체 분위기 <span class="req">*</span></div>
+          <input class="input" value="모던, 따뜻한, 빈티지 한 스푼"/>
+          <div class="text-12 text-subtle mt-6">예시 · 모던 / 고급 / 빈티지 / 산업 / 내추럴</div>
+        </div>
+        <div>
+          <div class="field-label">3D 시안 비율</div>
+          <div class="select-wrap">
+            <select class="input">
+              <option>16:9 (가로)</option>
+              <option>4:5</option><option>1:1</option><option>9:16</option>
+            </select>
+            <span data-icon="chevronDown" data-size="16" class="chev"></span>
+          </div>
+        </div>
+      </div>
+      <div class="field-label">무드 레퍼런스 (선택)</div>
+      <div class="grid cols-4 gap-12">
+        <div data-mood="warm" data-hue="30" data-height="120" data-label="warm wood"></div>
+        <div data-mood="modern" data-hue="220" data-height="120" data-label="cool grey"></div>
+        <div data-mood="vintage" data-hue="10" data-height="120" data-label="brick"></div>
+        <div data-mood="minimal" data-hue="50" data-height="120" data-label="minimal"></div>
+      </div>
+    </div>
+
+    <div class="card mt-24">
+      <div class="section-title">벽 마감재 <span class="req">*</span> <span class="text-12 fw-400 text-subtle ml-8">복수 선택</span></div>
+      <div class="flex flex-wrap gap-8 mb-16">
+        <span class="chip-square">스타코</span>
+        <span class="chip-square is-selected">벽돌</span>
+        <span class="chip-square is-selected">페인트</span>
+        <span class="chip-square">타일</span>
+        <span class="chip-square">도장</span>
+        <span class="chip-square">유광 마감</span>
+        <span class="chip-square">기타</span>
+      </div>
+      <div class="section-title">바닥 마감재 <span class="req">*</span></div>
+      <div class="flex flex-wrap gap-8">
+        <span class="chip-square">타일</span>
+        <span class="chip-square">에폭시</span>
+        <span class="chip-square">장판</span>
+        <span class="chip-square is-selected">강화마루</span>
+        <span class="chip-square">대리석</span>
+        <span class="chip-square">기타</span>
+      </div>
+    </div>
+
+    <div class="card mt-24">
+      <div class="section-title">조명</div>
+      <div class="grid cols-1fr-1fr-1fr gap-16">
+        <div><div class="field-label">밝기 <span class="req">*</span></div><input class="input" value="따뜻하고 차분한 톤"/></div>
+        <div><div class="field-label">종류</div><input class="input" value="펜던트 + 레일조명"/></div>
+        <div>
+          <div class="field-label">레퍼런스</div>
+          <div class="placeholder-image upload-strip"><span data-icon="upload" data-size="14"></span><span class="text-12">이미지 업로드</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="flex gap-8">
+        <button class="btn btn-secondary btn-md" data-go="reference"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
+        <button class="btn btn-outline btn-md"><span data-icon="download" data-size="14"></span> 설문지 PDF 저장</button>
+      </div>
+      <a class="btn btn-primary btn-md btn-min-200" href="2_5_AI시안.html">✨ AI 시안 생성으로 <span data-icon="arrowRight" data-size="14"></span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="flex gap-24">
+    <span>© 2026 CONVIL DESIGN Inc.</span>
+    <a href="9_약관.html#terms">이용약관</a>
+    <a href="9_약관.html#privacy">개인정보처리방침</a>
+    <a href="#">사업자정보</a>
+  </div>
+  <span>support@convil.aiapp.help</span>
+</footer>
+
+<script src="js/shared.js"></script>
+<script src="js/input.js"></script>
+</body>
+</html>

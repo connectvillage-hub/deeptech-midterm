@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>인테리어 첫단추 — 마이페이지</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== GNB ===== -->
+<header class="gnb">
+  <div class="gnb-left">
+    <a href="1_랜딩.html" class="logo">
+      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+    </a>
+    <nav class="gnb-nav">
+      <a href="1_랜딩.html">서비스 소개</a>
+      <a href="3_결과.html?sample=true#report">샘플 리포트</a>
+      <a href="4_마이페이지.html#plans">가격</a>
+      <a href="6_고객센터.html">고객센터</a>
+    </nav>
+  </div>
+  <div class="gnb-actions">
+    <a href="4_마이페이지.html#mypage" class="gnb-mypage-link">마이페이지</a>
+    <a class="btn btn-ghost btn-sm" href="5_로그인.html">로그아웃</a>
+  </div>
+</header>
+
+<main class="main-min-h">
+
+<!-- ===== 마이페이지 상단 탭 (전체 공통) ===== -->
+<div class="top-bar-tabs">
+  <div class="page pt-0 pb-0">
+    <div class="flex justify-between items-center mb-16 flex-wrap gap-12">
+      <div>
+        <span class="eyebrow">My Page</span>
+        <h1 class="page-title text-28 mt-4 mb-0">안녕하세요, 홍길동님</h1>
+      </div>
+      <a class="btn btn-primary btn-md" href="2_입력.html"><span data-icon="plus" data-size="14"></span> 새 분석 시작</a>
+    </div>
+    <div class="flex gap-8 flex-wrap" id="mp-tabs">
+      <span class="chip chip-lg is-selected" data-go="mypage">대시보드</span>
+      <span class="chip chip-lg" data-go="payment-history">결제 내역</span>
+      <span class="chip chip-lg" data-go="profile">프로필</span>
+      <span class="chip chip-lg" data-go="plans">가격 플랜</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 1 — 대시보드
+============================================================ -->
+<section class="screen" id="mypage">
+  <div class="page">
+    <p class="page-subtitle">최근 90일간 발행한 리포트 4건</p>
+
+    <div class="card-row-4-12 mb-24">
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="filePdf" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">발행 리포트</div><div class="metric-value">4<span class="metric-unit">건</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="receipt" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">평균 평당 단가</div><div class="metric-value">129<span class="metric-unit">만원</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="calendar" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">평균 공기</div><div class="metric-value">52<span class="metric-unit">일</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="refresh" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">재생성 잔여</div><div class="metric-value">7<span class="metric-unit">회</span></div></div>
+      </div>
+    </div>
+
+    <div class="card card-flush">
+      <div class="mp-table-header">
+        <div class="section-title mb-0">나의 리포트</div>
+        <div class="flex gap-6 items-center" id="report-filters">
+          <span class="text-12 text-subtle mr-4">필터:</span>
+          <span class="chip chip-sm is-selected" data-filter="all">전체</span>
+          <span class="chip chip-sm" data-filter="success">적합</span>
+          <span class="chip chip-sm" data-filter="warning">조건부</span>
+          <span class="chip chip-sm" data-filter="error">부적합</span>
+        </div>
+      </div>
+      <table class="table">
+        <thead><tr><th>리포트 번호</th><th>대상지 / 업종</th><th>판정</th><th>총 견적</th><th>공기</th><th>발행일</th><th></th></tr></thead>
+        <tbody>
+          <tr class="row-link" data-status="warning">
+            <td class="mp-id">#20260511-A720</td>
+            <td class="text-left"><div class="fw-600">부산 해운대 해운대로 570</div><div class="mp-subtext">카페/베이커리</div></td>
+            <td><span class="signal signal-warning signal-xs"><span class="pulse"></span>조건부</span></td>
+            <td class="fw-700">3,650만</td>
+            <td>45일</td>
+            <td class="text-subtle">2026. 5. 11.</td>
+            <td><div class="mp-actions"><a class="btn btn-ghost btn-sm" href="3_결과.html#report"><span data-icon="eye" data-size="14"></span></a><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></div></td>
+          </tr>
+          <tr class="row-link" data-status="success">
+            <td class="mp-id">#20260428-C312</td>
+            <td class="text-left"><div class="fw-600">부산 광안리 광남로 22</div><div class="mp-subtext">게스트하우스</div></td>
+            <td><span class="signal signal-success signal-xs"><span class="pulse"></span>적합</span></td>
+            <td class="fw-700">5,820만</td>
+            <td>62일</td>
+            <td class="text-subtle">2026. 4. 28.</td>
+            <td><div class="mp-actions"><a class="btn btn-ghost btn-sm" href="3_결과.html#report"><span data-icon="eye" data-size="14"></span></a><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></div></td>
+          </tr>
+          <tr class="row-link" data-status="error">
+            <td class="mp-id">#20260412-B099</td>
+            <td class="text-left"><div class="fw-600">부산 서면 중앙대로 991</div><div class="mp-subtext">한식주점</div></td>
+            <td><span class="signal signal-error signal-xs"><span class="pulse"></span>부적합</span></td>
+            <td class="fw-700">4,200만</td>
+            <td>70일</td>
+            <td class="text-subtle">2026. 4. 12.</td>
+            <td><div class="mp-actions"><a class="btn btn-ghost btn-sm" href="3_결과.html#report"><span data-icon="eye" data-size="14"></span></a><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></div></td>
+          </tr>
+          <tr class="row-link" data-status="success">
+            <td class="mp-id">#20260330-A187</td>
+            <td class="text-left"><div class="fw-600">부산 남포동 광복로 47</div><div class="mp-subtext">베이커리</div></td>
+            <td><span class="signal signal-success signal-xs"><span class="pulse"></span>적합</span></td>
+            <td class="fw-700">2,940만</td>
+            <td>32일</td>
+            <td class="text-subtle">2026. 3. 30.</td>
+            <td><div class="mp-actions"><a class="btn btn-ghost btn-sm" href="3_결과.html#report"><span data-icon="eye" data-size="14"></span></a><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 2 — 결제 내역 (M2)
+============================================================ -->
+<section class="screen" id="payment-history">
+  <div class="page">
+    <div class="mp-header mb-24">
+      <div>
+        <span class="eyebrow">PAYMENTS</span>
+        <h2 class="page-title text-28 mt-4">결제 내역</h2>
+        <p class="page-subtitle">최근 결제와 구독 상태를 확인할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <!-- 현재 구독 상태 -->
+    <div class="card alert-brand mb-24">
+      <span data-icon="sparkles" data-size="22" data-color="var(--brand)"></span>
+      <div class="flex-1">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-13 text-brand fw-700 mb-4">현재 구독 중</div>
+            <div class="text-22 fw-800 text-strong mb-4">시공사 구독 · 140,000원/월</div>
+            <div class="text-13 text-muted">다음 결제일: 2026. 6. 11. · 멤버 시트 5인 중 3인 사용</div>
+          </div>
+          <button class="btn btn-outline btn-sm">구독 관리</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사용 현황 -->
+    <div class="card-row-4-12 mb-24">
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="filePdf" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">이번 달 분석</div><div class="metric-value">7<span class="metric-unit">건</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="user" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">멤버 사용</div><div class="metric-value">3<span class="metric-unit">/5인</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="link" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">API 호출</div><div class="metric-value">1.2<span class="metric-unit">k/10k</span></div></div>
+      </div>
+      <div class="card-compact card metric-card">
+        <span class="icon-box"><span data-icon="calendar" data-size="18"></span></span>
+        <div><div class="text-12 text-subtle">갱신까지</div><div class="metric-value">30<span class="metric-unit">일</span></div></div>
+      </div>
+    </div>
+
+    <!-- 결제 내역 표 -->
+    <div class="card card-flush">
+      <div class="mp-table-header">
+        <div class="section-title mb-0">결제 이력</div>
+        <button class="btn btn-outline btn-sm"><span data-icon="download" data-size="12"></span> 영수증 일괄 다운로드</button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr><th>결제일</th><th>상품</th><th>방식</th><th>금액</th><th>상태</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026. 5. 11.</td>
+            <td class="text-left fw-600">시공사 구독 (월간)</td>
+            <td>카드 (4242)</td>
+            <td class="fw-700">140,000원</td>
+            <td><span class="badge badge-success">완료</span></td>
+            <td><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></td>
+          </tr>
+          <tr>
+            <td>2026. 4. 11.</td>
+            <td class="text-left fw-600">시공사 구독 (월간)</td>
+            <td>카드 (4242)</td>
+            <td class="fw-700">140,000원</td>
+            <td><span class="badge badge-success">완료</span></td>
+            <td><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></td>
+          </tr>
+          <tr>
+            <td>2026. 3. 28.</td>
+            <td class="text-left fw-600">단건 결제 (#20260328-A091)</td>
+            <td>카드 (4242)</td>
+            <td class="fw-700">50,000원</td>
+            <td><span class="badge badge-success">완료</span></td>
+            <td><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></td>
+          </tr>
+          <tr>
+            <td>2026. 3. 11.</td>
+            <td class="text-left fw-600">시공사 구독 (월간)</td>
+            <td>카드 (4242)</td>
+            <td class="fw-700">140,000원</td>
+            <td><span class="badge badge-success">완료</span></td>
+            <td><button class="btn btn-ghost btn-sm"><span data-icon="download" data-size="14"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 3 — 프로필 (M3)
+============================================================ -->
+<section class="screen" id="profile">
+  <div class="page">
+    <div class="mp-header mb-24">
+      <div>
+        <span class="eyebrow">PROFILE</span>
+        <h2 class="page-title text-28 mt-4">프로필 설정</h2>
+        <p class="page-subtitle">개인 정보와 알림 설정을 변경할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <!-- 계정 정보 -->
+    <div class="card mb-24">
+      <div class="section-title">계정 정보</div>
+      <div class="grid cols-1fr-1fr gap-16 mb-16">
+        <div>
+          <div class="field-label">이름</div>
+          <div class="relative">
+            <span data-icon="user" data-size="18" class="input-icon-left"></span>
+            <input class="input input-with-icon" value="홍길동"/>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">이메일</div>
+          <div class="relative">
+            <span data-icon="mail" data-size="18" class="input-icon-left"></span>
+            <input class="input input-with-icon" value="hong@convil.help"/>
+          </div>
+        </div>
+      </div>
+      <div class="grid cols-1fr-1fr gap-16">
+        <div>
+          <div class="field-label">연락처</div>
+          <input class="input" value="010-1234-5678"/>
+        </div>
+        <div>
+          <div class="field-label">소속 (선택)</div>
+          <input class="input" placeholder="개인 / 시공사 / 컨설팅 등" value="개인 창업자"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사업자 정보 (세금계산서용) -->
+    <div class="card mb-24">
+      <div class="flex items-center justify-between mb-16">
+        <div class="section-title mb-0">사업자 정보 <span class="text-12 fw-400 text-subtle ml-8">세금계산서 발행용 · 선택</span></div>
+        <span class="badge badge-neutral">미등록</span>
+      </div>
+      <div class="grid cols-1fr-1fr gap-16 mb-16">
+        <div>
+          <div class="field-label">사업자등록번호</div>
+          <input class="input" placeholder="000-00-00000"/>
+        </div>
+        <div>
+          <div class="field-label">상호명</div>
+          <input class="input" placeholder="상호명"/>
+        </div>
+      </div>
+      <div class="grid cols-1fr-1fr gap-16">
+        <div>
+          <div class="field-label">대표자명</div>
+          <input class="input" placeholder="대표자명"/>
+        </div>
+        <div>
+          <div class="field-label">업태 / 종목</div>
+          <input class="input" placeholder="서비스업 / 컨설팅"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- 알림 설정 -->
+    <div class="card mb-24">
+      <div class="section-title">알림 설정</div>
+      <label class="flex items-center justify-between mb-16">
+        <div>
+          <div class="text-14 fw-600 mb-2">리포트 발행 알림</div>
+          <div class="text-12 text-subtle">분석 완료 시 이메일로 알림을 받습니다.</div>
+        </div>
+        <input type="checkbox" checked/>
+      </label>
+      <div class="divider"></div>
+      <label class="flex items-center justify-between mb-16">
+        <div>
+          <div class="text-14 fw-600 mb-2">결제·구독 알림</div>
+          <div class="text-12 text-subtle">결제 갱신 7일 전 알림을 받습니다.</div>
+        </div>
+        <input type="checkbox" checked/>
+      </label>
+      <div class="divider"></div>
+      <label class="flex items-center justify-between">
+        <div>
+          <div class="text-14 fw-600 mb-2">마케팅 정보 수신</div>
+          <div class="text-12 text-subtle">신규 기능, 프로모션 안내를 이메일로 받습니다.</div>
+        </div>
+        <input type="checkbox"/>
+      </label>
+    </div>
+
+    <!-- 비밀번호 / 계정 관리 -->
+    <div class="card">
+      <div class="section-title">계정 관리</div>
+      <div class="flex justify-between items-center mb-16">
+        <div>
+          <div class="text-14 fw-600 mb-2">비밀번호 변경</div>
+          <div class="text-12 text-subtle">마지막 변경일: 2026. 2. 14.</div>
+        </div>
+        <button class="btn btn-outline btn-sm">변경하기</button>
+      </div>
+      <div class="divider"></div>
+      <div class="flex justify-between items-center mb-16">
+        <div>
+          <div class="text-14 fw-600 mb-2">2단계 인증</div>
+          <div class="text-12 text-subtle">이메일 OTP로 추가 보안</div>
+        </div>
+        <button class="btn btn-outline btn-sm">설정</button>
+      </div>
+      <div class="divider"></div>
+      <div class="flex justify-between items-center">
+        <div>
+          <div class="text-14 fw-600 mb-2 text-error">회원 탈퇴</div>
+          <div class="text-12 text-subtle">탈퇴 시 30일 이내 모든 데이터가 삭제됩니다.</div>
+        </div>
+        <button class="btn btn-outline btn-sm text-error">탈퇴 요청</button>
+      </div>
+    </div>
+
+    <!-- 저장 버튼 -->
+    <div class="bottom-nav-end">
+      <button class="btn btn-primary btn-md btn-min-160">변경사항 저장</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN 4 — 구독 플랜
+============================================================ -->
+<section class="screen" id="plans">
+  <div class="page">
+    <div class="section-heading-sm">
+      <span class="eyebrow">PRICING</span>
+      <h1 class="page-title text-32 text-center">비즈니스에 맞는 플랜을 선택하세요</h1>
+      <p class="page-subtitle text-center">가입 즉시 무료 진단 1건이 발급됩니다.</p>
+    </div>
+
+    <div class="grid cols-3 gap-16 mx-auto max-w-1000">
+
+      <!-- Free -->
+      <div class="card plan-card" data-plan="free">
+        <div class="flex items-center justify-between">
+          <span class="plan-name">Free</span>
+          <span class="plan-radio"><span class="plan-dot-inner"></span></span>
+        </div>
+        <div class="plan-desc">서비스를 가볍게 체험해보고 싶다면</div>
+        <div class="plan-price">무료</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 통합 신호등 결과 미리보기</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 리포트 보관 14일</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 워터마크 PDF</li>
+        </ul>
+      </div>
+
+      <!-- Single (popular) -->
+      <div class="card plan-card" data-plan="single">
+        <span class="plan-badge-popular"><span data-icon="starFilled" data-size="10" class="mr-4"></span> 추천 플랜</span>
+        <div class="flex items-center justify-between">
+          <span class="plan-name">단건 요금제</span>
+          <span class="plan-radio"><span class="plan-dot-inner"></span></span>
+        </div>
+        <div class="plan-desc">한 자리, 한 번의 진단이 필요할 때</div>
+        <div class="plan-price">50,000원<span class="plan-unit">/건</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 통합 분석 1건 (4개 모듈)</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> AI 디자인 시안 4장 포함</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 브랜드 PDF · 공유 링크</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 리포트 무기한 보관</li>
+        </ul>
+      </div>
+
+      <!-- Pro -->
+      <div class="card plan-card" data-plan="pro">
+        <div class="flex items-center justify-between">
+          <span class="plan-name">시공사 구독</span>
+          <span class="plan-radio"><span class="plan-dot-inner"></span></span>
+        </div>
+        <div class="plan-desc">시공사·부동산·컨설팅</div>
+        <div class="plan-price">140,000원<span class="plan-unit">/월</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-list">
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 통합 분석 무제한</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 멤버 시트 5인 포함</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 브랜드 PDF (로고/색상)</li>
+          <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> API 호출 1만건</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-32">
+      <a class="btn btn-primary btn-lg btn-min-280" href="7_결제.html">선택한 플랜으로 결제 <span data-icon="arrowRight" data-size="16"></span></a>
+      <div class="mt-16 text-12 text-subtle">결제 즉시 잠금 해제 · 단건은 자동 갱신 없음 · 구독은 언제든 해지 가능</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="flex gap-24">
+    <span>© 2026 CONVIL DESIGN Inc.</span>
+    <a href="9_약관.html#terms">이용약관</a>
+    <a href="9_약관.html#privacy">개인정보처리방침</a>
+    <a href="#">사업자정보</a>
+  </div>
+  <span>support@convil.aiapp.help</span>
+</footer>
+
+<script src="js/shared.js"></script>
+<script src="js/mypage.js"></script>
+</body>
+</html>
