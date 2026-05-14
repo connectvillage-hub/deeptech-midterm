@@ -5,6 +5,49 @@
  * 화면 ID: address, biztype, basic, reference, design
  * =========================================================== */
 
+function setupOwnDesignUpload() {
+  const dropzone = document.getElementById('own-design-dropzone');
+  const input = document.getElementById('own-design-input');
+  const filename = document.getElementById('own-design-filename');
+  if (!dropzone || !input) return;
+
+  function handleFile(file) {
+    const okTypes = ['image/png', 'image/jpeg', 'application/pdf'];
+    if (okTypes.indexOf(file.type) < 0) {
+      alert('PNG · JPG · PDF 파일만 업로드 가능합니다.');
+      input.value = '';
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      alert('파일은 최대 20MB까지 업로드 가능합니다.');
+      input.value = '';
+      return;
+    }
+    if (filename) filename.textContent = file.name;
+  }
+
+  dropzone.addEventListener('click', function() { input.click(); });
+  dropzone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropzone.classList.add('is-dragover');
+  });
+  dropzone.addEventListener('dragleave', function() {
+    dropzone.classList.remove('is-dragover');
+  });
+  dropzone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropzone.classList.remove('is-dragover');
+    if (e.dataTransfer.files.length) {
+      input.files = e.dataTransfer.files;
+      handleFile(input.files[0]);
+    }
+  });
+  input.addEventListener('change', function() {
+    if (input.files.length) handleFile(input.files[0]);
+  });
+}
+
+
 const STEP_ORDER = ['address', 'biztype', 'basic', 'reference', 'design'];
 const STORAGE_KEY = 'interior_input_state_v1';
 
@@ -42,6 +85,7 @@ function getCurrentStep() {
 function saveState() {
   const state = { step: getCurrentStep(), inputs: {}, chips: {}, cards: {} };
   document.querySelectorAll('main input, main select').forEach(function(el, i) {
+    if (el.type === 'file') return; // 파일 input은 보안상 직렬화 불가
     state.inputs[i] = (el.type === 'checkbox') ? el.checked : el.value;
   });
   document.querySelectorAll('main .chip, main .chip-square').forEach(function(el, i) {
@@ -63,9 +107,12 @@ function loadState() {
 function restoreState(state) {
   if (!state) return;
   document.querySelectorAll('main input, main select').forEach(function(el, i) {
+    if (el.type === 'file') return; // 파일 input에 문자열 할당 시 보안 예외
     if (state.inputs && i in state.inputs) {
-      if (el.type === 'checkbox') el.checked = !!state.inputs[i];
-      else el.value = state.inputs[i];
+      try {
+        if (el.type === 'checkbox') el.checked = !!state.inputs[i];
+        else el.value = state.inputs[i];
+      } catch (e) { /* 인덱스 어긋남 등 무시 */ }
     }
   });
   document.querySelectorAll('main .chip, main .chip-square').forEach(function(el, i) {
@@ -221,8 +268,11 @@ function setupDimModeToggle() {
 
 /* ----- 초기화 ----- */
 document.addEventListener('DOMContentLoaded', function() {
-  const saved = loadState();
-  if (saved) restoreState(saved);
+  let saved = null;
+  try { saved = loadState(); } catch (e) { saved = null; }
+  if (saved) {
+    try { restoreState(saved); } catch (e) { /* 저장 데이터 손상 시 무시하고 진행 */ }
+  }
 
   const hash = (location.hash || '').replace('#', '');
   let initial = STEP_ORDER[0];
@@ -258,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setupSelectToggle();
   setupCollapseToggle();
   setupDimModeToggle();
+  setupOwnDesignUpload();
 
   document.querySelectorAll('main input, main select').forEach(function(el) {
     el.addEventListener('input', function() {

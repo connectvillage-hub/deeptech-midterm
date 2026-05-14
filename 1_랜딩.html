@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -34,9 +35,6 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner animate-in">
-    <span class="badge badge-blue text-12">
-      <span data-icon="sparkles" data-size="12"></span> AI 기반 상업공간 리스크 진단
-    </span>
     <h1 class="hero-h1">
       인테리어, 시작 전에<br/><span class="text-brand">리스크부터 진단하세요.</span>
     </h1>
@@ -64,33 +62,154 @@
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
+<!-- ===== PROBLEM → SOLUTION (공감 후킹) ===== -->
 <section class="section-pad">
   <div class="section-heading">
-    <span class="eyebrow">HOW IT WORKS</span>
-    <h2 class="section-h2">한 번의 입력, 4가지 분석을 동시에.</h2>
-    <p class="section-desc">4개 AI 모듈이 동시에 작동하여 30초 만에 통합 리포트를 발행합니다.</p>
+    <span class="eyebrow">PROBLEM</span>
+    <h2 class="section-h2">처음 가게 차릴 때, 가장 막막한 4가지</h2>
+    <p class="section-desc">가게 하나 차리는 데 알아야 할 것이 너무 많습니다.<br/>혼자 며칠씩 검색하고, 여기저기 전화 돌리고, 결국 답을 못 찾는 분들이 많습니다.</p>
   </div>
-  <div class="grid cols-4 gap-16">
-    <div class="card card-compact animate-in how-card">
-      <div class="hc-icon"><span data-icon="shieldCheck" data-size="22"></span></div>
-      <div class="hc-title">인허가 리스크</div>
-      <div class="hc-desc">건축법·소방·위생·조례를 RAG가 자동 검토. 부산시 건축조례까지 포함합니다.</div>
+
+  <div class="grid cols-4 gap-16 mb-32 problem-row">
+    <div class="problem-card">
+      <span class="problem-point-label">POINT 1</span>
+      <h3 class="problem-card-title">법규의 막막함</h3>
+      <div class="speech-bubble">
+        <p>“용도변경을 해야 하는데<br/>관련 법규가 뭐가 있는지<br/>도무지 모르겠어요…”</p>
+      </div>
+      <p class="problem-card-desc">건축법·소방·위생·구청 조례를 따로따로 알아봐야 합니다.</p>
     </div>
-    <div class="card card-compact animate-in how-card">
-      <div class="hc-icon"><span data-icon="receipt" data-size="22"></span></div>
-      <div class="hc-title">표준 견적</div>
-      <div class="hc-desc">업종·면적·등급 기반 BoQ 자동 생성. 최소·기준·상한 3단계 범위로 제시합니다.</div>
+
+    <div class="problem-card">
+      <span class="problem-point-label">POINT 2</span>
+      <h3 class="problem-card-title">디자인의 막막함</h3>
+      <div class="speech-bubble">
+        <p>“내 공간에 어울리는<br/>인테리어 시안을 미리<br/>보고 싶은데…”</p>
+      </div>
+      <p class="problem-card-desc">디자이너 미팅 전엔 어떤 분위기가 어울릴지 가늠하기 어렵습니다.</p>
     </div>
-    <div class="card card-compact animate-in how-card">
-      <div class="hc-icon"><span data-icon="calendar" data-size="22"></span></div>
-      <div class="hc-title">시공 기간</div>
-      <div class="hc-desc">10년치 시공 데이터로 보정. 공정별 간트와 지연 위험 요인을 함께 보여줍니다.</div>
+
+    <div class="problem-card">
+      <span class="problem-point-label">POINT 3</span>
+      <h3 class="problem-card-title">일정의 막막함</h3>
+      <div class="speech-bubble">
+        <p>“공사 기간이 얼마나 걸릴지,<br/>언제 오픈할 수 있을지<br/>가늠이 안 돼요…”</p>
+      </div>
+      <p class="problem-card-desc">공정마다 다르고, 동시작업·지연 변수까지 모두 고려해야 합니다.</p>
     </div>
-    <div class="card card-compact animate-in how-card">
-      <div class="hc-icon"><span data-icon="palette" data-size="22"></span></div>
-      <div class="hc-title">AI 디자인 시안</div>
-      <div class="hc-desc">문진표 기반 맞춤 4장. ControlNet+LoRA로 구조 유지 + 분위기만 변환합니다.</div>
+
+    <div class="problem-card">
+      <span class="problem-point-label">POINT 4</span>
+      <h3 class="problem-card-title">견적의 막막함</h3>
+      <div class="speech-bubble">
+        <p>“예산을 잡아야 하는데<br/>대략적인 견적조차<br/>받기가 어려워요…”</p>
+      </div>
+      <p class="problem-card-desc">시공사마다 견적이 천차만별, 비교 기준조차 없습니다.</p>
+    </div>
+  </div>
+
+  <div class="problem-closing">
+    여러 곳을 일일이 검색하고 발품 팔며 한 가지씩 알아냈는데..<br/>
+    <strong>한 번에 4가지를 다 알 수 있었다면 얼마나 좋았을까?</strong>
+  </div>
+
+  <div class="solution-layout">
+    <!-- LEFT: 큰 제목 + OUTPUT 카드 -->
+    <div class="solution-left">
+      <h2 class="solution-title">막막하던 결정,<br/>4가지 구체적 답변으로.</h2>
+      <div class="one-report-card">
+        <span class="one-report-eyebrow">OUTPUT · ONE REPORT</span>
+        <h3 class="one-report-title">모든 답변이 한 장의 리포트로,<br/>임대인 협의·시공사 비교에 바로 활용.</h3>
+        <p class="one-report-desc">PDF · 4개 챕터 · 6~8페이지. 표지·체크리스트까지 자동 생성하고, 공유 링크는 발행일로부터 90일간 유효합니다. 인허가 준비·시공사 견적 의뢰 시 그대로 사용하실 수 있습니다.</p>
+        <div class="pdf-stack">
+          <div class="pdf-sheet pdf-sheet-1"></div>
+          <div class="pdf-sheet pdf-sheet-2"></div>
+          <div class="pdf-sheet pdf-sheet-3"></div>
+          <div class="pdf-sheet pdf-sheet-4"></div>
+          <div class="pdf-sheet pdf-sheet-5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: 설명 + 2×2 그리드 -->
+    <div class="solution-right">
+      <p class="solution-quote">
+        “용도변경이 필요한가요? 예산은 충분할까요? 이런 분위기로 가능할까요?” — <strong>이 자리에서 결정해야 할 모든 것을 한 화면에서 답해드립니다. 30초 안에.</strong>
+      </p>
+
+      <div class="solution-grid">
+        <!-- 인허가 리스크 -->
+        <div class="solution-mini">
+          <div class="solution-mini-eyebrow">법규 검토</div>
+          <h4 class="solution-mini-title">인허가 리스크</h4>
+          <p class="solution-mini-desc">건축법·소방·위생·조례를 항목별 판정</p>
+          <div class="mini-law-list">
+            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-warn"></span><span class="mini-law-name">건축법</span><span class="mini-law-badge">용도변경 신고</span></div>
+            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-warn"></span><span class="mini-law-name">소방시설법</span><span class="mini-law-badge">스프링클러 보완</span></div>
+            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-ok"></span><span class="mini-law-name">식품위생법</span><span class="mini-law-badge mini-law-badge-ok">요건 충족</span></div>
+            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-ok"></span><span class="mini-law-name">부산시 조례</span><span class="mini-law-badge mini-law-badge-ok">기준 내</span></div>
+          </div>
+        </div>
+
+        <!-- 표준 견적 -->
+        <div class="solution-mini">
+          <div class="solution-mini-eyebrow">자금 계획</div>
+          <h4 class="solution-mini-title">표준 견적</h4>
+          <p class="solution-mini-desc">공정별 BoQ · 부산 평균 시세 반영</p>
+          <div class="mini-price-head">
+            <span class="mini-price-label">내 자리 기준</span>
+            <span class="mini-price-value">3,650<small>만</small></span>
+          </div>
+          <div class="mini-price-bar"><div class="mini-price-bar-fill"></div><div class="mini-price-bar-marker"></div></div>
+          <div class="mini-price-range">
+            <span>간단 마감 2,820</span>
+            <span>프리미엄 4,820</span>
+          </div>
+          <div class="mini-price-tag">평당 128만 · VAT 별도 · BoQ 8공정</div>
+        </div>
+
+        <!-- 시공 기간 -->
+        <div class="solution-mini">
+          <div class="solution-mini-eyebrow">일정</div>
+          <h4 class="solution-mini-title">시공 기간 예측</h4>
+          <p class="solution-mini-desc">간트차트 + 월간 캘린더</p>
+          <div class="mini-price-head">
+            <span class="mini-price-label">예상 기간</span>
+            <span class="mini-price-value">45<small>일</small></span>
+          </div>
+          <div class="mini-gantt">
+            <div class="mini-gantt-row"><span class="mini-gantt-label">철거·가설</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-orange w-10"></span></span></div>
+            <div class="mini-gantt-row"><span class="mini-gantt-label">목공·천장</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-green w-50"></span></span></div>
+            <div class="mini-gantt-row"><span class="mini-gantt-label">전기·소방</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-blue w-40"></span></span></div>
+            <div class="mini-gantt-row"><span class="mini-gantt-label">마감·도장</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-purple w-35"></span></span></div>
+          </div>
+        </div>
+
+        <!-- AI 디자인 시안 -->
+        <div class="solution-mini">
+          <div class="solution-mini-eyebrow">시각화</div>
+          <h4 class="solution-mini-title">AI 디자인 시안</h4>
+          <p class="solution-mini-desc">내 평면 기반 추천 시안 · 챗으로 자유 재생성</p>
+          <div class="mini-mood-grid">
+            <div class="mini-mood">
+              <div data-mood="warm" data-hue="30" data-height="60"></div>
+              <span class="mini-mood-label">Warm Wood</span>
+            </div>
+            <div class="mini-mood">
+              <div data-mood="vintage" data-hue="20" data-height="60"></div>
+              <span class="mini-mood-label">Brick Loft</span>
+            </div>
+            <div class="mini-mood">
+              <div data-mood="modern" data-hue="200" data-height="60"></div>
+              <span class="mini-mood-label">Cool Modern</span>
+            </div>
+            <div class="mini-mood">
+              <div data-mood="minimal" data-hue="50" data-height="60"></div>
+              <span class="mini-mood-label">Bright Minimal</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -139,7 +258,7 @@
     <div class="card pricing-card is-pro">
       <div class="pricing-eyebrow eyebrow-light">FOR PROFESSIONALS</div>
       <div class="pricing-price text-white">140,000원<span class="pricing-price-unit text-faded-7">/월</span></div>
-      <div class="pricing-tag text-faded-7">시공사·중개업·컨설팅</div>
+      <div class="pricing-tag text-faded-7">시공사 전용 구독제</div>
       <div class="pricing-divider-dark"></div>
       <ul class="pricing-list text-faded-9">
         <li><span data-icon="check" data-size="14" data-color="#80FF99"></span> <strong class="text-white">Single 모든 항목 +</strong></li>

@@ -458,6 +458,26 @@
       <p class="page-subtitle mb-0">AI가 생성할 시안의 무드·마감재·조명을 알려주세요.</p>
     </div>
 
+    <!-- 본인 3D 시안 업로드 (선택) -->
+    <div class="card mb-16 own-design-card" id="own-design-card">
+      <div class="own-design-head">
+        <div>
+          <span class="eyebrow">선택 입력</span>
+          <h3 class="own-design-title">이미 보유하신 3D 시안이 있으신가요?</h3>
+          <p class="own-design-desc">디자이너로부터 받은 시안이 있으시면 업로드해 주세요. <strong class="text-strong">아래 디자인 항목은 자동 채워지며, 견적·시공기간이 이 시안 기준으로 산정</strong>됩니다. 시안이 없으시면 이 카드는 건너뛰고 아래 항목만 작성해 주세요.</p>
+        </div>
+      </div>
+      <label class="own-design-dropzone" id="own-design-dropzone">
+        <input type="file" id="own-design-input" accept="image/png,image/jpeg,application/pdf" hidden/>
+        <span class="own-design-dropzone-icon"><span data-icon="upload" data-size="22"></span></span>
+        <div>
+          <div class="own-design-dropzone-title">파일 선택 또는 드래그</div>
+          <div class="own-design-dropzone-desc">PNG · JPG · PDF · 최대 20MB</div>
+        </div>
+        <span class="own-design-dropzone-filename" id="own-design-filename"></span>
+      </label>
+    </div>
+
     <div class="card">
       <div class="grid cols-2fr-1fr gap-16 mb-24">
         <div>

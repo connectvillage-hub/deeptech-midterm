@@ -63,14 +63,14 @@
         </div>
       </div>
 
-      <div id="m-cost" class="card loading-mod-row">
+      <div id="m-design" class="card loading-mod-row">
         <span class="mod-icon">
-          <span data-icon="receipt" data-size="18"></span>
+          <span data-icon="palette" data-size="18"></span>
         </span>
         <div class="flex-1">
           <div class="flex justify-between mb-6">
-            <span class="text-13 fw-700">표준 견적</span>
-            <span class="mod-sub text-12 text-subtle">벽 마감재 단가 적용 중</span>
+            <span class="text-13 fw-700">AI 레퍼런스 디자인 시안</span>
+            <span class="mod-sub text-12 text-subtle">ControlNet 추론 중</span>
           </div>
           <div class="mod-progress-track">
             <div class="mod-bar"></div>
@@ -85,7 +85,7 @@
         <div class="flex-1">
           <div class="flex justify-between mb-6">
             <span class="text-13 fw-700">시공 기간</span>
-            <span class="mod-sub text-12 text-subtle">공정별 간트 보정 중</span>
+            <span class="mod-sub text-12 text-subtle">시안 기준 간트 보정 중</span>
           </div>
           <div class="mod-progress-track">
             <div class="mod-bar"></div>
@@ -93,14 +93,14 @@
         </div>
       </div>
 
-      <div id="m-design" class="card loading-mod-row">
+      <div id="m-cost" class="card loading-mod-row">
         <span class="mod-icon">
-          <span data-icon="palette" data-size="18"></span>
+          <span data-icon="receipt" data-size="18"></span>
         </span>
         <div class="flex-1">
           <div class="flex justify-between mb-6">
-            <span class="text-13 fw-700">AI 디자인 시안</span>
-            <span class="mod-sub text-12 text-subtle">ControlNet 추론 중</span>
+            <span class="text-13 fw-700">표준 견적</span>
+            <span class="mod-sub text-12 text-subtle">시안 기준 단가 적용 중</span>
           </div>
           <div class="mod-progress-track">
             <div class="mod-bar"></div>
@@ -224,45 +224,31 @@
         </div>
       </div>
 
-      <div class="card animate-in module-card" data-go="cost">
+      <div class="card animate-in module-card" data-go="design-detail">
         <div class="mc-head">
-          <span class="icon-box-44 icon-box-tint-green"><span data-icon="receipt" data-size="22"></span></span>
-          <span class="signal signal-warning signal-sm ml-auto"><span class="pulse"></span>평당 159만</span>
+          <span class="icon-box-44 icon-box-tint-purple"><span data-icon="palette" data-size="22"></span></span>
+          <span class="signal signal-success signal-sm ml-auto"><span class="pulse"></span>생성 완료</span>
         </div>
-        <div class="mc-label">표준 견적</div>
-        <div class="mc-metric">4,540<span class="mc-metric-suffix">만원대</span></div>
-        <div class="mc-metric-sub">예상 범위 ±680 · 해운대구 카페 평균 대비 +8%</div>
-        <div class="mc-bar-list">
-          <div class="mc-bar-row">
-            <span class="mc-bar-row-label">설비공사 (전기·소방·배관)</span>
-            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-green w-70"></span></div>
-            <span class="mc-bar-row-value">약 1,540만</span>
-          </div>
-          <div class="mc-bar-row">
-            <span class="mc-bar-row-label">주방설비·가구·조명</span>
-            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-yellow w-60"></span></div>
-            <span class="mc-bar-row-value">약 1,280만</span>
-          </div>
-          <div class="mc-bar-row is-pay-hidden">
-            <span class="mc-bar-row-label">마감재 (도장·타일·바닥)</span>
-            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-blue w-50"></span></div>
-            <span class="mc-bar-row-value">약 950만</span>
-          </div>
-          <div class="mc-bar-row is-pay-hidden">
-            <span class="mc-bar-row-label">철거·반출</span>
-            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-orange w-35"></span></div>
-            <span class="mc-bar-row-value">약 480만</span>
-          </div>
-          <div class="mc-bar-row is-pay-hidden">
-            <span class="mc-bar-row-label">설계·감리</span>
-            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-teal w-25"></span></div>
-            <span class="mc-bar-row-value">약 290만</span>
+        <div class="mc-label">AI 레퍼런스 디자인 시안</div>
+        <div class="mc-metric-sm">시안 생성 완료</div>
+        <div class="mc-design-chips">
+          <span class="chip chip-sm">모던</span>
+          <span class="chip chip-sm">따뜻한</span>
+          <span class="chip chip-sm">빈티지</span>
+          <span class="chip chip-sm">원목</span>
+          <span class="chip chip-sm">펜던트</span>
+        </div>
+        <div class="mc-design-image-wrap">
+          <div data-mood="warm" data-hue="30" data-height="200"></div>
+          <div class="mc-design-image-overlay">
+            <div class="mc-design-image-overlay-icon"><span data-icon="lock" data-size="20"></span></div>
+            <div>결제 후 원본 확인</div>
           </div>
         </div>
         <div class="mc-lock-cta">
           <div>
-            <div class="mc-lock-cta-text">항목별 단가·수량·금액이 포함된 견적서(BoQ)는</div>
-            <span class="mc-lock-cta-strong">결제 후 다운로드 →</span>
+            <div class="mc-lock-cta-text">원본(4K) 다운로드 + 유사도 분석은</div>
+            <span class="mc-lock-cta-strong">결제 후 확인 →</span>
           </div>
           <span class="mc-lock-cta-icon"><span data-icon="lock" data-size="14"></span></span>
         </div>
@@ -275,7 +261,7 @@
         </div>
         <div class="mc-label">시공 기간</div>
         <div class="mc-metric">약 6~8주</div>
-        <div class="mc-metric-sub">8개 공정 · 동시작업률 22% 반영</div>
+        <div class="mc-metric-sub">위 시안 기준 · 8개 공정 · 동시작업률 22%</div>
         <div class="mc-bar-list">
           <div class="mc-bar-row">
             <span class="mc-bar-row-label">철거·반출</span>
@@ -312,31 +298,45 @@
         </div>
       </div>
 
-      <div class="card animate-in module-card" data-go="design-detail">
+      <div class="card animate-in module-card" data-go="cost">
         <div class="mc-head">
-          <span class="icon-box-44 icon-box-tint-purple"><span data-icon="palette" data-size="22"></span></span>
-          <span class="signal signal-success signal-sm ml-auto"><span class="pulse"></span>생성 완료</span>
+          <span class="icon-box-44 icon-box-tint-green"><span data-icon="receipt" data-size="22"></span></span>
+          <span class="signal signal-warning signal-sm ml-auto"><span class="pulse"></span>평당 159만</span>
         </div>
-        <div class="mc-label">AI 디자인 시안</div>
-        <div class="mc-metric-sm">시안 생성 완료</div>
-        <div class="mc-design-chips">
-          <span class="chip chip-sm">모던</span>
-          <span class="chip chip-sm">따뜻한</span>
-          <span class="chip chip-sm">빈티지</span>
-          <span class="chip chip-sm">원목</span>
-          <span class="chip chip-sm">펜던트</span>
-        </div>
-        <div class="mc-design-image-wrap">
-          <div data-mood="warm" data-hue="30" data-height="200"></div>
-          <div class="mc-design-image-overlay">
-            <div class="mc-design-image-overlay-icon"><span data-icon="lock" data-size="20"></span></div>
-            <div>결제 후 원본 확인</div>
+        <div class="mc-label">표준 견적</div>
+        <div class="mc-metric">4,540<span class="mc-metric-suffix">만원대</span></div>
+        <div class="mc-metric-sub">위 시안 기준 · 예상 범위 ±680 · 해운대구 평균 대비 +8%</div>
+        <div class="mc-bar-list">
+          <div class="mc-bar-row">
+            <span class="mc-bar-row-label">설비공사 (전기·소방·배관)</span>
+            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-green w-70"></span></div>
+            <span class="mc-bar-row-value">약 1,540만</span>
+          </div>
+          <div class="mc-bar-row">
+            <span class="mc-bar-row-label">주방설비·가구·조명</span>
+            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-yellow w-60"></span></div>
+            <span class="mc-bar-row-value">약 1,280만</span>
+          </div>
+          <div class="mc-bar-row is-pay-hidden">
+            <span class="mc-bar-row-label">마감재 (도장·타일·바닥)</span>
+            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-blue w-50"></span></div>
+            <span class="mc-bar-row-value">약 950만</span>
+          </div>
+          <div class="mc-bar-row is-pay-hidden">
+            <span class="mc-bar-row-label">철거·반출</span>
+            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-orange w-35"></span></div>
+            <span class="mc-bar-row-value">약 480만</span>
+          </div>
+          <div class="mc-bar-row is-pay-hidden">
+            <span class="mc-bar-row-label">설계·감리</span>
+            <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-teal w-25"></span></div>
+            <span class="mc-bar-row-value">약 290만</span>
           </div>
         </div>
         <div class="mc-lock-cta">
           <div>
-            <div class="mc-lock-cta-text">원본(4K) 다운로드 + 유사도 분석은</div>
-            <span class="mc-lock-cta-strong">결제 후 확인 →</span>
+            <div class="mc-lock-cta-text">항목별 단가·수량·금액이 포함된 견적서(BoQ)는</div>
+            <span class="mc-lock-cta-strong">결제 후 다운로드 →</span>
           </div>
           <span class="mc-lock-cta-icon"><span data-icon="lock" data-size="14"></span></span>
         </div>
@@ -422,17 +422,14 @@
       </table>
     </div>
 
-    <div class="card alert-brand mt-24">
-      <span data-icon="sparkles" data-size="22" data-color="var(--brand)"></span>
-      <div>
-        <div class="text-14 fw-700 text-brand mb-8">AI 권장 액션 플랜</div>
-        <ol class="action-list">
-          <li>임대차 계약 전 — 임대인에게 용도변경 동의서를 받으세요.</li>
-          <li>건축사 사무소 의뢰 — 평면도·구조 도서 작성 (예상 80~120만원, 2주).</li>
-          <li>관할 구청 건축과 신고 — 처리 기간 7일.</li>
-          <li>스프링클러 시공 — 견적 모듈에서 자동 반영됨 (+ 420만원).</li>
-        </ol>
-      </div>
+    <div class="card mt-24">
+      <div class="section-title">권장 조치 사항</div>
+      <ol class="action-list">
+        <li>임대차 계약 전 — 임대인에게 용도변경 동의서를 받으세요.</li>
+        <li>건축사 사무소 의뢰 — 평면도·구조 도서 작성 (예상 80~120만원, 2주).</li>
+        <li>관할 구청 건축과 신고 — 처리 기간 7일.</li>
+        <li>스프링클러 시공 — 견적 모듈에서 자동 반영됨 (+ 420만원).</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -610,18 +607,14 @@
       </div>
     </div>
 
-    <!-- AI 권장 액션 -->
-    <div class="card alert-brand">
-      <span data-icon="sparkles" data-size="22" data-color="var(--brand)"></span>
-      <div>
-        <div class="text-14 fw-700 text-brand mb-8">AI 권장 액션 플랜</div>
-        <ol class="action-list">
-          <li>임대차 계약 직후 — 목공·마감 자재 발주 완료 (리드타임 5~7일 확보).</li>
-          <li>철거 시작 D-7 — 관할 소방서에 스프링클러 시공 일정 사전 통지.</li>
-          <li>전기·마감 동시작업 일정 — 시공사와 공정 간섭 사전 협의.</li>
-          <li>주방·집기 입고 D-10 — 식기세척기 위생 인증 사전 신청.</li>
-        </ol>
-      </div>
+    <div class="card">
+      <div class="section-title">권장 조치 사항</div>
+      <ol class="action-list">
+        <li>임대차 계약 직후 — 목공·마감 자재 발주 완료 (리드타임 5~7일 확보).</li>
+        <li>철거 시작 D-7 — 관할 소방서에 스프링클러 시공 일정 사전 통지.</li>
+        <li>전기·마감 동시작업 일정 — 시공사와 공정 간섭 사전 협의.</li>
+        <li>주방·집기 입고 D-10 — 식기세척기 위생 인증 사전 신청.</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -797,16 +790,13 @@
     </div>
 
     <!-- AI 권장 액션 -->
-    <div class="card alert-brand">
-      <span data-icon="sparkles" data-size="22" data-color="var(--brand)"></span>
-      <div>
-        <div class="text-14 fw-700 text-brand mb-8">AI 권장 액션 플랜</div>
-        <ol class="action-list">
-          <li>Warm Wood (92%)를 메인 시안으로 임대인에게 제시 — 입력 무드와 가장 일치합니다.</li>
-          <li>Brick Loft (84%)를 차별화 옵션으로 함께 검토 — '빈티지 한 스푼' 요구를 가장 잘 반영.</li>
-          <li>시공사 미팅 시 4장 모두 지참 — 견적 비교 및 시공 가능성 확인에 활용하세요.</li>
-        </ol>
-      </div>
+    <div class="card">
+      <div class="section-title">권장 조치 사항</div>
+      <ol class="action-list">
+        <li>Warm Wood (92%)를 메인 시안으로 임대인에게 제시 — 입력 무드와 가장 일치합니다.</li>
+        <li>Brick Loft (84%)를 차별화 옵션으로 함께 검토 — '빈티지 한 스푼' 요구를 가장 잘 반영.</li>
+        <li>시공사 미팅 시 4장 모두 지참 — 견적 비교 및 시공 가능성 확인에 활용하세요.</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -818,22 +808,37 @@
   <div class="page">
     <div class="report-header-banner">
       <div>
-        <span class="eyebrow eyebrow-light">인테리어 첫단추 · 통합 분석 리포트</span>
-        <div class="report-header-title">부산 해운대 카페/베이커리<br/>전환 사업성 분석</div>
-        <div class="report-header-meta">발행 #20260511-A720 · 2026. 5. 11.<br/>의뢰인 홍길동 · 대상지 해운대로 570, 1층 101호 · 94.2㎡</div>
-        <div class="flex gap-10 mt-24">
+        <div class="report-header-eyebrow">
+          <span>CONVIL · 인테리어 첫단추</span>
+          <span class="dot">·</span>
+          <span>통합 분석 리포트</span>
+          <span class="dot">·</span>
+          <span class="report-header-doc-id">#20260511-A720</span>
+        </div>
+        <h1 class="report-header-title">부산 해운대 카페·베이커리<br/>인테리어 리스크 분석</h1>
+        <div class="report-header-doc-meta">
+          <div><div class="meta-key">발행일</div><div class="meta-val">2026. 5. 11.</div></div>
+          <div><div class="meta-key">의뢰인</div><div class="meta-val">홍길동</div></div>
+          <div><div class="meta-key">대상지</div><div class="meta-val">부산 해운대로 570, 1층 101호</div></div>
+          <div><div class="meta-key">전용면적</div><div class="meta-val">28.5평 (94.2㎡)</div></div>
+        </div>
+        <div class="flex gap-10">
           <button class="btn btn-primary btn-md" id="print-report-btn"><span data-icon="filePdf" data-size="14"></span> PDF 저장</button>
-          <button class="btn btn-md bg-white-overlay" id="share-link-btn-report"><span data-icon="share" data-size="14"></span> 공유 링크</button>
+          <button class="btn btn-outline btn-md" id="share-link-btn-report"><span data-icon="share" data-size="14"></span> 공유 링크</button>
         </div>
       </div>
       <div class="report-header-summary">
-        <span class="signal signal-warning mb-12"><span class="pulse"></span> 조건부 적합</span>
-        <div class="text-22 fw-800 mt-12 mb-8 text-white">진행 가능, 사전 조치 필요</div>
-        <div class="grid cols-1fr-1fr gap-12 mt-16">
-          <div><div class="text-11 text-faded">총 견적</div><div class="text-18 fw-700 text-white">3,650만</div></div>
-          <div><div class="text-11 text-faded">시공 기간</div><div class="text-18 fw-700 text-white">45일</div></div>
-          <div><div class="text-11 text-faded">리스크</div><div class="text-18 fw-700 text-warn-light">2건 조치</div></div>
-          <div><div class="text-11 text-faded">디자인 일치</div><div class="text-18 fw-700 text-success-light">80%</div></div>
+        <div class="report-header-summary-eyebrow">종합 판정</div>
+        <div class="report-header-summary-verdict report-header-summary-verdict--warn">
+          <span class="verdict-icon"><span data-icon="alert" data-size="16"></span></span>
+          조건부 적합
+        </div>
+        <div class="report-header-summary-desc">진행은 가능하지만 영업 개시 전 <strong>2건의 사전 조치</strong>가 필요합니다.</div>
+        <div class="report-header-summary-divider"></div>
+        <div class="report-header-summary-stats">
+          <div><div class="stat-label">총 견적</div><div class="stat-value">3,650<span class="stat-unit">만</span></div></div>
+          <div><div class="stat-label">시공 기간</div><div class="stat-value">45<span class="stat-unit">일</span></div></div>
+          <div><div class="stat-label">조치 필요</div><div class="stat-value stat-value-warn">2<span class="stat-unit">건</span></div></div>
         </div>
       </div>
     </div>
@@ -841,180 +846,586 @@
     <!-- Permit section -->
     <section class="mb-40">
       <div class="report-section-divider">
-        <div class="flex items-center gap-12"><span class="section-num-badge">02</span><h2 class="text-20 fw-800 ls-tight mt-0">인허가 리스크</h2></div>
+        <div class="flex items-center gap-12"><span class="section-num-badge">01</span><h2 class="text-20 fw-800 ls-tight mt-0">인허가 법규 리스크 분석</h2></div>
         <span class="signal signal-warning signal-xs"><span class="pulse"></span> 5건 중 2건 조건부</span>
       </div>
       <div class="flex items-center gap-8 mb-12 text-12 text-muted">
         <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
         <span><strong class="text-strong">기반:</strong> 제2종 근린생활시설(사무소) → 일반음식점(카페/베이커리) 전환 · 다중이용업소 기준 적용</span>
       </div>
-      <div class="card card-flush">
-        <table class="table">
-          <thead><tr><th>법령</th><th>판정</th><th>설명</th></tr></thead>
-          <tbody>
-            <tr><td class="fw-600">건축법 제19조<div class="text-11 text-subtle fw-400">용도변경 신고</div></td><td><span class="badge badge-warning">신고 대상</span></td><td class="text-left text-12 text-muted max-w-480">동일 시설군 내 전환이나, 영업 개시 전 신고 필요.</td></tr>
-            <tr><td class="fw-600">소방시설법<div class="text-11 text-subtle fw-400">스프링클러 설치</div></td><td><span class="badge badge-warning">추가 설치</span></td><td class="text-left text-12 text-muted max-w-480">다중이용업소 기준 적용. 스프링클러 시공 필요.</td></tr>
-            <tr><td class="fw-600">식품위생법<div class="text-11 text-subtle fw-400">영업신고</div></td><td><span class="badge badge-success">요건 충족</span></td><td class="text-left text-12 text-muted max-w-480">바닥·벽·천장 재질, 환기시설 모두 요건 충족.</td></tr>
-            <tr><td class="fw-600">하수도법<div class="text-11 text-subtle fw-400">정화조 용량</div></td><td><span class="badge badge-success">용량 충분</span></td><td class="text-left text-12 text-muted max-w-480">건축물대장상 정화조 18인용, 카페 30평 기준 12인용 이상.</td></tr>
-            <tr><td class="fw-600">옥외광고물법<div class="text-11 text-subtle fw-400">간판 규제</div></td><td><span class="badge badge-success">기준 내</span></td><td class="text-left text-12 text-muted max-w-480">해운대로변 가로형 간판 규격 제한 내.</td></tr>
-          </tbody>
-        </table>
+      <!-- 카드 1: 건축법 (조건부 / 신고 대상) -->
+      <div class="permit-card">
+        <div class="permit-card-banner permit-card-banner--action">확인조치 필요 · 신고 대상</div>
+        <div class="permit-card-head">
+          <div>
+            <div class="permit-card-num">01 · 건축법 제19조 · 부산광역시 건축조례 제24조</div>
+            <h3 class="permit-card-title">용도변경 신고</h3>
+            <div class="permit-card-sub">제2종 근린생활시설(사무소) → 일반음식점(카페/베이커리)</div>
+          </div>
+        </div>
+        <p class="permit-card-lead">동일 시설군 내 변경이지만, <strong class="text-strong">영업 개시 전 용도변경 신고가 필수</strong>입니다. 무신고 영업 시 과태료 + 영업정지 처분이 가능합니다.</p>
+        <div class="permit-kpi-row">
+          <div>
+            <div class="detail-label">처리 기간</div>
+            <div class="permit-kpi-value">7<span class="permit-kpi-unit">일</span></div>
+            <div class="permit-kpi-sub">신청서 접수 기준</div>
+          </div>
+          <div>
+            <div class="detail-label">예상 비용</div>
+            <div class="permit-kpi-value">85~125<span class="permit-kpi-unit">만원</span></div>
+            <div class="permit-kpi-sub">등록면허세 + 건축사 대행</div>
+          </div>
+          <div>
+            <div class="detail-label">위반 시</div>
+            <div class="permit-kpi-value text-error">200~500<span class="permit-kpi-unit">만원</span></div>
+            <div class="permit-kpi-sub">과태료 + 영업정지</div>
+          </div>
+        </div>
+        <div class="permit-detail-grid">
+          <div>
+            <div class="detail-label">처리 절차</div>
+            <ol class="action-list">
+              <li>임대차 계약 전 — 임대인 동의서 수령</li>
+              <li>건축사 사무소 — 평면도·구조도서 작성</li>
+              <li>구청 건축과 — 용도변경 신고서 제출</li>
+              <li>현장 점검 후 신고 수리</li>
+            </ol>
+          </div>
+          <div>
+            <div class="detail-label">필요 서류</div>
+            <ul class="action-list">
+              <li>용도변경 신고서 (구청 양식)</li>
+              <li>건축물 현황도 (변경 전·후)</li>
+              <li>임대인 동의서</li>
+              <li>사업자 등록증 사본</li>
+            </ul>
+          </div>
+        </div>
+        <div class="permit-contact-block">
+          <div class="detail-label">담당 기관 · 연락처</div>
+          <div class="permit-contact-org">부산 해운대구청 건축과 (4층)</div>
+          <div class="permit-contact-row">
+            <a href="tel:051-749-4071" class="permit-contact-phone">☎ 051-749-4071</a>
+            <span class="permit-contact-divider">●</span>
+            <span>평일 09:00~18:00</span>
+          </div>
+          <div class="permit-contact-online">
+            <a href="https://www.gov.kr" target="_blank">정부24(gov.kr)</a>에서 온라인 신청 가능
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 2: 소방시설법 (조건부 / 추가 설치) -->
+      <div class="permit-card">
+        <div class="permit-card-banner permit-card-banner--action">확인조치 필요 · 추가 설치</div>
+        <div class="permit-card-head">
+          <div>
+            <div class="permit-card-num">02 · 소방시설법 · 다중이용업소 안전관리법</div>
+            <h3 class="permit-card-title">스프링클러 추가 설치</h3>
+            <div class="permit-card-sub">다중이용업소 기준 적용 · 카페·베이커리 대상</div>
+          </div>
+        </div>
+        <p class="permit-card-lead">영업장 면적·층수 기준에 따라 <strong class="text-strong">스프링클러 시공 및 완비증명 발급이 필수</strong>입니다. 완비증명 없이 영업 개시 불가.</p>
+        <div class="permit-kpi-row">
+          <div>
+            <div class="detail-label">시공 + 검사</div>
+            <div class="permit-kpi-value">5~10<span class="permit-kpi-unit">일</span></div>
+            <div class="permit-kpi-sub">시공 5~7일 · 검사 3일</div>
+          </div>
+          <div>
+            <div class="detail-label">예상 비용</div>
+            <div class="permit-kpi-value">428.5<span class="permit-kpi-unit">만원</span></div>
+            <div class="permit-kpi-sub">시공 420 + 수수료 8.5</div>
+          </div>
+          <div>
+            <div class="detail-label">위반 시</div>
+            <div class="permit-kpi-value text-error">300<span class="permit-kpi-unit">만원 ↓</span></div>
+            <div class="permit-kpi-sub">벌금 + 영업 불가</div>
+          </div>
+        </div>
+        <div class="permit-detail-grid">
+          <div>
+            <div class="detail-label">처리 절차</div>
+            <ol class="action-list">
+              <li>소방안전기준 도면 검토</li>
+              <li>시공업체 선정 · 견적</li>
+              <li>스프링클러 시공</li>
+              <li>관할 소방서 완비증명 검사</li>
+              <li>다중이용업소 안전시설 등록</li>
+            </ol>
+          </div>
+          <div>
+            <div class="detail-label">필요 서류</div>
+            <ul class="action-list">
+              <li>소방시설 설계도서</li>
+              <li>소방시설 완비증명서</li>
+              <li>다중이용업소 안전시설 확인서</li>
+              <li>시공업체 등록증 사본</li>
+            </ul>
+          </div>
+        </div>
+        <div class="permit-contact-block">
+          <div class="detail-label">담당 기관 · 연락처</div>
+          <div class="permit-contact-org">부산 해운대소방서 예방안전과</div>
+          <div class="permit-contact-row">
+            <a href="tel:051-746-0119" class="permit-contact-phone">☎ 051-746-0119</a>
+            <span class="permit-contact-divider">●</span>
+            <span>평일 09:00~18:00</span>
+          </div>
+          <div class="permit-contact-online">현장 검사 일정은 사전 예약 필요</div>
+        </div>
+      </div>
+
+      <!-- 카드 3: 식품위생법 (적합 / 요건 충족) -->
+      <div class="permit-card">
+        <div class="permit-card-banner permit-card-banner--ok">요건 충족 · 별도 조치 없음</div>
+        <div class="permit-card-head">
+          <div>
+            <div class="permit-card-num">03 · 식품위생법 시행규칙 별표 14</div>
+            <h3 class="permit-card-title">영업신고</h3>
+            <div class="permit-card-sub">식품접객업(휴게음식점) 신고 대상</div>
+          </div>
+        </div>
+        <p class="permit-card-lead">바닥·벽·천장 재질, 환기시설, 정수설비 모두 요건 충족. <strong class="text-strong">영업신고만 진행</strong>하면 됩니다.</p>
+        <div class="permit-kpi-row">
+          <div>
+            <div class="detail-label">처리 기간</div>
+            <div class="permit-kpi-value">3<span class="permit-kpi-unit">일</span></div>
+          </div>
+          <div>
+            <div class="detail-label">총 비용</div>
+            <div class="permit-kpi-value">7.8<span class="permit-kpi-unit">만원</span></div>
+            <div class="permit-kpi-sub">신고비 2.8 + 위생교육 5</div>
+          </div>
+          <div>
+            <div class="detail-label">필요 서류</div>
+            <div class="permit-kpi-value">4<span class="permit-kpi-unit">종</span></div>
+            <div class="permit-kpi-sub">신고서·교육·건강·등록증</div>
+          </div>
+        </div>
+        <div class="permit-contact-block">
+          <div class="detail-label">담당 기관 · 연락처</div>
+          <div class="permit-contact-org">부산 해운대구청 위생과</div>
+          <div class="permit-contact-row">
+            <a href="tel:051-749-4131" class="permit-contact-phone">☎ 051-749-4131</a>
+            <span class="permit-contact-divider">●</span>
+            <span>평일 09:00~18:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 4: 하수도법 (적합 / 용량 충분) -->
+      <div class="permit-card">
+        <div class="permit-card-banner permit-card-banner--ok">요건 충족 · 용량 충분</div>
+        <div class="permit-card-head">
+          <div>
+            <div class="permit-card-num">04 · 하수도법</div>
+            <h3 class="permit-card-title">정화조 용량</h3>
+            <div class="permit-card-sub">건축물대장 기준 자동 검토</div>
+          </div>
+        </div>
+        <p class="permit-card-lead">정화조 <strong class="text-strong">18인용 보유</strong> · 카페 30평 기준 <strong class="text-strong">12인용 이상</strong> 요건 충족. 별도 신고 불필요.</p>
+        <div class="permit-contact-block">
+          <div class="detail-label">담당 기관 · 연락처</div>
+          <div class="permit-contact-org">부산 해운대구청 환경위생과</div>
+          <div class="permit-contact-row">
+            <a href="tel:051-749-4231" class="permit-contact-phone">☎ 051-749-4231</a>
+            <span class="permit-contact-divider">●</span>
+            <span>평일 09:00~18:00</span>
+          </div>
+          <div class="permit-contact-online">권장: 영업 개시 전 정화조 청소 · 연 1회 정기 점검 의무</div>
+        </div>
+      </div>
+
+      <!-- 카드 5: 옥외광고물법 (적합 / 기준 내) -->
+      <div class="permit-card">
+        <div class="permit-card-banner permit-card-banner--ok">요건 충족 · 기준 내</div>
+        <div class="permit-card-head">
+          <div>
+            <div class="permit-card-num">05 · 옥외광고물법 · 부산시 조례 제3185호</div>
+            <h3 class="permit-card-title">간판 규제</h3>
+            <div class="permit-card-sub">해운대로변 가로형 간판 규격</div>
+          </div>
+        </div>
+        <p class="permit-card-lead">가로 4m · 세로 0.8m 규격 제한 이내. 단, <strong class="text-strong">간판 면적 5㎡ 초과 시 옥외광고물 표시 허가</strong>가 별도 필요.</p>
+        <div class="permit-kpi-row">
+          <div>
+            <div class="detail-label">5㎡ 이하</div>
+            <div class="permit-kpi-value">무료</div>
+            <div class="permit-kpi-sub">신고만</div>
+          </div>
+          <div>
+            <div class="detail-label">5㎡ 초과 시</div>
+            <div class="permit-kpi-value">~3<span class="permit-kpi-unit">만원</span></div>
+            <div class="permit-kpi-sub">허가 신청료</div>
+          </div>
+          <div>
+            <div class="detail-label">절차</div>
+            <div class="permit-kpi-value">3<span class="permit-kpi-unit">단계</span></div>
+            <div class="permit-kpi-sub">시안 → 검토 → 신고</div>
+          </div>
+        </div>
+        <div class="permit-contact-block">
+          <div class="detail-label">담당 기관 · 연락처</div>
+          <div class="permit-contact-org">부산 해운대구청 도시디자인과</div>
+          <div class="permit-contact-row">
+            <a href="tel:051-749-4901" class="permit-contact-phone">☎ 051-749-4901</a>
+            <span class="permit-contact-divider">●</span>
+            <span>평일 09:00~18:00</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Cost + Design (샘플 모드에서 잠금) -->
     <div class="sample-paywall-wrap">
       <div class="sample-locked">
-        <!-- Cost section -->
+        <!-- Design section (단일 추천 시안) — 새 02 -->
         <section class="mb-40">
           <div class="report-section-divider">
-            <div class="flex items-center gap-12"><span class="section-num-badge">03</span><h2 class="text-20 fw-800 ls-tight mt-0">표준 견적</h2></div>
-            <span class="signal signal-warning signal-xs"><span class="pulse"></span> 3,650만 · 평당 122만</span>
+            <div class="flex items-center gap-12"><span class="section-num-badge">02</span><h2 class="text-20 fw-800 ls-tight mt-0">AI 레퍼런스 디자인 시안</h2></div>
+            <span class="signal signal-success signal-xs"><span class="pulse"></span> 추천 시안 1안</span>
           </div>
           <div class="flex items-center gap-8 mb-12 text-12 text-muted">
             <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
-            <span><strong class="text-strong">기반:</strong> 전용면적 28.5평 · 벽 마감(벽돌+페인트) · 바닥(강화마루) · 주방 설비 우선순위</span>
+            <span><strong class="text-strong">기반:</strong> 입력하신 무드 키워드와 평면 정보를 바탕으로 가장 적합한 1안을 렌더링했습니다. <strong class="text-strong">아래 시공 기간·견적은 이 시안 기준 산정값입니다.</strong></span>
           </div>
-          <div class="card-row-5-12 mb-16">
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-orange"><span data-icon="hardHat" data-size="13"></span></span>
-                <div class="ms-label">철거·가설</div>
+
+          <div class="card design-hero" id="design-hero-card">
+            <div class="design-hero-image" data-mood="warm" data-hue="30" data-height="360" data-label="warm wood concept"></div>
+            <div class="design-hero-body">
+              <div class="design-hero-title-row">
+                <div>
+                  <div class="eyebrow" id="design-hero-eyebrow">RECOMMENDED CONCEPT</div>
+                  <h3 class="design-hero-title" id="design-hero-title">Warm Wood · 따뜻한 카페</h3>
+                </div>
+                <button type="button" class="btn btn-outline btn-sm"><span data-icon="download" data-size="13"></span> 시안 다운로드</button>
               </div>
-              <div class="ms-value">320<span class="ms-unit">만</span></div>
-              <div class="text-11 text-subtle mt-4">전체의 9%</div>
+
+              <div class="design-hero-spec">
+                <div class="design-hero-spec-row">
+                  <div class="design-hero-spec-label">디자인 컨셉</div>
+                  <div class="design-hero-spec-value"><strong>모던 + 따뜻한 + 빈티지 한 스푼</strong> — 원목과 웜톤 펜던트 조명을 중심으로 안락한 분위기를 연출하고, 카운터 뒷벽에 노출 벽돌 포인트로 빈티지 요소를 가미합니다.</div>
+                </div>
+                <div class="design-hero-spec-row">
+                  <div class="design-hero-spec-label">벽 마감</div>
+                  <div class="design-hero-spec-value">노출 벽돌 (카운터 뒷벽 부분 시공) + 페인트 (베이지 · 웜그레이) — 한쪽 벽만 포인트, 나머지는 차분한 톤으로 균형</div>
+                </div>
+                <div class="design-hero-spec-row">
+                  <div class="design-hero-spec-label">바닥</div>
+                  <div class="design-hero-spec-value">강화마루 8mm (오크 톤) · 화장실·주방 라인은 300×300 무광 타일</div>
+                </div>
+                <div class="design-hero-spec-row">
+                  <div class="design-hero-spec-label">조명</div>
+                  <div class="design-hero-spec-value">펜던트 조명 4구 (3000K 웜화이트) · 카운터 라인 다운라이트 6구 · 외부 LED 채널 사인</div>
+                </div>
+                <div class="design-hero-spec-row">
+                  <div class="design-hero-spec-label">가구·배치</div>
+                  <div class="design-hero-spec-value">원목 카운터 2.4m · 월넛 의자 · 2인석 4개 + 4인석 2개 + 바석 4석 (총 22석)</div>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-6 mt-16">
+                <span class="chip chip-sm">모던</span>
+                <span class="chip chip-sm">따뜻한</span>
+                <span class="chip chip-sm">빈티지</span>
+                <span class="chip chip-sm">노출 벽돌</span>
+                <span class="chip chip-sm">원목</span>
+                <span class="chip chip-sm">펜던트 조명</span>
+                <span class="chip chip-sm">자연광</span>
+              </div>
             </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-green"><span data-icon="building" data-size="13"></span></span>
-                <div class="ms-label">목공</div>
-              </div>
-              <div class="ms-value">620<span class="ms-unit">만</span></div>
-              <div class="text-11 text-subtle mt-4">전체의 18%</div>
+          </div>
+
+          <!-- 재산정 카드 (결제 후 1회 무료) -->
+          <div class="recalc-card" id="recalc-card">
+            <div class="recalc-card-icon"><span data-icon="upload" data-size="20"></span></div>
+            <div class="recalc-card-body">
+              <div class="recalc-card-title">최종 3D 시안이 확정되셨나요?</div>
+              <div class="recalc-card-desc">디자이너로부터 받은 최종 시안을 업로드하면 <strong>아래 시공 기간·견적이 그 시안 기준으로 재산정</strong>됩니다.</div>
+              <div class="recalc-card-meta"><span class="recalc-badge-free">결제 후 1회 무료</span> &middot; 추가 재산정은 프로 구독 시 무제한 &middot; 허용 형식: PNG, JPG, PDF (최대 20MB)</div>
             </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-blue"><span data-icon="zap" data-size="13"></span></span>
-                <div class="ms-label">전기·소방</div>
-              </div>
-              <div class="ms-value">860<span class="ms-unit">만</span></div>
-              <div class="text-11 text-subtle mt-4">전체의 25%</div>
+            <button type="button" class="btn btn-primary btn-sm" id="open-recalc-modal">시안 업로드 후 재산정</button>
+          </div>
+
+          <div class="design-hero-cta">
+            <div class="design-hero-cta-text">
+              <div class="text-14 fw-700">더 다양한 컨셉을 무제한으로 받아보세요</div>
+              <div class="text-12 text-muted mt-4">프로 구독 시 AI 디자인 시안 무제한 생성, 대화형 시안 챗 무제한, 4K 원본 다운로드까지 모두 이용 가능합니다.</div>
             </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-purple"><span data-icon="palette" data-size="13"></span></span>
-                <div class="ms-label">마감재</div>
-              </div>
-              <div class="ms-value">510<span class="ms-unit">만</span></div>
-              <div class="text-11 text-subtle mt-4">전체의 15%</div>
+            <button type="button" class="btn btn-outline btn-sm" id="open-design-sub-modal">프로 구독 알아보기 <span data-icon="arrowRight" data-size="12"></span></button>
+          </div>
+        </section>
+
+        <!-- Schedule section — 새 03 -->
+        <section class="mb-40">
+          <div class="report-section-divider">
+            <div class="flex items-center gap-12"><span class="section-num-badge">03</span><h2 class="text-20 fw-800 ls-tight mt-0">시공 기간</h2></div>
+            <span class="signal signal-warning signal-xs" id="schedule-signal"><span class="pulse"></span> 45일 · 5개 공정</span>
+          </div>
+          <div class="flex items-center justify-between gap-12 mb-12 flex-wrap">
+            <div class="flex items-center gap-8 text-12 text-muted">
+              <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
+              <span><strong class="text-strong">기반:</strong> <span id="schedule-base-label">위 AI 레퍼런스 시안 (Warm Wood)</span> · 28.5평 · 평면 8.4 × 11.2m · 층고 2.7m · 동시작업률 22% · 주 5일 작업 기준</span>
             </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-teal"><span data-icon="receipt" data-size="13"></span></span>
-                <div class="ms-label">주방·집기</div>
+            <div class="schedule-view-toggle" role="tablist">
+              <button type="button" class="schedule-view-btn is-active" data-view="gantt">간트차트</button>
+              <button type="button" class="schedule-view-btn" data-view="calendar">월간 캘린더</button>
+            </div>
+          </div>
+
+          <div id="schedule-view-calendar" hidden>
+            <div class="cal-wrap" id="schedule-calendar"></div>
+            <div class="cal-legend">
+              <span class="cal-legend-item"><span class="cal-legend-dot gantt-bar-orange"></span> 철거·가설</span>
+              <span class="cal-legend-item"><span class="cal-legend-dot gantt-bar-green"></span> 목공·천장</span>
+              <span class="cal-legend-item"><span class="cal-legend-dot gantt-bar-blue"></span> 전기·소방</span>
+              <span class="cal-legend-item"><span class="cal-legend-dot gantt-bar-purple"></span> 마감·도장</span>
+              <span class="cal-legend-item"><span class="cal-legend-dot gantt-bar-teal"></span> 주방·집기</span>
+            </div>
+          </div>
+
+          <div id="schedule-view-gantt">
+          <div class="gantt-chart">
+            <div class="gantt-grid">
+              <div></div>
+              <div class="gantt-header-cell">1주차<small>5/14 ~ 5/20</small></div>
+              <div class="gantt-header-cell">2주차<small>5/21 ~ 5/27</small></div>
+              <div class="gantt-header-cell">3주차<small>5/28 ~ 6/3</small></div>
+              <div class="gantt-header-cell">4주차<small>6/4 ~ 6/10</small></div>
+              <div class="gantt-header-cell">5주차<small>6/11 ~ 6/17</small></div>
+              <div class="gantt-header-cell">6주차<small>6/18 ~ 6/24</small></div>
+              <div class="gantt-header-cell">7주차<small>6/25 ~ 6/30</small></div>
+
+              <div class="gantt-task-name">철거·가설<small>5일간</small></div>
+              <div class="gantt-task-bar gantt-bar-orange gantt-col-w1">5/14~5/20 (5일간)</div>
+
+              <div class="gantt-task-name">목공·천장<small>17일간</small></div>
+              <div class="gantt-task-bar gantt-bar-green gantt-col-w1-4">5/14~6/3 (17일간)</div>
+
+              <div class="gantt-task-name">전기·소방<small>15일간</small></div>
+              <div class="gantt-task-bar gantt-bar-blue gantt-col-w3-6">5/28~6/17 (15일간)</div>
+
+              <div class="gantt-task-name">마감·도장<small>13일간</small></div>
+              <div class="gantt-task-bar gantt-bar-purple gantt-col-w4-7">6/4~6/24 (13일간)</div>
+
+              <div class="gantt-task-name">주방·집기<small>11일간</small></div>
+              <div class="gantt-task-bar gantt-bar-teal gantt-col-w5-9">6/11~6/30 (11일간)</div>
+            </div>
+            <div class="gantt-legend">
+              <span class="gantt-legend-item"><span class="gantt-legend-dot gantt-bar-orange"></span> 철거·가설</span>
+              <span class="gantt-legend-item"><span class="gantt-legend-dot gantt-bar-green"></span> 목공·천장</span>
+              <span class="gantt-legend-item"><span class="gantt-legend-dot gantt-bar-blue"></span> 전기·소방</span>
+              <span class="gantt-legend-item"><span class="gantt-legend-dot gantt-bar-purple"></span> 마감·도장</span>
+              <span class="gantt-legend-item"><span class="gantt-legend-dot gantt-bar-teal"></span> 주방·집기</span>
+            </div>
+          </div>
+          </div><!-- /#schedule-view-gantt -->
+
+          <div class="schedule-notice">
+            <strong>시공 일정 산정 기준&nbsp;·&nbsp;</strong>표준 적산표(28.5평·평면 8.4×11.2m 기준)와 평균 동시작업률 22%를 반영해 총 <strong id="schedule-total-days">45일(영업일 기준)</strong>로 산출했습니다. 우천·자재 입고 지연·소방 인허가 변경 등 현장 변수에 따라 <strong>최대 ±7일</strong>까지 변동될 수 있으니, 본 일정은 계약 전 시공사와 재협의 후 확정하세요.
+          </div>
+        </section>
+
+        <!-- Cost section — 새 04 -->
+        <section class="mb-40">
+          <div class="report-section-divider">
+            <div class="flex items-center gap-12"><span class="section-num-badge">04</span><h2 class="text-20 fw-800 ls-tight mt-0">표준 견적</h2></div>
+            <span class="signal signal-warning signal-xs" id="cost-signal"><span class="pulse"></span> 3,650만 · 평당 128만</span>
+          </div>
+          <div class="flex items-center gap-8 mb-12 text-12 text-muted">
+            <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
+            <span><strong class="text-strong">기반:</strong> <span id="cost-base-label">위 AI 레퍼런스 시안 (Warm Wood)</span> 마감재·가구·조명 사양 기준 산출</span>
+          </div>
+
+          <div class="estimate-doc" id="estimate-doc">
+            <div class="estimate-doc-head">
+              <div>
+                <div class="estimate-doc-eyebrow">CONSTRUCTION ESTIMATE</div>
+                <h3 class="estimate-doc-title">표준 견적서</h3>
               </div>
-              <div class="ms-value">1,060<span class="ms-unit">만</span></div>
-              <div class="text-11 text-subtle mt-4">전체의 31%</div>
+              <div class="estimate-doc-meta">
+                견적 ID&nbsp;&nbsp;<strong>#20260514-A720-EST</strong><br/>
+                발행일&nbsp;&nbsp;<strong>2026. 5. 14.</strong><br/>
+                유효기간&nbsp;&nbsp;<strong>발행일로부터 30일</strong>
+              </div>
+            </div>
+            <table class="estimate-info-table">
+              <tr><th>현장</th><td>부산 해운대구 우동 일대 1층 상가</td></tr>
+              <tr><th>전용면적</th><td>28.5평 (94.2㎡) · 평면 8.4 × 11.2m · 층고 2.7m</td></tr>
+              <tr><th>업종·용도</th><td>1종 근린생활시설 · 카페 (휴게음식점)</td></tr>
+              <tr><th>공사범위</th><td>철거 · 목공 · 전기·소방 · 마감 · 주방·집기</td></tr>
+            </table>
+            <div class="estimate-doc-actions">
+              <button type="button" class="btn btn-outline btn-sm" id="dl-excel"><span data-icon="download" data-size="14"></span> Excel 다운로드 (.csv)</button>
+              <button type="button" class="btn btn-outline btn-sm" id="dl-pdf"><span data-icon="filePdf" data-size="14"></span> PDF로 저장</button>
+            </div>
+            <table class="estimate-table">
+              <thead>
+                <tr>
+                  <th>분류</th>
+                  <th>세부 항목</th>
+                  <th>단위</th>
+                  <th>수량</th>
+                  <th>단가(원)</th>
+                  <th>금액(원)</th>
+                  <th>비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cat" rowspan="2">가설·철거</td>
+                  <td>현장 보양 · 가설 자재</td>
+                  <td class="center">평</td>
+                  <td class="num">28.5</td>
+                  <td class="num">21,000</td>
+                  <td class="num">600,000</td>
+                  <td class="note-small">바닥·벽 양생, 안전휀스</td>
+                </tr>
+                <tr>
+                  <td>기존 마감재 · 칸막이 철거</td>
+                  <td class="center">평</td>
+                  <td class="num">28.5</td>
+                  <td class="num">91,000</td>
+                  <td class="num">2,600,000</td>
+                  <td class="note-small">폐기물 운반비 포함</td>
+                </tr>
+                <tr>
+                  <td class="cat" rowspan="2">목공·천장</td>
+                  <td>경량 칸막이 (석고보드 2P)</td>
+                  <td class="center">㎡</td>
+                  <td class="num">26</td>
+                  <td class="num">158,000</td>
+                  <td class="num">4,100,000</td>
+                  <td class="note-small">화장실 분리벽 포함</td>
+                </tr>
+                <tr>
+                  <td>천장 틀·우물천장 마감</td>
+                  <td class="center">평</td>
+                  <td class="num">28.5</td>
+                  <td class="num">73,700</td>
+                  <td class="num">2,100,000</td>
+                  <td class="note-small">SMC + 등기구 마감</td>
+                </tr>
+                <tr>
+                  <td class="cat">도장·페인트</td>
+                  <td>벽체 · 천장 도장 (수성)</td>
+                  <td class="center">㎡</td>
+                  <td class="num">142</td>
+                  <td class="num">16,200</td>
+                  <td class="num">2,300,000</td>
+                  <td class="note-small">노출 벽돌 영역 별도</td>
+                </tr>
+                <tr>
+                  <td class="cat" rowspan="2">바닥·타일</td>
+                  <td>화장실 · 주방 타일 (300×300)</td>
+                  <td class="center">㎡</td>
+                  <td class="num">11</td>
+                  <td class="num">118,000</td>
+                  <td class="num">1,300,000</td>
+                  <td class="note-small">접착시공 · 줄눈 포함</td>
+                </tr>
+                <tr>
+                  <td>홀 강화마루 + 걸레받이</td>
+                  <td class="center">평</td>
+                  <td class="num">22</td>
+                  <td class="num">172,700</td>
+                  <td class="num">3,800,000</td>
+                  <td class="note-small">8mm · 평탄 작업 포함</td>
+                </tr>
+                <tr>
+                  <td class="cat" rowspan="3">전기·소방</td>
+                  <td>조명 기구 · 펜던트 설치</td>
+                  <td class="center">개소</td>
+                  <td class="num">18</td>
+                  <td class="num">211,100</td>
+                  <td class="num">3,800,000</td>
+                  <td class="note-small">메인 라인 + 부속 포함</td>
+                </tr>
+                <tr>
+                  <td>스프링클러 위치 변경 · 추가</td>
+                  <td class="center">개소</td>
+                  <td class="num">7</td>
+                  <td class="num">600,000</td>
+                  <td class="num">4,200,000</td>
+                  <td class="note-small">관할 소방서 협의 필요</td>
+                </tr>
+                <tr>
+                  <td>콘센트 · 통신 배선</td>
+                  <td class="center">식</td>
+                  <td class="num">1</td>
+                  <td class="num">600,000</td>
+                  <td class="num">600,000</td>
+                  <td class="note-small">POS · 카운터 라인</td>
+                </tr>
+                <tr>
+                  <td class="cat">가구·사인</td>
+                  <td>카운터 · 선반 · 외부 사인</td>
+                  <td class="center">식</td>
+                  <td class="num">1</td>
+                  <td class="num">3,200,000</td>
+                  <td class="num">3,200,000</td>
+                  <td class="note-small">원목 + LED 채널 사인</td>
+                </tr>
+                <tr>
+                  <td class="cat">주방·집기</td>
+                  <td>주방기기 · 후드 · 트렌치</td>
+                  <td class="center">식</td>
+                  <td class="num">1</td>
+                  <td class="num">7,600,000</td>
+                  <td class="num">7,600,000</td>
+                  <td class="note-small">중고 활용 시 ▼30%</td>
+                </tr>
+                <tr>
+                  <td class="cat">잡공사·기타</td>
+                  <td>현장 청소 · 준공 검수</td>
+                  <td class="center">식</td>
+                  <td class="num">1</td>
+                  <td class="num">300,000</td>
+                  <td class="num">300,000</td>
+                  <td class="note-small">준공 보고서 작성</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="subtotal">
+                  <td colspan="5">소계 (재료비 + 인건비)</td>
+                  <td class="num">36,500,000</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="5">부가세 별도 (10%)</td>
+                  <td class="num">3,650,000</td>
+                <tr class="total">
+                  <td colspan="5">합계 (VAT 포함)</td>
+                  <td class="num">40,150,000</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="estimate-doc-notice">
+            <div class="estimate-doc-notice-title"><span data-icon="alert" data-size="16"></span> 본 견적은 참고용 표준 견적입니다</div>
+            <p>본 견적서의 단가·수량은 부산 지역 평균 시세와 표준 적산표를 기준으로 산출한 <strong>참고가</strong>입니다. 실제 공사 금액은 다음 요인에 따라 <strong>±20~30%</strong>까지 차이가 발생합니다.</p>
+            <ul>
+              <li>시공사의 마진 정책 · 현장 운영비 (대표 인건비, 차량비, 관리비)</li>
+              <li>실제 투입되는 작업자의 숙련도와 일당 (목수·도장공 등 직별 시세 변동)</li>
+              <li>마감재의 브랜드·등급 (예: 강화마루 8mm vs 12mm, 타일 국산 vs 수입)</li>
+              <li>현장 여건 (엘리베이터 유무, 야간 작업, 폐기물 반출 거리)</li>
+              <li>관할 소방서·구청의 추가 요구사항 (스프링클러·환기 보강)</li>
+            </ul>
+            <div class="estimate-doc-notice-tip">
+              <div class="estimate-doc-notice-tip-title">정확한 견적을 받기 위한 권장 순서</div>
+              <ol>
+                <li><strong>맞춤형 3D 디자인 시안 확정</strong> — 마감재·가구·동선까지 결정</li>
+                <li><strong>실측 기반 도면 작성</strong> — 평면도 · 천장도 · 전기·소방 위치도</li>
+                <li><strong>도면·시안 기준 최소 3곳 이상 시공사에 견적 의뢰</strong> — 같은 도면이어야 비교 가능</li>
+                <li><strong>현장 실측 방문 후 최종 계약</strong> — 단가·일정·하자보수 기간 명시</li>
+              </ol>
             </div>
           </div>
         </section>
 
-        <!-- Schedule section (R1 추가) -->
-        <section class="mb-40">
-          <div class="report-section-divider">
-            <div class="flex items-center gap-12"><span class="section-num-badge">04</span><h2 class="text-20 fw-800 ls-tight mt-0">시공 기간</h2></div>
-            <span class="signal signal-warning signal-xs"><span class="pulse"></span> 45일 · 5개 공정</span>
-          </div>
-          <div class="flex items-center gap-8 mb-12 text-12 text-muted">
-            <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
-            <span><strong class="text-strong">기반:</strong> 평면 8.4 × 11.2m · 층고 2.7m · 5개 공정 · 동시작업률 22%</span>
-          </div>
-          <div class="card-row-5-12">
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-orange"><span data-icon="hardHat" data-size="13"></span></span>
-                <div class="ms-label">철거·가설</div>
-              </div>
-              <div class="ms-value">5<span class="ms-unit">일</span></div>
-              <div class="text-11 text-subtle mt-4">1~5일</div>
-            </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-green"><span data-icon="building" data-size="13"></span></span>
-                <div class="ms-label">목공</div>
-              </div>
-              <div class="ms-value">17<span class="ms-unit">일</span></div>
-              <div class="text-11 text-subtle mt-4">6~22일</div>
-            </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-blue"><span data-icon="zap" data-size="13"></span></span>
-                <div class="ms-label">전기·소방</div>
-              </div>
-              <div class="ms-value">15<span class="ms-unit">일</span></div>
-              <div class="text-11 text-subtle mt-4">18~32일</div>
-            </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-purple"><span data-icon="palette" data-size="13"></span></span>
-                <div class="ms-label">마감</div>
-              </div>
-              <div class="ms-value">13<span class="ms-unit">일</span></div>
-              <div class="text-11 text-subtle mt-4">28~40일</div>
-            </div>
-            <div class="card-compact card mini-stat">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="stat-icon-sm is-teal"><span data-icon="receipt" data-size="13"></span></span>
-                <div class="ms-label">주방·집기</div>
-              </div>
-              <div class="ms-value">11<span class="ms-unit">일</span></div>
-              <div class="text-11 text-subtle mt-4">35~45일</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Design section -->
-        <section class="mb-40">
-          <div class="report-section-divider">
-            <div class="flex items-center gap-12"><span class="section-num-badge">05</span><h2 class="text-20 fw-800 ls-tight mt-0">AI 디자인 시안</h2></div>
-            <span class="signal signal-success signal-xs"><span class="pulse"></span> 4장 · 평균 일치도 80%</span>
-          </div>
-          <div class="flex items-center gap-8 mb-12 text-12 text-muted">
-            <span data-icon="info" data-size="12" data-color="var(--brand)"></span>
-            <span><strong class="text-strong">기반:</strong> 모던 + 따뜻한 + 빈티지 한 스푼 · 벽 마감(벽돌+페인트) · 따뜻한 펜던트 조명 · 16:9 4K</span>
-          </div>
-          <div class="flex flex-wrap gap-6 mb-16">
-            <span class="chip chip-sm">모던</span>
-            <span class="chip chip-sm">따뜻한</span>
-            <span class="chip chip-sm">빈티지</span>
-            <span class="chip chip-sm">노출 벽돌</span>
-            <span class="chip chip-sm">원목</span>
-            <span class="chip chip-sm">펜던트 조명</span>
-            <span class="chip chip-sm">자연광</span>
-          </div>
-          <div class="card-row-4-12">
-            <div>
-              <div data-mood="warm" data-hue="30" data-height="140"></div>
-              <div class="design-tile-title">Warm Wood</div>
-              <div class="design-tile-sub">유사도 92%</div>
-            </div>
-            <div>
-              <div data-mood="vintage" data-hue="20" data-height="140"></div>
-              <div class="design-tile-title">Brick Loft</div>
-              <div class="design-tile-sub">유사도 84%</div>
-            </div>
-            <div>
-              <div data-mood="modern" data-hue="200" data-height="140"></div>
-              <div class="design-tile-title">Cool Modern</div>
-              <div class="design-tile-sub">유사도 78%</div>
-            </div>
-            <div>
-              <div data-mood="minimal" data-hue="50" data-height="140"></div>
-              <div class="design-tile-title">Bright Minimal</div>
-              <div class="design-tile-sub">유사도 71%</div>
-            </div>
-          </div>
-        </section>
       </div>
       <div class="sample-paywall">
         <div class="sample-paywall-card">
@@ -1047,9 +1458,9 @@
       <div class="text-13 fw-700 mb-12">결제 시 포함 항목</div>
       <ul class="paywall-checklist mb-24">
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>4개 모듈 상세 페이지 (인허가·견적·공기·디자인)</li>
-        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>AI 권장 액션 플랜 & 법적 근거</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>권장 조치 사항 & 법적 근거</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>견적 항목별 단가 내역 (BoQ)</li>
-        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>AI 디자인 시안 4장 원본 (4096×2304)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>AI 디자인 시안 1안 원본 (4096×2304)</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>브랜드 PDF 다운로드 + 공유 링크</li>
       </ul>
       <div class="paywall-plans">
@@ -1058,7 +1469,7 @@
           <span>단건 결제 — 50,000원</span>
         </a>
         <a class="paywall-plan-bar paywall-plan-bar--dark" id="pay-subscription" href="7_결제.html?plan=subscription&return=results">
-          <span>시공사 구독 — 월 140,000원 (무제한)</span>
+          <span>프로 구독 — 월 140,000원 (무제한)</span>
         </a>
       </div>
       <div class="text-11 text-subtle text-center mt-16">결제 즉시 잠금 해제 · 단건은 자동 갱신 없음 · 구독은 언제든 해지</div>
@@ -1072,6 +1483,114 @@
 </div>
 
 </main>
+
+<!-- ===== 재산정 모달 (3D 시안 업로드) ===== -->
+<div class="paywall-modal" id="recalc-modal">
+  <div class="paywall-backdrop" id="recalc-backdrop"></div>
+  <div class="paywall-content recalc-modal-content">
+    <div class="recalc-modal-header">
+      <button class="paywall-close" id="recalc-close" aria-label="닫기"><span data-icon="x" data-size="16"></span></button>
+      <span class="eyebrow">RE-ESTIMATE</span>
+      <h2 class="text-22 fw-800 ls-tight mt-8 m-0">최종 3D 시안 업로드</h2>
+      <p class="text-13 text-muted mt-8 m-0 lh-relaxed">디자이너로부터 받은 최종 시안을 업로드하시면, 그 시안의 마감재·가구·조명 사양을 분석해 <strong class="text-strong">시공 기간과 견적을 다시 산정</strong>해 드립니다.</p>
+    </div>
+
+    <div class="recalc-modal-body" id="recalc-step-upload">
+      <label class="recalc-dropzone" id="recalc-dropzone">
+        <input type="file" id="recalc-file-input" accept="image/png,image/jpeg,application/pdf" hidden/>
+        <div class="recalc-dropzone-icon"><span data-icon="upload" data-size="28"></span></div>
+        <div class="recalc-dropzone-title">파일을 선택하거나 여기로 드래그하세요</div>
+        <div class="recalc-dropzone-desc">PNG · JPG · PDF · 최대 20MB</div>
+        <div class="recalc-dropzone-filename" id="recalc-filename"></div>
+      </label>
+
+      <div class="recalc-info-list">
+        <div class="recalc-info-item">
+          <span class="recalc-info-icon"><span data-icon="info" data-size="14"></span></span>
+          <span>업로드한 시안의 마감재·가구·조명 사양을 자동 추출하여 견적·일정에 반영합니다.</span>
+        </div>
+        <div class="recalc-info-item">
+          <span class="recalc-info-icon"><span data-icon="shieldCheck" data-size="14"></span></span>
+          <span>업로드된 시안은 분석 후 자동 삭제되며, 외부에 공유되지 않습니다.</span>
+        </div>
+        <div class="recalc-info-item">
+          <span class="recalc-info-icon"><span data-icon="alert" data-size="14"></span></span>
+          <span><strong>이 재산정은 1회 한정 무료</strong>입니다. 추가 재산정이 필요하시면 프로 구독을 이용해 주세요.</span>
+        </div>
+      </div>
+
+      <div class="flex gap-8 mt-20 justify-end">
+        <button type="button" class="btn btn-ghost btn-sm" id="recalc-cancel">취소</button>
+        <button type="button" class="btn btn-primary btn-sm" id="recalc-submit" disabled>재산정 시작</button>
+      </div>
+    </div>
+
+    <div class="recalc-modal-body recalc-modal-body-progress" id="recalc-step-progress" hidden>
+      <div class="recalc-progress-spinner"></div>
+      <div class="recalc-progress-title">업로드한 시안을 분석 중입니다…</div>
+      <div class="recalc-progress-desc" id="recalc-progress-msg">마감재 영역 추출 중</div>
+    </div>
+
+    <div class="recalc-modal-body recalc-modal-body-done" id="recalc-step-done" hidden>
+      <div class="recalc-done-icon"><span data-icon="checkCircle" data-size="40"></span></div>
+      <div class="recalc-done-title">재산정 완료</div>
+      <div class="recalc-done-desc">업로드하신 시안 기준으로 <strong class="text-strong">시공 기간 50일, 견적 4,210만원</strong>으로 갱신되었습니다.</div>
+      <ul class="recalc-done-changes">
+        <li><span class="recalc-change-key">시공 기간</span><span class="recalc-change-val">45일 → <strong>50일</strong> (+5일)</span></li>
+        <li><span class="recalc-change-key">표준 견적</span><span class="recalc-change-val">3,650만 → <strong>4,210만</strong> (+560만)</span></li>
+        <li><span class="recalc-change-key">주요 변경</span><span class="recalc-change-val">원목 → 월넛 마감 · 펜던트 4구 → 8구 · 카운터 사이즈 2.4m → 3.2m</span></li>
+      </ul>
+      <button type="button" class="btn btn-primary btn-md w-full mt-20" id="recalc-confirm">확인 — 갱신된 리포트 보기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 프로 구독 모달 (디자인 시안 무제한) ===== -->
+<div class="paywall-modal" id="design-sub-modal">
+  <div class="paywall-backdrop" id="design-sub-backdrop"></div>
+  <div class="paywall-content">
+    <div class="paywall-header">
+      <button class="paywall-close" id="design-sub-close" aria-label="닫기"><span data-icon="x" data-size="16"></span></button>
+      <span class="paywall-pro-badge"><span data-icon="starFilled" data-size="12"></span> PRO SUBSCRIPTION</span>
+      <h2 class="text-26 fw-800 text-white m-0 lh-snug">AI 디자인 시안<br/>무제한으로 받아보세요</h2>
+      <p class="text-13 text-faded-9 mt-12 m-0 lh-relaxed">한 가지 컨셉으로는 부족하셨나요?<br/>프로 구독으로 다양한 무드·자재·컬러 조합을 자유롭게 시도해보세요.</p>
+    </div>
+    <div class="paywall-body">
+      <div class="design-sub-price-row">
+        <div>
+          <div class="design-sub-plan-name">프로 구독</div>
+          <div class="design-sub-plan-tag">시공사 전용 구독제 · 월간 자동 결제 · 언제든 해지 가능</div>
+        </div>
+        <div class="design-sub-price-block">
+          <span class="design-sub-price-amount">140,000<span class="design-sub-price-unit">원/월</span></span>
+          <span class="design-sub-price-vat">VAT 별도</span>
+        </div>
+      </div>
+
+      <div class="text-13 fw-700 mb-12">프로 구독 시 포함 항목</div>
+      <ul class="paywall-checklist mb-24">
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span><strong>AI 디자인 시안 무제한 생성</strong> — 횟수 제한 없이 새로운 컨셉 렌더링</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>대화형 시안 챗 무제한 이용 — 무드·자재·컬러를 자유롭게 조합</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>4K 원본 이미지 무제한 다운로드 (4096×2304)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>월 무제한 통합 분석 리포트 (인허가·견적·공기·디자인)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>화이트라벨 PDF (로고·색상 커스터마이징)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>멤버 시트 5인 포함 (팀 공동 작업)</li>
+      </ul>
+
+      <div class="paywall-plans">
+        <a class="paywall-plan-bar paywall-plan-bar--primary" href="7_결제.html?plan=subscription&amp;return=results">
+          <span>프로 구독 시작하기 — 월 140,000원</span>
+        </a>
+      </div>
+      <div class="text-11 text-subtle text-center mt-16">결제 즉시 잠금 해제 · 첫 결제 후 7일 이내 100% 환불 · 언제든 해지 가능</div>
+      <div class="paywall-trust">
+        <span class="paywall-trust-item"><span data-icon="shieldCheck" data-size="12"></span> PG사 안전 결제</span>
+        <span class="paywall-trust-item"><span data-icon="refresh" data-size="12"></span> 자동 갱신 · 언제든 해지</span>
+        <span class="paywall-trust-item"><span data-icon="info" data-size="12"></span> 부가세 별도</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>

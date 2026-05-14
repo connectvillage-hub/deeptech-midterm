@@ -43,10 +43,10 @@ function updateLoading(progress) {
   if (circle) circle.setAttribute('stroke-dashoffset', String(339 - (339 * progress / 100)));
 
   const modules = [
-    { id:'m-permit',  iconActive:'shieldCheck', sActive:'건축물대장 분석 중', sDone:'부산시 건축조례 검색 완료', factor:2.5, doneAt:40, activeAt:30 },
-    { id:'m-cost',    iconActive:'receipt',     sActive:'벽 마감재 단가 적용 중', sDone:'단가 적용 완료',             factor:1.8, doneAt:60, activeAt:50 },
-    { id:'m-time',    iconActive:'calendar',    sActive:'공정별 간트 보정 중',     sDone:'간트차트 완료',               factor:1.3, doneAt:80, activeAt:70 },
-    { id:'m-design',  iconActive:'palette',     sActive:'ControlNet 추론 중',     sDone:'시안 생성 완료',               factor:1.0, doneAt:90, activeAt:85 },
+    { id:'m-permit',  iconActive:'shieldCheck', sActive:'건축물대장 분석 중',     sDone:'부산시 건축조례 검색 완료', factor:2.5, doneAt:40, activeAt:30 },
+    { id:'m-design',  iconActive:'palette',     sActive:'ControlNet 추론 중',     sDone:'시안 생성 완료',           factor:1.8, doneAt:65, activeAt:50 },
+    { id:'m-time',    iconActive:'calendar',    sActive:'시안 기준 간트 보정 중',   sDone:'간트차트 완료',             factor:1.3, doneAt:80, activeAt:70 },
+    { id:'m-cost',    iconActive:'receipt',     sActive:'시안 기준 단가 적용 중',   sDone:'단가 적용 완료',           factor:1.0, doneAt:90, activeAt:85 },
   ];
 
   modules.forEach(function(m) {
@@ -275,11 +275,384 @@ function setupShareButtons() {
   });
 }
 
+/* ===========================================================
+ * 견적표 다운로드 (Excel/CSV + PDF)
+ * =========================================================== */
+function downloadEstimateCSV() {
+  const rows = [
+    ['표준 견적서 — 인테리어 첫단추'],
+    ['견적 ID', '#20260514-A720-EST'],
+    ['발행일', '2026-05-14'],
+    ['유효기간', '발행일로부터 30일'],
+    ['현장', '부산 해운대구 우동 일대 1층 상가'],
+    ['전용면적', '28.5평 (94.2㎡) · 평면 8.4 × 11.2m · 층고 2.7m'],
+    ['업종·용도', '1종 근린생활시설 · 카페 (휴게음식점)'],
+    [''],
+    ['분류', '세부 항목', '단위', '수량', '단가(원)', '금액(원)', '비고'],
+    ['가설·철거', '현장 보양 · 가설 자재', '평', '28.5', '21000', '600000', '바닥·벽 양생, 안전휀스'],
+    ['가설·철거', '기존 마감재 · 칸막이 철거', '평', '28.5', '91000', '2600000', '폐기물 운반비 포함'],
+    ['목공·천장', '경량 칸막이 (석고보드 2P)', '㎡', '26', '158000', '4100000', '화장실 분리벽 포함'],
+    ['목공·천장', '천장 틀·우물천장 마감', '평', '28.5', '73700', '2100000', 'SMC + 등기구 마감'],
+    ['도장·페인트', '벽체 · 천장 도장 (수성)', '㎡', '142', '16200', '2300000', '노출 벽돌 영역 별도'],
+    ['바닥·타일', '화장실 · 주방 타일 (300×300)', '㎡', '11', '118000', '1300000', '접착시공 · 줄눈 포함'],
+    ['바닥·타일', '홀 강화마루 + 걸레받이', '평', '22', '172700', '3800000', '8mm · 평탄 작업 포함'],
+    ['전기·소방', '조명 기구 · 펜던트 설치', '개소', '18', '211100', '3800000', '메인 라인 + 부속 포함'],
+    ['전기·소방', '스프링클러 위치 변경 · 추가', '개소', '7', '600000', '4200000', '관할 소방서 협의 필요'],
+    ['전기·소방', '콘센트 · 통신 배선', '식', '1', '600000', '600000', 'POS · 카운터 라인'],
+    ['가구·사인', '카운터 · 선반 · 외부 사인', '식', '1', '3200000', '3200000', '원목 + LED 채널 사인'],
+    ['주방·집기', '주방기기 · 후드 · 트렌치', '식', '1', '7600000', '7600000', '중고 활용 시 ▼30%'],
+    ['잡공사·기타', '현장 청소 · 준공 검수', '식', '1', '300000', '300000', '준공 보고서 작성'],
+    [''],
+    ['', '', '', '', '소계', '36500000', ''],
+    ['', '', '', '', '부가세(10%)', '3650000', '사업자 등록 후 환급 가능'],
+    ['', '', '', '', '합계 (VAT 포함)', '40150000', ''],
+    [''],
+    ['※ 본 견적은 부산 지역 평균 시세 기준 참고 견적입니다. 실제 공사 금액은 시공사·자재·현장 여건에 따라 ±20~30% 변동될 수 있습니다.']
+  ];
+
+  const csv = rows.map(function(r) {
+    return r.map(function(c) {
+      const s = String(c == null ? '' : c);
+      return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    }).join(',');
+  }).join('\r\n');
+
+  // Excel 한글 BOM
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '표준견적서_20260514_A720.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+}
+
+function setupEstimateDownload() {
+  const excelBtn = document.getElementById('dl-excel');
+  if (excelBtn) excelBtn.addEventListener('click', downloadEstimateCSV);
+
+  const pdfBtn = document.getElementById('dl-pdf');
+  if (pdfBtn) pdfBtn.addEventListener('click', function() { window.print(); });
+}
+
+/* ===========================================================
+ * 시공 일정 — 월간 캘린더 뷰 빌더 + 뷰 토글
+ * =========================================================== */
+const SCHEDULE_TASKS = [
+  { name: '철거·가설', cls: 'gantt-bar-orange', start: new Date(2026,4,14), end: new Date(2026,4,20), lane: 1 },
+  { name: '목공·천장', cls: 'gantt-bar-green',  start: new Date(2026,4,14), end: new Date(2026,5,3),  lane: 2 },
+  { name: '전기·소방', cls: 'gantt-bar-blue',   start: new Date(2026,4,28), end: new Date(2026,5,17), lane: 1 },
+  { name: '마감·도장', cls: 'gantt-bar-purple', start: new Date(2026,5,4),  end: new Date(2026,5,24), lane: 3 },
+  { name: '주방·집기', cls: 'gantt-bar-teal',   start: new Date(2026,5,11), end: new Date(2026,5,30), lane: 2 }
+];
+const SCHEDULE_MONTHS = [
+  { year: 2026, month: 4, label: '2026년 5월' },
+  { year: 2026, month: 5, label: '2026년 6월' }
+];
+let scheduleCalIdx = 0;
+
+function renderScheduleCalendar() {
+  const container = document.getElementById('schedule-calendar');
+  if (!container) return;
+  const m = SCHEDULE_MONTHS[scheduleCalIdx];
+
+  function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function sameOrBefore(a, b) { return a.getTime() <= b.getTime(); }
+  function maxDate(a, b) { return a.getTime() >= b.getTime() ? a : b; }
+  function minDate(a, b) { return a.getTime() <= b.getTime() ? a : b; }
+
+  function buildWeekRow(weekStart, currentMonth) {
+    let cells = '';
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(weekStart);
+      d.setDate(weekStart.getDate() + i);
+      const inMonth = d.getMonth() === currentMonth;
+      const dow = d.getDay();
+      const cls = 'cal-date-cell'
+        + (inMonth ? '' : ' is-out')
+        + (dow === 0 ? ' is-sun' : (dow === 6 ? ' is-sat' : ''));
+      cells += '<div class="' + cls + '">' + d.getDate() + '</div>';
+    }
+
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    let bars = '';
+    SCHEDULE_TASKS.forEach(function(t) {
+      if (t.end < weekStart || t.start > weekEnd) return;
+      const segStart = maxDate(t.start, weekStart);
+      const segEnd = minDate(t.end, weekEnd);
+      const startCol = segStart.getDay() + 1;
+      const endCol = segEnd.getDay() + 2;
+      const row = t.lane + 1;
+      bars += '<div class="cal-bar ' + t.cls + '"'
+        + ' data-col="' + startCol + ' / ' + endCol + '"'
+        + ' data-row="' + row + '"'
+        + ' title="' + escapeHtml(t.name) + '">'
+        + escapeHtml(t.name) + '</div>';
+    });
+
+    return '<div class="cal-week-row">' + cells + bars + '</div>';
+  }
+
+  const monthStart = new Date(m.year, m.month, 1);
+  const monthEnd = new Date(m.year, m.month + 1, 0);
+  const cursor = new Date(monthStart);
+  cursor.setDate(cursor.getDate() - cursor.getDay());
+
+  let weeks = '';
+  while (sameOrBefore(cursor, monthEnd)) {
+    weeks += buildWeekRow(new Date(cursor), m.month);
+    cursor.setDate(cursor.getDate() + 7);
+  }
+
+  const prevDisabled = scheduleCalIdx === 0 ? ' disabled' : '';
+  const nextDisabled = scheduleCalIdx === SCHEDULE_MONTHS.length - 1 ? ' disabled' : '';
+
+  container.innerHTML =
+      '<div class="cal-month-header">'
+    +   '<button type="button" class="cal-nav-btn" id="cal-prev" aria-label="이전 달"' + prevDisabled + '><span data-icon="chevronLeft" data-size="16"></span></button>'
+    +   '<div class="cal-month-title">' + m.label + '</div>'
+    +   '<button type="button" class="cal-nav-btn" id="cal-next" aria-label="다음 달"' + nextDisabled + '><span data-icon="chevronRight" data-size="16"></span></button>'
+    + '</div>'
+    + '<div class="cal-weekday-row">'
+    +   '<span class="cal-weekday cal-weekday-sun">일</span>'
+    +   '<span class="cal-weekday">월</span>'
+    +   '<span class="cal-weekday">화</span>'
+    +   '<span class="cal-weekday">수</span>'
+    +   '<span class="cal-weekday">목</span>'
+    +   '<span class="cal-weekday">금</span>'
+    +   '<span class="cal-weekday cal-weekday-sat">토</span>'
+    + '</div>'
+    + '<div class="cal-weeks">' + weeks + '</div>';
+
+  container.querySelectorAll('.cal-bar').forEach(function(el) {
+    el.style.gridColumn = el.dataset.col;
+    el.style.gridRow = el.dataset.row;
+  });
+  if (typeof renderIcons === 'function') renderIcons(container);
+
+  const prevBtn = document.getElementById('cal-prev');
+  const nextBtn = document.getElementById('cal-next');
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    if (scheduleCalIdx > 0) { scheduleCalIdx--; renderScheduleCalendar(); }
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    if (scheduleCalIdx < SCHEDULE_MONTHS.length - 1) { scheduleCalIdx++; renderScheduleCalendar(); }
+  });
+}
+
+function buildScheduleCalendar() {
+  const container = document.getElementById('schedule-calendar');
+  if (!container || container.dataset.built === 'true') return;
+  scheduleCalIdx = 0;
+  renderScheduleCalendar();
+  container.dataset.built = 'true';
+}
+
+function setupScheduleViewToggle() {
+  const btns = document.querySelectorAll('.schedule-view-btn');
+  const ganttView = document.getElementById('schedule-view-gantt');
+  const calView = document.getElementById('schedule-view-calendar');
+  if (!btns.length || !ganttView || !calView) return;
+
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.toggle('is-active', b === btn); });
+      const view = btn.dataset.view;
+      ganttView.hidden = (view !== 'gantt');
+      calView.hidden = (view !== 'calendar');
+      if (view === 'calendar') buildScheduleCalendar();
+    });
+  });
+}
+
+/* ===========================================================
+ * 재산정 (3D 시안 업로드 → 견적·일정 갱신)
+ * =========================================================== */
+function setupRecalcFlow() {
+  const card = document.getElementById('recalc-card');
+  const openBtn = document.getElementById('open-recalc-modal');
+  const modal = document.getElementById('recalc-modal');
+  const backdrop = document.getElementById('recalc-backdrop');
+  const closeBtn = document.getElementById('recalc-close');
+  const cancelBtn = document.getElementById('recalc-cancel');
+  const dropzone = document.getElementById('recalc-dropzone');
+  const fileInput = document.getElementById('recalc-file-input');
+  const filenameEl = document.getElementById('recalc-filename');
+  const submitBtn = document.getElementById('recalc-submit');
+  const stepUpload = document.getElementById('recalc-step-upload');
+  const stepProgress = document.getElementById('recalc-step-progress');
+  const stepDone = document.getElementById('recalc-step-done');
+  const progressMsg = document.getElementById('recalc-progress-msg');
+  const confirmBtn = document.getElementById('recalc-confirm');
+  if (!modal) return;
+
+  const STORAGE_KEY = 'firstbutton-recalc-used';
+
+  function applyUsedState() {
+    if (!card) return;
+    card.classList.add('is-used');
+    card.querySelector('.recalc-card-title').textContent = '재산정이 완료되었습니다';
+    card.querySelector('.recalc-card-desc').innerHTML = '업로드한 시안 기준으로 시공 기간·견적이 갱신되었습니다. <strong>추가 재산정은 프로 구독 시 무제한</strong>으로 이용 가능합니다.';
+    card.querySelector('.recalc-card-meta').textContent = '1회 무료 재산정 사용 완료';
+    if (openBtn) {
+      openBtn.textContent = '프로 구독으로 추가 재산정';
+      openBtn.classList.remove('btn-primary');
+      openBtn.classList.add('btn-outline');
+    }
+  }
+
+  if (localStorage.getItem(STORAGE_KEY) === 'true') applyUsedState();
+
+  function open() {
+    if (localStorage.getItem(STORAGE_KEY) === 'true') {
+      const subModal = document.getElementById('design-sub-modal');
+      if (subModal) {
+        subModal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      return;
+    }
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    stepUpload.hidden = false;
+    stepProgress.hidden = true;
+    stepDone.hidden = true;
+    if (fileInput) fileInput.value = '';
+    if (filenameEl) filenameEl.textContent = '';
+    if (submitBtn) submitBtn.disabled = true;
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  if (openBtn) openBtn.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (cancelBtn) cancelBtn.addEventListener('click', close);
+  if (backdrop) backdrop.addEventListener('click', close);
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function() { fileInput.click(); });
+    dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropzone.classList.add('is-dragover');
+    });
+    dropzone.addEventListener('dragleave', function() {
+      dropzone.classList.remove('is-dragover');
+    });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('is-dragover');
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFile(fileInput.files[0]);
+      }
+    });
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files.length) handleFile(fileInput.files[0]);
+    });
+  }
+
+  function handleFile(file) {
+    const okTypes = ['image/png', 'image/jpeg', 'application/pdf'];
+    if (okTypes.indexOf(file.type) < 0) {
+      alert('PNG · JPG · PDF 파일만 업로드 가능합니다.');
+      fileInput.value = '';
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      alert('파일은 최대 20MB까지 업로드 가능합니다.');
+      fileInput.value = '';
+      return;
+    }
+    filenameEl.textContent = '선택됨: ' + file.name;
+    submitBtn.disabled = false;
+  }
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      stepUpload.hidden = true;
+      stepProgress.hidden = false;
+      const steps = ['마감재 영역 추출 중', '가구·조명 사양 매칭 중', '단가 계산 및 일정 보정 중'];
+      let i = 0;
+      progressMsg.textContent = steps[0];
+      const t = setInterval(function() {
+        i++;
+        if (i >= steps.length) {
+          clearInterval(t);
+          setTimeout(function() {
+            stepProgress.hidden = true;
+            stepDone.hidden = false;
+          }, 600);
+          return;
+        }
+        progressMsg.textContent = steps[i];
+      }, 900);
+    });
+  }
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', function() {
+      localStorage.setItem(STORAGE_KEY, 'true');
+      const costSignal = document.getElementById('cost-signal');
+      if (costSignal) costSignal.innerHTML = '<span class="pulse"></span> 4,210만 · 평당 148만 · 갱신됨';
+      const scheduleSignal = document.getElementById('schedule-signal');
+      if (scheduleSignal) scheduleSignal.innerHTML = '<span class="pulse"></span> 50일 · 5개 공정 · 갱신됨';
+      const scheduleBase = document.getElementById('schedule-base-label');
+      if (scheduleBase) scheduleBase.innerHTML = '<strong class="text-strong">업로드하신 최종 3D 시안</strong>';
+      const costBase = document.getElementById('cost-base-label');
+      if (costBase) costBase.innerHTML = '<strong class="text-strong">업로드하신 최종 3D 시안</strong>';
+      const totalDays = document.getElementById('schedule-total-days');
+      if (totalDays) totalDays.textContent = '50일(영업일 기준)';
+      applyUsedState();
+      close();
+      alert('재산정이 완료되었습니다. 견적·일정이 갱신되었습니다.');
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+}
+
+/* ===========================================================
+ * 프로 구독 모달 (디자인 시안 무제한)
+ * =========================================================== */
+function setupDesignSubModal() {
+  const modal = document.getElementById('design-sub-modal');
+  const openBtn = document.getElementById('open-design-sub-modal');
+  const closeBtn = document.getElementById('design-sub-close');
+  const backdrop = document.getElementById('design-sub-backdrop');
+  if (!modal) return;
+
+  function open() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  if (openBtn) openBtn.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (backdrop) backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   setupSampleMode();
   setupPaywall();
   setupPrintButton();
   setupShareButtons();
+  setupEstimateDownload();
+  setupDesignSubModal();
+  setupRecalcFlow();
+  setupScheduleViewToggle();
 
   const hash = (location.hash || '').replace('#', '');
   let initial = RESULT_SCREENS.indexOf(hash) >= 0 ? hash : 'loading';

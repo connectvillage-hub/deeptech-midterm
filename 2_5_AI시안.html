@@ -85,9 +85,20 @@
           <div class="chat-messages" id="chat-messages">
             <!-- AI/사용자 메시지는 JS가 삽입 -->
           </div>
-          <div class="chat-input-wrap">
-            <input class="input input-with-send-btn" id="chat-input" placeholder="디자인 콘셉트에 대해 자유롭게 답변해주세요..."/>
-            <button class="chat-send-btn" id="chat-send" aria-label="전송"><span data-icon="arrowRight" data-size="14"></span></button>
+
+          <div class="flex gap-8 mt-12 mb-8 flex-wrap chat-attach-row">
+            <button class="btn btn-outline btn-sm"><span data-icon="image" data-size="12"></span> 참고 이미지 추가</button>
+            <button class="btn btn-outline btn-sm"><span data-icon="upload" data-size="12"></span> 평면도 업로드</button>
+          </div>
+
+          <div class="gen-input-wrap">
+            <textarea class="input input-multiline gen-input-textarea" id="chat-input" placeholder="AI 질문에 답변하거나 추가 요청사항을 입력해주세요. (Enter = 전송 · Shift+Enter = 줄바꿈)"></textarea>
+            <button class="gen-input-send" id="chat-send" aria-label="대화 전송"><span data-icon="arrowRight" data-size="14"></span></button>
+          </div>
+
+          <div class="flex justify-between items-center mt-12 flex-wrap gap-8">
+            <div class="text-12 text-subtle" id="gen-hint">AI 대화 완료 후 생성 가능</div>
+            <button class="btn btn-primary btn-md" id="generate-btn" disabled><span data-icon="sparkles" data-size="14"></span> 이미지 생성</button>
           </div>
         </div>
       </div>
@@ -122,17 +133,6 @@
           </div>
         </div>
 
-        <div class="flex gap-8 mt-16 mb-12 flex-wrap">
-          <button class="btn btn-outline btn-sm"><span data-icon="image" data-size="12"></span> 참고 이미지 추가</button>
-          <button class="btn btn-outline btn-sm"><span data-icon="upload" data-size="12"></span> 평면도 업로드</button>
-        </div>
-
-        <textarea class="input input-multiline" id="extra-request" placeholder="요청사항을 입력해주세요. 예: '창문 쪽에 바 좌석 배치', '벽돌 톤을 좀 더 밝게'"></textarea>
-
-        <div class="flex justify-between items-center mt-16">
-          <div class="text-12 text-subtle" id="gen-hint">AI 대화 완료 후 생성 가능</div>
-          <button class="btn btn-primary btn-md" id="generate-btn" disabled><span data-icon="sparkles" data-size="14"></span> 이미지 생성</button>
-        </div>
       </div>
 
     </div>

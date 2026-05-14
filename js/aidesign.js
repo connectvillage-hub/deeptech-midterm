@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('chat-send').addEventListener('click', handleUserSend);
   document.getElementById('chat-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') { e.preventDefault(); handleUserSend(); }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleUserSend(); }
   });
 
   document.getElementById('generate-btn').addEventListener('click', startGeneration);
