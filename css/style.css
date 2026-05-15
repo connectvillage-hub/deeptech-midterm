@@ -287,6 +287,9 @@ footer a:hover{color:var(--ws-fg-default)}
 .text-success{color:#00853A}
 .text-warning{color:#C24400}
 .text-error{color:#D32626}
+.text-orange{color:#FF5E00}
+.text-purple{color:#6541F2}
+.text-success-bright{color:#80FF99}
 .text-white{color:white}
 
 .font-display{font-family:var(--ws-font-display)}
@@ -415,6 +418,7 @@ footer a:hover{color:var(--ws-fg-default)}
 .row-link{cursor:pointer}
 .inline-flex{display:inline-flex}
 .mr-4{margin-right:4px}
+.max-w-240{max-width:240px}
 .max-w-360{max-width:360px}
 .max-w-480{max-width:480px}
 .max-w-560{max-width:560px}
@@ -751,6 +755,7 @@ body:not(.is-locked) .card-lock-hint{display:none}
 
 /* 멀티라인 textarea */
 .input-multiline{min-height:80px;padding:12px 16px;resize:vertical;height:auto}
+.input-multiline-lg{min-height:160px;line-height:1.6}
 
 /* 아이콘 박스 변형 */
 .icon-box-28{width:28px;height:28px;border-radius:8px;display:inline-grid;place-items:center}
@@ -871,6 +876,47 @@ body.is-locked .mc-lock-cta{display:flex}
 
 /* 통합 리포트 — 법령별 상세 카드 v2 (전문적 톤) */
 .detail-label{font-size:11px;font-weight:700;color:var(--ws-fg-subtle);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px}
+/* 인허가 섹션 — 4개 카테고리 헤더 */
+.permit-category-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 12px;padding:8px 0;border-bottom:1px solid var(--ws-border-divider)}
+.permit-category-header:first-of-type{margin-top:18px}
+.permit-category-title{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;color:var(--ws-fg-strong);letter-spacing:-0.012em}
+.permit-category-num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--ws-fg-strong);color:white;font-size:11px;font-weight:800}
+.permit-category-count{font-size:11px;font-weight:700;color:var(--ws-fg-muted);letter-spacing:0.02em}
+
+/* 위반 시 경고 박스 (강조) */
+.permit-warn-box{margin:14px 0 18px;padding:12px 14px;background:var(--ws-error-tint);border:1px solid #FFB8B8;border-radius:8px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#B81C1C;line-height:1.55}
+.permit-warn-box-icon{flex-shrink:0;color:#D32626;padding-top:1px}
+.permit-warn-box strong{color:#B81C1C;font-weight:800}
+
+/* 건축사 필요 안내 박스 */
+.permit-architect-notice{margin:18px 0 14px;padding:14px 18px;background:var(--brand-tint);border:1px solid var(--brand);border-radius:10px;display:flex;align-items:flex-start;gap:12px}
+.permit-architect-notice-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--brand);color:white;display:grid;place-items:center}
+.permit-architect-notice-body{flex:1}
+.permit-architect-notice-title{font-size:13px;font-weight:800;color:var(--ws-fg-strong);margin-bottom:4px}
+.permit-architect-notice-desc{font-size:12px;color:var(--ws-fg-muted);line-height:1.55}
+.permit-architect-self{margin:14px 0 8px;font-size:12px;color:var(--ws-fg-muted);display:inline-flex;align-items:center;gap:6px}
+.permit-architect-self::before{content:"✓";color:var(--ws-success);font-weight:800}
+
+/* 절차 ID 라벨 */
+.permit-card-id{display:inline-block;font-size:10px;font-weight:800;color:var(--ws-fg-muted);letter-spacing:0.06em;text-transform:uppercase;background:var(--ws-coolneutral-96);padding:2px 8px;border-radius:4px;margin-right:8px}
+
+/* 관할 구청 확인 디스클레이머 */
+.permit-region-disclaimer{margin-top:10px;font-size:11px;color:var(--ws-fg-subtle);line-height:1.5}
+
+/* 확인조치 불필요 · 요건 충족 섹션 (초록 톤) */
+.permit-ok-card{margin-top:16px;background:#F0FAF3;border:1px solid #A8DDBC;border-radius:14px;padding:0;overflow:hidden}
+.permit-ok-card-head{display:flex;align-items:center;gap:10px;padding:14px 22px;background:#E0F5E8;border-bottom:1px solid #A8DDBC;font-size:13px;font-weight:800;color:#005C2A;letter-spacing:0.04em}
+.permit-ok-card-head::before{content:"";width:8px;height:8px;border-radius:50%;background:#00853A;box-shadow:0 0 0 3px rgba(0,133,58,0.18)}
+.permit-ok-card-head-count{margin-left:auto;font-size:11px;font-weight:700;color:#005C2A;letter-spacing:0.02em;opacity:0.85}
+.permit-ok-list{padding:8px 22px}
+.permit-ok-item{display:grid;grid-template-columns:20px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #C5E5D2}
+.permit-ok-item:last-child{border-bottom:none}
+.permit-ok-item-check{width:20px;height:20px;border-radius:50%;background:#00853A;color:white;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.permit-ok-item-name{font-size:13px;font-weight:700;color:var(--ws-fg-strong);margin-bottom:2px}
+.permit-ok-item-law{font-size:11px;color:var(--ws-fg-muted);margin-bottom:6px;letter-spacing:0}
+.permit-ok-item-reason{font-size:12px;color:var(--ws-fg-default);line-height:1.55}
+.permit-ok-item-reason strong{color:#00853A;font-weight:700}
+
 .permit-card{background:white;border:1px solid var(--ws-border-default);border-radius:14px;padding:28px 32px;margin-bottom:16px;box-shadow:var(--ws-sh-1);overflow:hidden}
 .permit-card-banner{display:flex;align-items:center;gap:10px;margin:-28px -32px 20px;padding:12px 24px;font-size:12px;font-weight:800;letter-spacing:0.04em;border-bottom:1px solid transparent}
 .permit-card-banner::before{content:"";width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -1089,16 +1135,23 @@ body.is-locked .mc-lock-cta{display:flex}
 .speech-bubble p{margin:0;font-size:14px;font-weight:500;color:var(--ws-fg-strong);line-height:1.6;letter-spacing:-0.01em}
 .speech-bubble::after{content:"";position:absolute;left:24px;bottom:-9px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:9px solid var(--ws-coolneutral-96)}
 
-/* === 랜딩: SOLUTION 2-column 레이아웃 (큰 타이틀 + ONE REPORT + 미니 그리드) === */
-.solution-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;margin-top:40px;align-items:start}
+/* === 랜딩: SOLUTION 세로 스택 레이아웃 (타이틀 → 4카드 → 와이드 OUTPUT) === */
+.solution-stack{display:flex;flex-direction:column;gap:32px;margin-top:96px}
+.solution-stack-head{text-align:center;max-width:780px;margin:0 auto}
+.solution-stack-head .solution-title{text-align:center;margin:0 0 14px}
+.solution-stack-head .solution-quote{text-align:center;margin:0;font-size:14px;line-height:1.7}
+
+/* (구) 2-column 레이아웃 - 미사용 */
+.solution-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:36px;margin-top:40px;align-items:stretch}
+.solution-left{display:flex;flex-direction:column}
 .solution-title{font-size:34px;font-weight:800;letter-spacing:-0.026em;line-height:1.18;color:var(--ws-fg-strong);margin:0 0 16px}
 
 /* OUTPUT · ONE REPORT 다크 카드 */
-.one-report-card{position:relative;background:var(--ws-fg-strong);color:white;border-radius:18px;padding:30px 28px 0;overflow:hidden;min-height:480px}
+.one-report-card{position:relative;background:var(--ws-fg-strong);color:white;border-radius:18px;padding:30px 28px 0;overflow:hidden;flex:1;display:flex;flex-direction:column}
 .one-report-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#80B3FF;margin-bottom:14px}
 .one-report-title{font-size:22px;font-weight:800;letter-spacing:-0.018em;line-height:1.32;margin:0 0 12px;color:white}
 .one-report-desc{font-size:13px;color:rgba(255,255,255,0.72);line-height:1.65;margin:0 0 32px}
-.pdf-stack{position:relative;width:280px;height:300px;margin:0 auto -10px}
+.pdf-stack{position:relative;width:280px;height:300px;margin:auto auto -10px}
 .pdf-sheet{position:absolute;left:50%;top:0;width:160px;height:220px;background:white;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.35);background-image:linear-gradient(to bottom, white 0, white 40px, transparent 40px), linear-gradient(to bottom, rgba(0,0,0,0.06) 0, rgba(0,0,0,0.06) 4px, transparent 4px);background-size:100% 100%, 100% 14px;background-position:0 0, 0 50px;background-repeat:no-repeat,repeat}
 .pdf-sheet::before{content:"";position:absolute;left:18px;top:18px;width:62%;height:6px;border-radius:2px;background:var(--brand)}
 .pdf-sheet-1{transform:translate(-50%,0) rotate(-12deg);left:calc(50% - 70px)}
@@ -1107,11 +1160,38 @@ body.is-locked .mc-lock-cta{display:flex}
 .pdf-sheet-4{transform:translate(-50%,0) rotate(6deg);left:calc(50% + 36px)}
 .pdf-sheet-5{transform:translate(-50%,0) rotate(12deg);left:calc(50% + 70px)}
 
+/* 와이드 변형: SOLUTION 마지막 단계의 가로형 OUTPUT 카드 */
+.one-report-card-wide{flex:none;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:32px;padding:44px 52px;min-height:auto}
+.one-report-card-wide .one-report-eyebrow{margin-bottom:12px}
+.one-report-card-wide .one-report-title{font-size:24px;margin-bottom:14px}
+.one-report-card-wide .one-report-desc{margin-bottom:0}
+.one-report-card-wide .pdf-stack{margin:0 auto;width:300px;height:240px}
+@media (max-width:880px){
+  .one-report-card-wide{grid-template-columns:1fr;padding:30px 24px;gap:24px}
+  .one-report-card-wide .pdf-stack{transform:scale(0.85)}
+}
+
 /* RIGHT 패널 */
 .solution-quote{font-size:14px;color:var(--ws-fg-muted);line-height:1.7;margin:0 0 18px;letter-spacing:-0.012em}
 .solution-quote strong{color:var(--ws-fg-strong);font-weight:700}
 .solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .solution-mini{background:white;border:1px solid var(--ws-border-default);border-radius:14px;padding:18px 18px 16px;box-shadow:var(--ws-sh-1)}
+
+/* 랜딩 SOLUTION 모듈카드 컴팩트 오버라이드 */
+.solution-modules .module-card{padding:20px 22px}
+.solution-modules .mc-head{margin-bottom:12px}
+.solution-modules .mc-label{font-size:12px;margin-bottom:2px}
+.solution-modules .mc-metric{font-size:26px;margin-bottom:4px}
+.solution-modules .mc-metric-sm{font-size:20px;font-weight:800;color:var(--ws-fg-strong);letter-spacing:-0.018em;margin-bottom:4px;line-height:1.2}
+.solution-modules .mc-metric-sub{font-size:11px;color:var(--ws-fg-muted);line-height:1.5;margin-bottom:14px}
+.solution-modules .mc-list-compact .mc-list-item{padding:6px 0;gap:8px;align-items:center}
+.solution-modules .mc-list-compact .mc-list-item-name{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.solution-modules .mc-bar-list{gap:7px}
+.solution-modules .mc-bar-row{font-size:11px;display:grid;grid-template-columns:64px 1fr auto;gap:8px;align-items:center}
+.solution-modules .mc-bar-row-label{font-size:11px;color:var(--ws-fg-muted);font-weight:600}
+.solution-modules .mc-bar-row-value{font-size:11px;font-weight:700;white-space:nowrap}
+.solution-modules .mc-design-chips{margin-bottom:10px;gap:4px}
+.solution-modules .mc-design-image-wrap{margin-top:0}
 .solution-mini-eyebrow{font-size:11px;font-weight:700;color:var(--ws-fg-muted);letter-spacing:0.04em;margin-bottom:4px}
 .solution-mini-title{font-size:16px;font-weight:800;color:var(--ws-fg-strong);letter-spacing:-0.014em;margin:0 0 4px}
 .solution-mini-desc{font-size:11px;color:var(--ws-fg-subtle);line-height:1.5;margin:0 0 14px}
@@ -1171,6 +1251,17 @@ body.is-locked .mc-lock-cta{display:flex}
 
 /* 해결책 카드의 페어 태그 */
 .hc-pair-tag{display:inline-block;font-size:10px;font-weight:800;color:var(--brand);letter-spacing:0.04em;margin-bottom:6px;text-transform:uppercase}
+
+/* === 입력 페이지 — 기존 업종 자동 연동 2-col === */
+.biztype-current-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:12px}
+@media (max-width:560px){.biztype-current-grid{grid-template-columns:1fr}}
+
+/* === 입력 페이지 — 공사 범위 블록 (질문 + 하위 칩) === */
+.scope-block{padding:16px 0;border-top:1px solid var(--ws-border-divider)}
+.scope-block:first-of-type{padding-top:18px;margin-top:8px}
+.scope-block:last-of-type{padding-bottom:4px}
+.scope-block-title{font-size:14px;font-weight:700;color:var(--ws-fg-strong);margin-bottom:10px;letter-spacing:-0.012em}
+.scope-block-sub{font-size:12px;font-weight:500;color:var(--ws-fg-muted);margin-left:8px;letter-spacing:0}
 
 /* 글로벌 스테이지 트래커 */
 .stage-tracker{display:flex;align-items:center;gap:8px;overflow-x:auto;padding-bottom:4px}

@@ -5,6 +5,76 @@
  * 화면 ID: address, biztype, basic, reference, design
  * =========================================================== */
 
+/* 희망 업종 3단계 cascading select 데이터 */
+const BIZ_TYPES = {
+  '요식업': {
+    '음식점업': ['한식', '양식', '일식', '중식', '분식', '카페/베이커리', '패스트푸드', '치킨·피자', '기타'],
+    '주점업': ['호프/맥주', '와인바', '한식 주점', '칵테일 바', '포차·실내포차', '기타'],
+    '비알코올 음료점업': ['카페/베이커리', '디저트 카페', '아이스크림/요거트', '차·티 전문점', '주스 바', '기타']
+  },
+  '숙박업': {
+    '일반 숙박업': ['호텔', '모텔', '여관', '기타'],
+    '게스트하우스·호스텔': ['게스트하우스', '호스텔', '도미토리'],
+    '펜션·민박': ['펜션', '민박', '한옥 스테이', '풀빌라']
+  },
+  '서비스업': {},
+  '도소매업': {},
+  '의료·건강': {},
+  '교육·학원': {},
+  '문화·여가': {},
+  '기타': {}
+};
+
+function setupBizTypeCascade() {
+  const majorSel = document.getElementById('biz-major');
+  const middleSel = document.getElementById('biz-middle');
+  const minorSel = document.getElementById('biz-minor');
+  if (!majorSel || !middleSel || !minorSel) return;
+
+  // 대분류 옵션 채우기
+  Object.keys(BIZ_TYPES).forEach(function(major) {
+    const opt = document.createElement('option');
+    opt.value = major;
+    opt.textContent = major;
+    majorSel.appendChild(opt);
+  });
+
+  function fillSelect(sel, items, placeholder) {
+    sel.innerHTML = '<option value="">' + placeholder + '</option>';
+    items.forEach(function(item) {
+      const opt = document.createElement('option');
+      opt.value = item;
+      opt.textContent = item;
+      sel.appendChild(opt);
+    });
+    sel.disabled = items.length === 0;
+  }
+
+  function updateMiddle() {
+    const major = majorSel.value;
+    const middles = BIZ_TYPES[major] || {};
+    fillSelect(middleSel, Object.keys(middles), '중분류 선택');
+    fillSelect(minorSel, [], '소분류 선택');
+  }
+
+  function updateMinor() {
+    const major = majorSel.value;
+    const middle = middleSel.value;
+    const minors = (BIZ_TYPES[major] || {})[middle] || [];
+    fillSelect(minorSel, minors, '소분류 선택');
+  }
+
+  majorSel.addEventListener('change', updateMiddle);
+  middleSel.addEventListener('change', updateMinor);
+
+  // 초기 기본값: 요식업 → 음식점업 → 카페/베이커리
+  majorSel.value = '요식업';
+  updateMiddle();
+  middleSel.value = '음식점업';
+  updateMinor();
+  minorSel.value = '카페/베이커리';
+}
+
 function setupOwnDesignUpload() {
   const dropzone = document.getElementById('own-design-dropzone');
   const input = document.getElementById('own-design-input');
@@ -48,8 +118,8 @@ function setupOwnDesignUpload() {
 }
 
 
-const STEP_ORDER = ['address', 'biztype', 'basic', 'reference', 'design'];
-const STORAGE_KEY = 'interior_input_state_v1';
+const STEP_ORDER = ['basic', 'address', 'biztype', 'reference', 'design'];
+const STORAGE_KEY = 'interior_input_state_v2';
 
 /* ----- 화면 전환 ----- */
 const STEP_LABELS = { address:'주소', biztype:'업종', basic:'기본', reference:'참고', design:'디자인' };
@@ -309,6 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setupCollapseToggle();
   setupDimModeToggle();
   setupOwnDesignUpload();
+  setupBizTypeCascade();
 
   document.querySelectorAll('main input, main select').forEach(function(el) {
     el.addEventListener('input', function() {

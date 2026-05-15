@@ -113,102 +113,162 @@
     <strong>한 번에 4가지를 다 알 수 있었다면 얼마나 좋았을까?</strong>
   </div>
 
-  <div class="solution-layout">
-    <!-- LEFT: 큰 제목 + OUTPUT 카드 -->
-    <div class="solution-left">
+  <div class="solution-stack">
+    <!-- 1단계: 타이틀 + 부제 -->
+    <div class="solution-stack-head">
       <h2 class="solution-title">막막하던 결정,<br/>4가지 구체적 답변으로.</h2>
-      <div class="one-report-card">
-        <span class="one-report-eyebrow">OUTPUT · ONE REPORT</span>
-        <h3 class="one-report-title">모든 답변이 한 장의 리포트로,<br/>임대인 협의·시공사 비교에 바로 활용.</h3>
-        <p class="one-report-desc">PDF · 4개 챕터 · 6~8페이지. 표지·체크리스트까지 자동 생성하고, 공유 링크는 발행일로부터 90일간 유효합니다. 인허가 준비·시공사 견적 의뢰 시 그대로 사용하실 수 있습니다.</p>
-        <div class="pdf-stack">
-          <div class="pdf-sheet pdf-sheet-1"></div>
-          <div class="pdf-sheet pdf-sheet-2"></div>
-          <div class="pdf-sheet pdf-sheet-3"></div>
-          <div class="pdf-sheet pdf-sheet-4"></div>
-          <div class="pdf-sheet pdf-sheet-5"></div>
-        </div>
-      </div>
+      <p class="solution-quote">
+        “용도변경이 필요한가요? 예산은 충분할까요? 이런 분위기로 가능할까요?” <br> — <strong>이 자리에서 결정해야 할 모든 것을 한 화면에서 답해드립니다.</strong>
+      </p>
     </div>
 
-    <!-- RIGHT: 설명 + 2×2 그리드 -->
-    <div class="solution-right">
-      <p class="solution-quote">
-        “용도변경이 필요한가요? 예산은 충분할까요? 이런 분위기로 가능할까요?” — <strong>이 자리에서 결정해야 할 모든 것을 한 화면에서 답해드립니다. 30초 안에.</strong>
-      </p>
+    <!-- 2단계: 4가지 예시 리포트 카드 -->
+      <div class="grid cols-2 gap-16 solution-modules">
 
-      <div class="solution-grid">
         <!-- 인허가 리스크 -->
-        <div class="solution-mini">
-          <div class="solution-mini-eyebrow">법규 검토</div>
-          <h4 class="solution-mini-title">인허가 리스크</h4>
-          <p class="solution-mini-desc">건축법·소방·위생·조례를 항목별 판정</p>
-          <div class="mini-law-list">
-            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-warn"></span><span class="mini-law-name">건축법</span><span class="mini-law-badge">용도변경 신고</span></div>
-            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-warn"></span><span class="mini-law-name">소방시설법</span><span class="mini-law-badge">스프링클러 보완</span></div>
-            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-ok"></span><span class="mini-law-name">식품위생법</span><span class="mini-law-badge mini-law-badge-ok">요건 충족</span></div>
-            <div class="mini-law-row"><span class="mini-law-dot mini-law-dot-ok"></span><span class="mini-law-name">부산시 조례</span><span class="mini-law-badge mini-law-badge-ok">기준 내</span></div>
+        <div class="card animate-in module-card">
+          <div class="mc-head">
+            <span class="icon-box-44 icon-box-tint-blue"><span data-icon="shieldCheck" data-size="22"></span></span>
+            <span class="signal signal-warning signal-sm ml-auto"><span class="pulse"></span>조건부</span>
           </div>
-        </div>
-
-        <!-- 표준 견적 -->
-        <div class="solution-mini">
-          <div class="solution-mini-eyebrow">자금 계획</div>
-          <h4 class="solution-mini-title">표준 견적</h4>
-          <p class="solution-mini-desc">공정별 BoQ · 부산 평균 시세 반영</p>
-          <div class="mini-price-head">
-            <span class="mini-price-label">내 자리 기준</span>
-            <span class="mini-price-value">3,650<small>만</small></span>
-          </div>
-          <div class="mini-price-bar"><div class="mini-price-bar-fill"></div><div class="mini-price-bar-marker"></div></div>
-          <div class="mini-price-range">
-            <span>간단 마감 2,820</span>
-            <span>프리미엄 4,820</span>
-          </div>
-          <div class="mini-price-tag">평당 128만 · VAT 별도 · BoQ 8공정</div>
-        </div>
-
-        <!-- 시공 기간 -->
-        <div class="solution-mini">
-          <div class="solution-mini-eyebrow">일정</div>
-          <h4 class="solution-mini-title">시공 기간 예측</h4>
-          <p class="solution-mini-desc">간트차트 + 월간 캘린더</p>
-          <div class="mini-price-head">
-            <span class="mini-price-label">예상 기간</span>
-            <span class="mini-price-value">45<small>일</small></span>
-          </div>
-          <div class="mini-gantt">
-            <div class="mini-gantt-row"><span class="mini-gantt-label">철거·가설</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-orange w-10"></span></span></div>
-            <div class="mini-gantt-row"><span class="mini-gantt-label">목공·천장</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-green w-50"></span></span></div>
-            <div class="mini-gantt-row"><span class="mini-gantt-label">전기·소방</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-blue w-40"></span></span></div>
-            <div class="mini-gantt-row"><span class="mini-gantt-label">마감·도장</span><span class="mini-gantt-track"><span class="mini-gantt-bar gantt-bar-purple w-35"></span></span></div>
+          <div class="mc-label">인허가 리스크</div>
+          <div class="mc-metric-sm">5건 검토 · 2건 조치</div>
+          <div class="mc-metric-sub">건축법·소방법·식품위생법·하수도법·옥외광고물법</div>
+          <div class="mc-list mc-list-compact">
+            <div class="mc-list-item">
+              <span class="mc-list-item-icon"><span data-icon="alert" data-size="14" class="text-warning"></span></span>
+              <div class="mc-list-item-name">건축법 제19조 <span class="badge badge-warning">신고 대상</span></div>
+            </div>
+            <div class="mc-list-item">
+              <span class="mc-list-item-icon"><span data-icon="alert" data-size="14" class="text-warning"></span></span>
+              <div class="mc-list-item-name">소방시설법 <span class="badge badge-warning">추가 설치</span></div>
+            </div>
+            <div class="mc-list-item">
+              <span class="mc-list-item-icon"><span data-icon="checkCircle" data-size="14" class="text-success"></span></span>
+              <div class="mc-list-item-name">식품위생법 <span class="badge badge-success">충족</span></div>
+            </div>
+            <div class="mc-list-item">
+              <span class="mc-list-item-icon"><span data-icon="checkCircle" data-size="14" class="text-success"></span></span>
+              <div class="mc-list-item-name">하수도법 <span class="badge badge-success">충분</span></div>
+            </div>
+            <div class="mc-list-item">
+              <span class="mc-list-item-icon"><span data-icon="checkCircle" data-size="14" class="text-success"></span></span>
+              <div class="mc-list-item-name">옥외광고물법 <span class="badge badge-success">기준 내</span></div>
+            </div>
           </div>
         </div>
 
         <!-- AI 디자인 시안 -->
-        <div class="solution-mini">
-          <div class="solution-mini-eyebrow">시각화</div>
-          <h4 class="solution-mini-title">AI 디자인 시안</h4>
-          <p class="solution-mini-desc">내 평면 기반 추천 시안 · 챗으로 자유 재생성</p>
-          <div class="mini-mood-grid">
-            <div class="mini-mood">
-              <div data-mood="warm" data-hue="30" data-height="60"></div>
-              <span class="mini-mood-label">Warm Wood</span>
+        <div class="card animate-in module-card">
+          <div class="mc-head">
+            <span class="icon-box-44 icon-box-tint-purple"><span data-icon="palette" data-size="22"></span></span>
+            <span class="signal signal-success signal-sm ml-auto"><span class="pulse"></span>생성 완료</span>
+          </div>
+          <div class="mc-label">AI 레퍼런스 디자인 시안</div>
+          <div class="mc-metric-sm">시안 생성 완료</div>
+          <div class="mc-design-chips">
+            <span class="chip chip-sm">모던</span>
+            <span class="chip chip-sm">따뜻한</span>
+            <span class="chip chip-sm">빈티지</span>
+            <span class="chip chip-sm">원목</span>
+            <span class="chip chip-sm">펜던트</span>
+          </div>
+          <div class="mc-design-image-wrap">
+            <div data-mood="warm" data-hue="30" data-height="140"></div>
+          </div>
+        </div>
+
+        <!-- 시공 기간 -->
+        <div class="card animate-in module-card">
+          <div class="mc-head">
+            <span class="icon-box-44 icon-box-tint-orange"><span data-icon="calendar" data-size="22"></span></span>
+            <span class="signal signal-warning signal-sm ml-auto"><span class="pulse"></span>정상 범위</span>
+          </div>
+          <div class="mc-label">시공 기간</div>
+          <div class="mc-metric">약 6~8주</div>
+          <div class="mc-metric-sub">위 시안 기준 · 8개 공정 · 동시작업률 22%</div>
+          <div class="mc-bar-list">
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">철거·반출</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-orange w-10"></span></div>
+              <span class="mc-bar-row-value">0.5주</span>
             </div>
-            <div class="mini-mood">
-              <div data-mood="vintage" data-hue="20" data-height="60"></div>
-              <span class="mini-mood-label">Brick Loft</span>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">설비 1차</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-teal w-25"></span></div>
+              <span class="mc-bar-row-value">~1.5주</span>
             </div>
-            <div class="mini-mood">
-              <div data-mood="modern" data-hue="200" data-height="60"></div>
-              <span class="mini-mood-label">Cool Modern</span>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">목공·골조</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-green w-50"></span></div>
+              <span class="mc-bar-row-value">~2.5주</span>
             </div>
-            <div class="mini-mood">
-              <div data-mood="minimal" data-hue="50" data-height="60"></div>
-              <span class="mini-mood-label">Bright Minimal</span>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">설비 2차</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-blue w-35"></span></div>
+              <span class="mc-bar-row-value">~1주</span>
+            </div>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">마감·도장</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-yellow w-60"></span></div>
+              <span class="mc-bar-row-value">~2주</span>
             </div>
           </div>
         </div>
+
+        <!-- 표준 견적 -->
+        <div class="card animate-in module-card">
+          <div class="mc-head">
+            <span class="icon-box-44 icon-box-tint-green"><span data-icon="receipt" data-size="22"></span></span>
+            <span class="signal signal-warning signal-sm ml-auto"><span class="pulse"></span>평당 159만</span>
+          </div>
+          <div class="mc-label">표준 견적</div>
+          <div class="mc-metric">4,540<span class="mc-metric-suffix">만원대</span></div>
+          <div class="mc-metric-sub">위 시안 기준 · 예상 범위 ±680 · 해운대구 평균 대비 +8%</div>
+          <div class="mc-bar-list">
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">설비공사</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-green w-70"></span></div>
+              <span class="mc-bar-row-value">약 1,540만</span>
+            </div>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">주방·가구</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-yellow w-60"></span></div>
+              <span class="mc-bar-row-value">약 1,280만</span>
+            </div>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">마감재</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-blue w-50"></span></div>
+              <span class="mc-bar-row-value">약 950만</span>
+            </div>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">철거·반출</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-orange w-35"></span></div>
+              <span class="mc-bar-row-value">약 480만</span>
+            </div>
+            <div class="mc-bar-row">
+              <span class="mc-bar-row-label">설계·감리</span>
+              <div class="mc-bar-row-track"><span class="mc-bar-row-fill is-teal w-25"></span></div>
+              <span class="mc-bar-row-value">약 290만</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <!-- 3단계: 와이드 OUTPUT 카드 (마지막에 가로로 길게) -->
+    <div class="one-report-card one-report-card-wide">
+      <div class="one-report-card-text">
+        <span class="one-report-eyebrow">OUTPUT · ONE REPORT</span>
+        <h3 class="one-report-title">모든 답변이 한 장의 리포트로,<br/>임대인 협의·시공사 비교에 바로 활용.</h3>
+        <p class="one-report-desc">PDF · 4개 챕터 · 6~8페이지. 표지·체크리스트까지 자동 생성하고, 공유 링크는 발행일로부터 90일간 유효합니다. 인허가 준비·시공사 견적 의뢰 시 그대로 사용하실 수 있습니다.</p>
+      </div>
+      <div class="pdf-stack">
+        <div class="pdf-sheet pdf-sheet-1"></div>
+        <div class="pdf-sheet pdf-sheet-2"></div>
+        <div class="pdf-sheet pdf-sheet-3"></div>
+        <div class="pdf-sheet pdf-sheet-4"></div>
+        <div class="pdf-sheet pdf-sheet-5"></div>
       </div>
     </div>
   </div>
@@ -230,9 +290,9 @@
       <div class="pricing-tag">월 1건 미리보기 진단</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-list">
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 통합 신호등 결과 (적/황/녹)</li>
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 평당 단가 범위 (1줄)</li>
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 디자인 레퍼런스 4장</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 통합 신호등 결과 (적/황/녹)</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 평당 단가 범위 (1줄)</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 디자인 레퍼런스 4장</li>
         <li class="text-subtle"><span data-icon="lock" data-size="14"></span> 모듈별 상세 분석</li>
       </ul>
       <button class="btn btn-outline btn-md pricing-bottom-cta">무료로 시작</button>
@@ -246,10 +306,10 @@
       <div class="pricing-tag">자동 갱신 없음 · 한 자리만</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-list">
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> <strong>Free 모든 항목 +</strong></li>
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 4개 모듈 상세 페이지</li>
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 내 공간 AI 시안 4장</li>
-        <li><span data-icon="check" data-size="14" data-color="var(--ws-success)"></span> 브랜드 PDF · 공유 링크</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> <strong>Free 모든 항목 +</strong></li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 4개 모듈 상세 페이지</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 내 공간 AI 시안 4장</li>
+        <li><span data-icon="check" data-size="14" class="text-success"></span> 브랜드 PDF · 공유 링크</li>
       </ul>
       <a class="btn btn-primary btn-md pricing-bottom-cta" href="4_마이페이지.html#plans">단건 결제 →</a>
     </div>
@@ -261,10 +321,10 @@
       <div class="pricing-tag text-faded-7">시공사 전용 구독제</div>
       <div class="pricing-divider-dark"></div>
       <ul class="pricing-list text-faded-9">
-        <li><span data-icon="check" data-size="14" data-color="#80FF99"></span> <strong class="text-white">Single 모든 항목 +</strong></li>
-        <li><span data-icon="check" data-size="14" data-color="#80FF99"></span> 월 무제한 통합 분석</li>
-        <li><span data-icon="check" data-size="14" data-color="#80FF99"></span> 멤버 시트 5인 포함</li>
-        <li><span data-icon="check" data-size="14" data-color="#80FF99"></span> 화이트라벨 PDF (로고/색상)</li>
+        <li><span data-icon="check" data-size="14" class="text-success-bright"></span> <strong class="text-white">Single 모든 항목 +</strong></li>
+        <li><span data-icon="check" data-size="14" class="text-success-bright"></span> 월 무제한 통합 분석</li>
+        <li><span data-icon="check" data-size="14" class="text-success-bright"></span> 멤버 시트 5인 포함</li>
+        <li><span data-icon="check" data-size="14" class="text-success-bright"></span> 화이트라벨 PDF (로고/색상)</li>
       </ul>
       <a class="btn btn-md pricing-bottom-cta btn-white-on-dark" href="4_마이페이지.html#plans">구독 시작 →</a>
     </div>
