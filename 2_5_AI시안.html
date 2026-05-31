@@ -14,7 +14,7 @@
 <header class="gnb">
   <div class="gnb-left">
     <a href="1_랜딩.html" class="logo">
-      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+      <img src="images/logo.png" alt="인테리어 첫단추" class="logo-img"/>
     </a>
     <nav class="gnb-nav">
       <a href="1_랜딩.html">서비스 소개</a>
@@ -139,14 +139,67 @@
 
     <!-- 하단 네비 -->
     <div class="bottom-nav">
-      <a class="btn btn-secondary btn-md" href="2_입력.html#design"><span data-icon="arrowLeft" data-size="14"></span> 디자인 정보 수정</a>
-      <a class="btn btn-primary btn-md btn-min-200" href="3_결과.html#loading">통합 분석 완료 <span data-icon="arrowRight" data-size="14"></span></a>
+      <a class="btn btn-secondary btn-md" href="2_입력_디자인.html#design"><span data-icon="arrowLeft" data-size="14"></span> 디자인 정보 수정</a>
+      <a class="btn btn-primary btn-md btn-min-200" id="ai-finish-btn" href="3_결과.html#loading">맞춤 분석 완료 <span data-icon="arrowRight" data-size="14"></span></a>
     </div>
 
   </div>
 </section>
 
 </main>
+
+<!-- ===== 결제 모달 (AI 시안 페이지 토큰 게이트) — V2 디자인 ===== -->
+<div class="paywall-modal" id="ai-paywall-modal">
+  <div class="paywall-backdrop" id="ai-paywall-backdrop"></div>
+  <div class="paywall-v2-content">
+    <button class="paywall-v2-close" id="ai-paywall-close" aria-label="닫기"><span data-icon="x" data-size="16"></span></button>
+
+    <!-- 헤더: 배지 + 제목 + 부제 + 우상단 일러스트 -->
+    <div class="paywall-v2-header">
+      <span class="paywall-v2-badge"><span data-icon="lock" data-size="12"></span> 유료 콘텐츠</span>
+      <h2 class="paywall-v2-title">AI 디자인 시안 생성은<br/><span class="text-brand">결제 후</span> 이용 가능합니다.</h2>
+      <p class="paywall-v2-desc">AI 대화 · 시안 생성 · 참고 이미지 분석은 토큰을 사용하는 유료 기능입니다.<br/>결제 즉시 모든 기능이 잠금 해제됩니다.</p>
+      <div class="paywall-v2-hero" aria-hidden="true">
+        <div class="paywall-v2-hero-icon"><span data-icon="sparkles" data-size="28"></span></div>
+      </div>
+    </div>
+
+    <!-- 결제 시 포함 항목: 2x2 그리드 (선택한 플랜에 따라 JS가 채움) -->
+    <div class="paywall-v2-features">
+      <div class="paywall-v2-features-title">결제 시 포함 항목</div>
+      <div class="paywall-v2-features-grid" id="paywall-v2-features-grid"></div>
+    </div>
+
+    <!-- 결제 옵션 3개 -->
+    <div class="paywall-v2-plans">
+      <button type="button" class="paywall-v2-plan is-selected" id="ai-pay-single" data-plan="single">
+        <span class="paywall-v2-plan-ribbon">추천</span>
+        <div class="paywall-v2-plan-body">
+          <div class="paywall-v2-plan-title pay-title-text">단건 결제</div>
+        </div>
+        <div class="paywall-v2-plan-price"><span class="pay-price-text">29,000원</span> <span data-icon="arrowRight" data-size="14"></span></div>
+      </button>
+
+      <button type="button" class="paywall-v2-plan" id="ai-pay-subscription" data-plan="subscription">
+        <span class="paywall-v2-plan-icon"><span data-icon="starFilled" data-size="20"></span></span>
+        <div class="paywall-v2-plan-body">
+          <div class="paywall-v2-plan-title">프로 구독 <span class="paywall-v2-plan-chip-blue">무제한 이용</span></div>
+          <div class="paywall-v2-plan-sub">월 140,000원</div>
+        </div>
+        <span data-icon="arrowRight" data-size="14"></span>
+      </button>
+
+    </div>
+
+    <!-- 신뢰 배지 -->
+    <div class="paywall-v2-trust">
+      <span><span data-icon="shieldCheck" data-size="14"></span> PG사 안전 결제</span>
+      <span><span data-icon="refresh" data-size="14"></span> 시안 생성 전 100% 환불</span>
+      <span><span data-icon="info" data-size="14"></span> 유효기간 90일</span>
+    </div>
+    <div class="paywall-v2-footnote">결제 즉시 잠금 해제 · 단건은 자동 갱신 없음 · 구독은 언제든 해지</div>
+  </div>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -161,5 +214,165 @@
 
 <script src="js/shared.js"></script>
 <script src="js/aidesign.js"></script>
+<script>
+/* === AI 시안 페이지 토큰 게이트 ===
+   - 페이지 진입 시 결제 안 됐으면 paywall 모달 자동 표시
+   - 토큰 사용 요소(채팅 입력/전송/이미지 생성/업로드) 클릭 시 paywall 재표시
+   - 결제 완료(localStorage) 상태면 잠금 해제 */
+(function(){
+  // AI 시안 페이지 전용 결제 키 (결과 페이지의 결제 상태와 분리해서 토큰 게이트는 독립적으로 동작)
+  const PAID_KEY = 'paid_ai_design_v2';
+  function isPaid() {
+    try { return localStorage.getItem(PAID_KEY) === '1'; } catch (e) { return false; }
+  }
+  function urlSaysPaid() {
+    return new URLSearchParams(location.search).get('paid') === 'true';
+  }
+  // 결제 페이지에서 paid=true로 돌아온 경우 영구 저장
+  if (urlSaysPaid()) {
+    try { localStorage.setItem(PAID_KEY, '1'); } catch (e) {}
+  }
+
+  if (isPaid()) return; // 결제 완료 — 잠금 없음
+
+  const params = new URLSearchParams(location.search);
+  const modulesRaw = (params.get('modules') || 'design').split(',').map(function(s){return s.trim();}).filter(Boolean);
+  const isBundle = modulesRaw.indexOf('bundle') >= 0 || modulesRaw.length >= 3;
+  const validSingles = modulesRaw.filter(function(m){ return m === 'permit' || m === 'estimate' || m === 'design'; });
+  const amount = isBundle ? 60000 : Math.max(1, validSingles.length) * 29000;
+  const amountText = amount.toLocaleString('ko-KR') + '원';
+  const paramModules = params.get('modules') || 'design';
+
+  function openPaywall() {
+    const m = document.getElementById('ai-paywall-modal');
+    if (m) m.classList.add('is-open');
+  }
+  function closePaywall() {
+    const m = document.getElementById('ai-paywall-modal');
+    if (m) m.classList.remove('is-open');
+  }
+
+  // 플랜별 "결제 시 포함 항목" (2x2 그리드)
+  const PLAN_FEATURES = {
+    single: [
+      { icon:'mail',    title:'AI 어시스턴트와의 디자인 대화 무제한', sub:'원하는 디자인을 자유롭게 대화로 완성' },
+      { icon:'image',   title:'AI 디자인 시안 1안 원본', chip:'4096×2304', sub:'고해상도 원본 파일 제공' },
+      { icon:'search',  title:'참고 이미지 · 평면도 분석', sub:'이미지와 도면을 정밀하게 분석' },
+      { icon:'download',title:'브랜드 PDF 다운로드 + 공유 링크', sub:'PDF 저장 및 링크로 간편하게 공유' }
+    ],
+    subscription: [
+      { icon:'sparkles',title:'AI 디자인 시안 무제한 재생성', sub:'횟수 제한 없이 새로운 컨셉 시도' },
+      { icon:'mail',    title:'대화형 시안 챗 무제한 이용', sub:'무드·자재·컬러를 자유롭게 조합' },
+      { icon:'image',   title:'4K 원본 이미지 무제한 다운로드', chip:'4096×2304', sub:'모든 시안 고해상도 저장' },
+      { icon:'user',    title:'멤버 시트 5인 + 권한 관리', sub:'팀과 함께 공동 작업 가능' }
+    ]
+  };
+
+  function renderFeatures(planType) {
+    const grid = document.getElementById('paywall-v2-features-grid');
+    if (!grid) return;
+    const items = PLAN_FEATURES[planType] || PLAN_FEATURES.single;
+    grid.innerHTML = items.map(function(f){
+      const chip = f.chip ? ' <span class="pvf-chip">' + f.chip + '</span>' : '';
+      return '<div class="paywall-v2-feature">' +
+             '<span class="pvf-icon"><span data-icon="' + f.icon + '" data-size="20"></span></span>' +
+             '<div><div class="pvf-title">' + f.title + chip + '</div>' +
+             '<div class="pvf-sub">' + f.sub + '</div></div></div>';
+    }).join('');
+    if (typeof renderIcons === 'function') renderIcons(grid);
+  }
+
+  function selectPlan(planType) {
+    document.querySelectorAll('.paywall-v2-plan').forEach(function(opt){
+      opt.classList.toggle('is-selected', opt.getAttribute('data-plan') === planType);
+    });
+    renderFeatures(planType);
+    // 프로 구독 선택 시 결제 시 포함 항목 박스 배경을 연한 파란색으로
+    const features = document.querySelector('.paywall-v2-features');
+    if (features) features.classList.toggle('is-plan-subscription', planType === 'subscription');
+  }
+
+  function init() {
+    // 단건 결제 옵션: 가격/라벨을 활성 모듈에 맞게 갱신
+    const singleBtn = document.getElementById('ai-pay-single');
+    if (singleBtn) {
+      const titleEl = singleBtn.querySelector('.pay-title-text');
+      const priceEl = singleBtn.querySelector('.pay-price-text');
+      if (titleEl) titleEl.textContent = isBundle ? '풀세트 결제' : '단건 결제';
+      if (priceEl) priceEl.textContent = amountText;
+      const ribbon = singleBtn.querySelector('.paywall-v2-plan-ribbon');
+      if (ribbon && isBundle) ribbon.textContent = 'BEST';
+    }
+
+    // 결제 페이지로 이동
+    function gotoPay(planType) {
+      let url;
+      if (planType === 'subscription') {
+        url = '7_결제.html?plan=subscription&return=aidesign';
+      } else {
+        url = '7_결제.html?plan=single&modules=' + encodeURIComponent(paramModules) + '&return=aidesign';
+      }
+      location.href = url;
+    }
+
+    // 옵션 클릭: 새 옵션이면 선택+항목 변경, 이미 선택된 옵션이면 결제 이동
+    document.querySelectorAll('.paywall-v2-plan').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        const plan = opt.getAttribute('data-plan');
+        const alreadySelected = opt.classList.contains('is-selected');
+        if (alreadySelected) {
+          gotoPay(plan);
+        } else {
+          selectPlan(plan);
+        }
+      });
+    });
+
+    // 초기 선택: 단건
+    selectPlan('single');
+
+    // 진입 즉시 paywall 표시
+    openPaywall();
+
+    // 토큰 사용 요소들에 잠금 처리 (캡처 단계로 다른 핸들러보다 먼저 차단)
+    const lockSelectors = ['#chat-input', '#chat-send', '#generate-btn'];
+    const lockButtons = document.querySelectorAll('.chat-attach-row button');
+
+    function lockHandler(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openPaywall();
+    }
+
+    lockSelectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        el.addEventListener('click', lockHandler, true);
+        el.addEventListener('focus', function(e){ openPaywall(); }, true);
+        el.addEventListener('keydown', lockHandler, true);
+        el.addEventListener('input', lockHandler, true);
+      });
+    });
+    lockButtons.forEach(function(btn){
+      btn.addEventListener('click', lockHandler, true);
+    });
+
+    // "맞춤 분석 완료" 버튼도 잠금 (결제 안 한 상태에서 결과 페이지로 가면 안 됨)
+    const finishBtn = document.getElementById('ai-finish-btn');
+    if (finishBtn) finishBtn.addEventListener('click', lockHandler, true);
+
+    // 모달 닫기
+    const closeBtn = document.getElementById('ai-paywall-close');
+    const backdrop = document.getElementById('ai-paywall-backdrop');
+    if (closeBtn) closeBtn.addEventListener('click', closePaywall);
+    if (backdrop) backdrop.addEventListener('click', closePaywall);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 </body>
 </html>

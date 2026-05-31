@@ -31,12 +31,17 @@
 
 <main class="main-min-h">
 
-<!-- ===== 상단 진행도 바 (5단계 공통) ===== -->
+<!-- ===== 상단 진행도 바 (견적 전용 · 4단계) ===== -->
 <div class="top-bar-progress">
   <div class="page-narrow pt-0 pb-0">
+    <div class="active-module-chip">
+      <span class="amc-dot"></span>
+      <span class="amc-text">분석 진행 중</span>
+      <span class="amc-name">공사 견적 + 공기</span>
+    </div>
     <div class="flex justify-between items-center mb-6">
-      <span class="text-12 fw-700 text-strong" id="top-progress-label">1 / 5 · 주소</span>
-      <span class="text-12 text-subtle" id="top-progress-pct">20%</span>
+      <span class="text-12 fw-700 text-strong" id="top-progress-label">1 / 4 · 기본</span>
+      <span class="text-12 text-subtle" id="top-progress-pct">25%</span>
     </div>
     <div class="mod-progress-track mod-progress-track--thin">
       <div class="mod-bar" id="top-progress-bar"></div>
@@ -53,8 +58,7 @@
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
       <div class="step is-active"><span class="dot">2</span><span>주소</span></div><span class="sep"></span>
       <div class="step"><span class="dot">3</span><span>업종</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+      <div class="step"><span class="dot">4</span><span>참고</span></div>
     </div>
     <div class="step-header">
       <div class="page-header-row">
@@ -146,8 +150,7 @@
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
       <div class="step is-active"><span class="dot">3</span><span>업종</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+      <div class="step"><span class="dot">4</span><span>참고</span></div>
     </div>
     <div class="step-header">
       <div class="page-header-row">
@@ -305,8 +308,7 @@
       <div class="step is-active"><span class="dot">1</span><span>기본</span></div><span class="sep"></span>
       <div class="step"><span class="dot">2</span><span>주소</span></div><span class="sep"></span>
       <div class="step"><span class="dot">3</span><span>업종</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+      <div class="step"><span class="dot">4</span><span>참고</span></div>
     </div>
     <div class="step-header">
       <div class="page-header-row">
@@ -341,8 +343,7 @@
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
       <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>업종</span></div><span class="sep"></span>
-      <div class="step is-active"><span class="dot">4</span><span>참고</span></div><span class="sep"></span>
-      <div class="step"><span class="dot">5</span><span>디자인</span></div>
+      <div class="step is-active"><span class="dot">4</span><span>참고</span></div>
     </div>
     <div class="step-header">
       <div class="page-header-row">
@@ -480,158 +481,7 @@
 
     <div class="bottom-nav">
       <button class="btn btn-secondary btn-md" data-go="biztype"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
-      <button class="btn btn-primary btn-md btn-min-160" data-go="design">다음 단계 <span data-icon="arrowRight" data-size="14"></span></button>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SCREEN 5 — 디자인 콘셉트
-============================================================ -->
-<section class="screen" id="design">
-  <div class="page-narrow">
-    <div class="stepper">
-      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>기본</span></div><span class="sep"></span>
-      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>주소</span></div><span class="sep"></span>
-      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>업종</span></div><span class="sep"></span>
-      <div class="step is-done"><span class="dot"><span data-icon="check" data-size="12" data-stroke="3"></span></span><span>참고</span></div><span class="sep"></span>
-      <div class="step is-active"><span class="dot">5</span><span>디자인</span></div>
-    </div>
-    <div class="step-header">
-      <div class="page-header-row">
-        <span class="icon-box"><span data-icon="palette" data-size="20"></span></span>
-        <h1 class="page-title mt-0">디자인 콘셉트</h1>
-        <span class="badge badge-neutral ml-auto">약 1분 소요</span>
-      </div>
-      <p class="page-subtitle mb-0">AI가 생성할 시안의 무드·마감재·조명을 알려주세요.</p>
-    </div>
-
-    <!-- ① 요청 범위 (시안 제작 전 어떤 공간을 작업할지 정하기) -->
-    <div class="card mb-16">
-      <div class="section-title">① 요청 범위 <span class="req">*</span><span class="text-12 fw-400 text-subtle ml-8">복수 선택 가능 · 시안 제작 전 어떤 공간을 작업할지 정하기</span></div>
-      <div class="flex flex-wrap gap-10">
-        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 실내 디자인</span>
-        <span class="chip chip-lg"> 외관 디자인</span>
-        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 주방</span>
-        <span class="chip chip-lg"> 룸 (독립공간)</span>
-        <span class="chip chip-lg is-selected"><span data-icon="check" data-size="14" data-stroke="3"></span> 화장실</span>
-      </div>
-    </div>
-
-    <!-- ② 레퍼런스 이미지 첨부 -->
-    <div class="card mb-16">
-      <div class="section-title">② 레퍼런스 이미지 첨부 <span class="text-12 fw-400 text-subtle ml-8">PNG · JPG · HEIC · 여러 장 (선택)</span></div>
-      <div class="text-12 text-subtle mb-8"><span data-icon="info" data-size="12"></span> 마음에 드는 공간·자재·분위기 사진을 여러 장 첨부해 주세요. AI 시안 생성 시 참고됩니다.</div>
-      <div class="placeholder-image flex-col h-120">
-        <span data-icon="image" data-size="22" class="text-subtle"></span>
-        <div class="text-13 fw-600 text-default mt-8">사진을 끌어 놓거나 클릭하여 추가</div>
-        <div class="text-11 text-subtle mt-4">PNG · JPG · HEIC · 여러 장 (각 10MB)</div>
-      </div>
-    </div>
-
-    <!-- ③ 전체 분위기 + 비율 -->
-    <div class="card">
-      <div class="section-title">③ 전체 분위기 <span class="req">*</span></div>
-      <div class="grid cols-2fr-1fr gap-16">
-        <div>
-          <div class="field-label">분위기 키워드</div>
-          <input class="input" placeholder="예: 모던, 따뜻한, 빈티지 한 스푼"/>
-          <div class="text-12 text-subtle mt-6">예시 · 모던 / 고급 / 빈티지 / 산업 / 내추럴</div>
-        </div>
-        <div>
-          <div class="field-label">3D 시안 비율</div>
-          <div class="select-wrap">
-            <select class="input">
-              <option>16:9 (가로)</option>
-              <option>4:5</option><option>1:1</option><option>9:16</option>
-            </select>
-            <span data-icon="chevronDown" data-size="16" class="chev"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ④ 벽 마감재 -->
-    <div class="card mt-24">
-      <div class="section-title">④ 벽 마감재 <span class="req">*</span> <span class="text-12 fw-400 text-subtle ml-8">복수 선택</span></div>
-      <div class="flex flex-wrap gap-8">
-        <span class="chip-square is-selected">벽돌</span>
-        <span class="chip-square">도장(페인트)</span>
-        <span class="chip-square">벽지</span>
-        <span class="chip-square">타일</span>
-        <span class="chip-square">아트월</span>
-        <span class="chip-square">템바보드</span>
-        <span class="chip-square">필름</span>
-        <span class="chip-square">기타</span>
-      </div>
-    </div>
-
-    <!-- ⑤ 바닥 마감재 -->
-    <div class="card mt-24">
-      <div class="section-title">⑤ 바닥 마감재 <span class="req">*</span></div>
-
-      <div class="scope-block">
-        <div class="scope-block-title">타일 <span class="scope-block-sub">복수 선택</span></div>
-        <div class="flex flex-wrap gap-8">
-          <span class="chip">포세린 타일</span>
-          <span class="chip">데코 타일</span>
-          <span class="chip">도기질 타일</span>
-          <span class="chip">카펫 타일</span>
-          <span class="chip">테라조 타일</span>
-        </div>
-      </div>
-
-      <div class="scope-block">
-        <div class="scope-block-title">마루 <span class="scope-block-sub">복수 선택</span></div>
-        <div class="flex flex-wrap gap-8">
-          <span class="chip">강마루</span>
-          <span class="chip is-selected">강화마루</span>
-          <span class="chip">원목마루</span>
-        </div>
-      </div>
-
-      <div class="scope-block">
-        <div class="scope-block-title">그 외</div>
-        <div class="flex flex-wrap gap-8">
-          <span class="chip">장판</span>
-          <span class="chip">콘크리트 폴리싱</span>
-          <span class="chip">에폭시</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ⑥ 조명 -->
-    <div class="card mt-24">
-      <div class="section-title">⑥ 조명</div>
-
-      <div class="field-label">밝기 레퍼런스 이미지 <span class="text-12 fw-400 text-subtle ml-4">PNG · JPG · HEIC · 여러 장</span></div>
-      <div class="text-12 text-subtle mb-8"><span data-icon="info" data-size="12"></span> 원하시는 밝기·분위기의 공간 사진을 첨부해 주세요.</div>
-      <div class="placeholder-image flex-col h-120 mb-24">
-        <span data-icon="image" data-size="22" class="text-subtle"></span>
-        <div class="text-13 fw-600 text-default mt-8">사진을 끌어 놓거나 클릭하여 추가</div>
-        <div class="text-11 text-subtle mt-4">PNG · JPG · HEIC · 여러 장 (각 10MB)</div>
-      </div>
-
-      <div class="field-label">원하는 조명 종류 <span class="text-12 fw-400 text-subtle ml-4">복수 선택 가능</span></div>
-      <div class="flex flex-wrap gap-8">
-        <span class="chip-square">바리솔</span>
-        <span class="chip-square is-selected">LED</span>
-        <span class="chip-square">다운라이트</span>
-        <span class="chip-square">간접조명</span>
-        <span class="chip-square">라인조명</span>
-        <span class="chip-square">레일+스포트라이트</span>
-        <span class="chip-square is-selected">팬던트</span>
-        <span class="chip-square">레일조명</span>
-        <span class="chip-square">벽부형 조명</span>
-      </div>
-    </div>
-
-    <div class="bottom-nav">
-      <div class="flex gap-8">
-        <button class="btn btn-secondary btn-md" data-go="reference"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
-        <button class="btn btn-outline btn-md"><span data-icon="download" data-size="14"></span> 설문지 PDF 저장</button>
-      </div>
-      <a class="btn btn-primary btn-md btn-min-200" href="2_5_AI시안.html">✨ AI 시안 생성으로 <span data-icon="arrowRight" data-size="14"></span></a>
+      <a class="btn btn-primary btn-md btn-min-200" href="3_결과.html?modules=estimate"><span data-icon="sparkles" data-size="14"></span> 견적·공기 분석 시작</a>
     </div>
   </div>
 </section>
@@ -649,53 +499,8 @@
   <span>support@convil.aiapp.help</span>
 </footer>
 
+<script>window.PAGE_MODULE_QUERY = 'estimate';</script>
 <script src="js/shared.js"></script>
-<script src="js/input.js?v=3"></script>
-<script>
-/* === stepper 강제 처리: 외부 JS가 캐시·로드 문제로 안 먹힐 때를 대비한 안전망 === */
-(function(){
-  var qs = new URLSearchParams(location.search);
-  var raw = (qs.get('modules') || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
-  var moduleScreens = {
-    permit:   ['basic','address','biztype'],
-    estimate: ['basic','address','biztype','reference'],
-    design:   ['basic','address','biztype','reference','design'],
-    bundle:   ['basic','address','biztype','reference','design']
-  };
-  var modules = raw.filter(function(m){return moduleScreens[m];});
-  if (modules.length === 0) modules = ['bundle'];
-  var active = {};
-  modules.forEach(function(m){ moduleScreens[m].forEach(function(s){active[s]=true;}); });
-  var stepIdByOrder = ['basic','address','biztype','reference','design'];
-
-  function applyStepperHide() {
-    var steppers = document.querySelectorAll('.stepper');
-    steppers.forEach(function(stepper){
-      var children = Array.from(stepper.children);
-      var stepEls = children.filter(function(el){ return el.classList && el.classList.contains('step'); });
-      var sepEls  = children.filter(function(el){ return el.classList && el.classList.contains('sep'); });
-      var lastVisible = -1;
-      stepEls.forEach(function(el, i){
-        var sid = stepIdByOrder[i];
-        if (active[sid]) { el.classList.remove('is-hidden'); lastVisible = i; }
-        else { el.classList.add('is-hidden'); }
-      });
-      sepEls.forEach(function(el, i){
-        if (i >= lastVisible) el.classList.add('is-hidden');
-        else el.classList.remove('is-hidden');
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyStepperHide);
-  } else {
-    applyStepperHide();
-  }
-  // 안전망: 다른 스크립트가 동기적으로 stepper를 다시 그리는 경우 한 번 더 시도
-  setTimeout(applyStepperHide, 0);
-  setTimeout(applyStepperHide, 300);
-})();
-</script>
+<script src="js/input.js?v=4"></script>
 </body>
 </html>

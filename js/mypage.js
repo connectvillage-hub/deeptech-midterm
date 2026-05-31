@@ -49,10 +49,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 플랜 카드 클릭 시 선택
+  // 플랜 카드 클릭 시 선택 + 결제 버튼 URL 갱신
+  const checkoutBtn = document.getElementById('plan-checkout-btn');
+  function updateCheckoutHref() {
+    if (!checkoutBtn) return;
+    const selected = document.querySelector('.plan-card.is-selected');
+    const plan = selected ? selected.getAttribute('data-plan') : 'single';
+    if (plan === 'single') {
+      checkoutBtn.setAttribute('href', '1_5_모듈선택.html');
+    } else if (plan === 'bundle') {
+      checkoutBtn.setAttribute('href', '7_결제.html?plan=single&modules=bundle&return=results');
+    } else if (plan === 'pro') {
+      checkoutBtn.setAttribute('href', '7_결제.html?plan=subscription&return=mypage');
+    }
+  }
   document.querySelectorAll('.plan-card').forEach(function(card) {
     card.addEventListener('click', function() {
       selectPlan(card.getAttribute('data-plan'));
+      updateCheckoutHref();
     });
   });
 
@@ -64,4 +78,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   selectPlan('single');
+  if (typeof updateCheckoutHref === 'function') updateCheckoutHref();
 });

@@ -31,11 +31,16 @@
 
 <main class="main-min-h">
 
-<!-- ===== 상단 진행도 바 (5단계 공통) ===== -->
+<!-- ===== 상단 진행도 바 (풀세트 · 5단계) ===== -->
 <div class="top-bar-progress">
   <div class="page-narrow pt-0 pb-0">
+    <div class="active-module-chip">
+      <span class="amc-dot"></span>
+      <span class="amc-text">분석 진행 중</span>
+      <span class="amc-name">풀세트 · 인허가 + 견적 + 디자인</span>
+    </div>
     <div class="flex justify-between items-center mb-6">
-      <span class="text-12 fw-700 text-strong" id="top-progress-label">1 / 5 · 주소</span>
+      <span class="text-12 fw-700 text-strong" id="top-progress-label">1 / 5 · 기본</span>
       <span class="text-12 text-subtle" id="top-progress-pct">20%</span>
     </div>
     <div class="mod-progress-track mod-progress-track--thin">
@@ -631,7 +636,7 @@
         <button class="btn btn-secondary btn-md" data-go="reference"><span data-icon="arrowLeft" data-size="14"></span> 이전</button>
         <button class="btn btn-outline btn-md"><span data-icon="download" data-size="14"></span> 설문지 PDF 저장</button>
       </div>
-      <a class="btn btn-primary btn-md btn-min-200" href="2_5_AI시안.html">✨ AI 시안 생성으로 <span data-icon="arrowRight" data-size="14"></span></a>
+      <a class="btn btn-primary btn-md btn-min-200" href="2_5_AI시안.html?modules=bundle">✨ AI 시안 생성으로 <span data-icon="arrowRight" data-size="14"></span></a>
     </div>
   </div>
 </section>
@@ -649,53 +654,8 @@
   <span>support@convil.aiapp.help</span>
 </footer>
 
+<script>window.PAGE_MODULE_QUERY = 'bundle';</script>
 <script src="js/shared.js"></script>
-<script src="js/input.js?v=3"></script>
-<script>
-/* === stepper 강제 처리: 외부 JS가 캐시·로드 문제로 안 먹힐 때를 대비한 안전망 === */
-(function(){
-  var qs = new URLSearchParams(location.search);
-  var raw = (qs.get('modules') || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
-  var moduleScreens = {
-    permit:   ['basic','address','biztype'],
-    estimate: ['basic','address','biztype','reference'],
-    design:   ['basic','address','biztype','reference','design'],
-    bundle:   ['basic','address','biztype','reference','design']
-  };
-  var modules = raw.filter(function(m){return moduleScreens[m];});
-  if (modules.length === 0) modules = ['bundle'];
-  var active = {};
-  modules.forEach(function(m){ moduleScreens[m].forEach(function(s){active[s]=true;}); });
-  var stepIdByOrder = ['basic','address','biztype','reference','design'];
-
-  function applyStepperHide() {
-    var steppers = document.querySelectorAll('.stepper');
-    steppers.forEach(function(stepper){
-      var children = Array.from(stepper.children);
-      var stepEls = children.filter(function(el){ return el.classList && el.classList.contains('step'); });
-      var sepEls  = children.filter(function(el){ return el.classList && el.classList.contains('sep'); });
-      var lastVisible = -1;
-      stepEls.forEach(function(el, i){
-        var sid = stepIdByOrder[i];
-        if (active[sid]) { el.classList.remove('is-hidden'); lastVisible = i; }
-        else { el.classList.add('is-hidden'); }
-      });
-      sepEls.forEach(function(el, i){
-        if (i >= lastVisible) el.classList.add('is-hidden');
-        else el.classList.remove('is-hidden');
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyStepperHide);
-  } else {
-    applyStepperHide();
-  }
-  // 안전망: 다른 스크립트가 동기적으로 stepper를 다시 그리는 경우 한 번 더 시도
-  setTimeout(applyStepperHide, 0);
-  setTimeout(applyStepperHide, 300);
-})();
-</script>
+<script src="js/input.js?v=4"></script>
 </body>
 </html>

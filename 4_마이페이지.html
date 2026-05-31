@@ -14,7 +14,7 @@
 <header class="gnb">
   <div class="gnb-left">
     <a href="1_랜딩.html" class="logo">
-      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+      <img src="images/logo.png" alt="인테리어 첫단추" class="logo-img"/>
     </a>
     <nav class="gnb-nav">
       <a href="1_랜딩.html">서비스 소개</a>
@@ -365,74 +365,75 @@
 </section>
 
 <!-- ============================================================
-     SCREEN 4 — 구독 플랜
+     SCREEN 4 — 가격 플랜
 ============================================================ -->
 <section class="screen" id="plans">
   <div class="page">
     <div class="section-heading-sm">
       <span class="eyebrow">PRICING</span>
-      <h1 class="page-title text-32 text-center">비즈니스에 맞는 플랜을 선택하세요</h1>
-      <p class="page-subtitle text-center">가입 즉시 무료 진단 1건이 발급됩니다.</p>
+      <h1 class="page-title text-32 text-center">필요한 만큼만, 합리적으로</h1>
+      <p class="page-subtitle text-center">솔루션별 단건 구매 · 풀세트 묶음 할인 · 시공사 무제한 구독 — 세 가지 옵션</p>
     </div>
 
     <div class="grid cols-3 gap-16 mx-auto max-w-1000">
 
-      <!-- Free -->
-      <div class="card plan-card" data-plan="free">
+      <!-- 단건 -->
+      <div class="card plan-card" data-plan="single">
         <div class="flex items-center justify-between">
-          <span class="plan-name">Free</span>
+          <span class="plan-name">단건 결제</span>
           <span class="plan-radio"><span class="plan-dot-inner"></span></span>
         </div>
-        <div class="plan-desc">서비스를 가볍게 체험해보고 싶다면</div>
-        <div class="plan-price">무료</div>
+        <div class="plan-desc">필요한 솔루션 1개만 골라서</div>
+        <div class="plan-price">29,000원<span class="plan-unit">/건</span></div>
         <div class="pricing-divider"></div>
         <ul class="pricing-list">
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 통합 신호등 결과 미리보기</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 리포트 보관 14일</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 워터마크 PDF</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 인허가 / 견적+공기 / 디자인 중 1개 선택</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 해당 모듈 상세 페이지 + PDF</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 공유 링크 (90일 유효)</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 리포트 무기한 보관 · 자동 갱신 없음</li>
         </ul>
       </div>
 
-      <!-- Single (popular) -->
-      <div class="card plan-card" data-plan="single">
+      <!-- 풀세트 (popular) -->
+      <div class="card plan-card" data-plan="bundle">
         <span class="plan-badge-popular"><span data-icon="starFilled" data-size="10" class="mr-4"></span> 추천 플랜</span>
         <div class="flex items-center justify-between">
-          <span class="plan-name">단건 요금제</span>
+          <span class="plan-name">풀세트 결제</span>
           <span class="plan-radio"><span class="plan-dot-inner"></span></span>
         </div>
-        <div class="plan-desc">한 자리, 한 번의 진단이 필요할 때</div>
-        <div class="plan-price">50,000원<span class="plan-unit">/건</span></div>
+        <div class="plan-desc">3개 솔루션을 한 번에 (단건 대비 31% 절감)</div>
+        <div class="plan-price">60,000원<span class="plan-unit">/건</span></div>
         <div class="pricing-divider"></div>
         <ul class="pricing-list">
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 통합 분석 1건 (4개 모듈)</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> AI 디자인 시안 4장 포함</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 브랜드 PDF · 공유 링크</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 리포트 무기한 보관</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 인허가 + 견적·공기 + 디자인 모두</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 맞춤 PDF 리포트 (6 챕터 · 24p)</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> AI 디자인 시안 재생성 7회</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 리포트 무기한 보관 · 자동 갱신 없음</li>
         </ul>
       </div>
 
-      <!-- Pro -->
+      <!-- 프로 구독 -->
       <div class="card plan-card" data-plan="pro">
         <div class="flex items-center justify-between">
           <span class="plan-name">프로 구독</span>
           <span class="plan-radio"><span class="plan-dot-inner"></span></span>
         </div>
-        <div class="plan-desc">시공사 전용 구독제</div>
+        <div class="plan-desc">시공사·중개업·컨설팅 전용</div>
         <div class="plan-price">140,000원<span class="plan-unit">/월</span></div>
         <div class="pricing-divider"></div>
         <ul class="pricing-list">
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 통합 분석 무제한</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 멤버 시트 5인 포함</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> 브랜드 PDF (로고/색상)</li>
-          <li><span data-icon="check" data-size="14" class="text-success"></span> API 호출 1만건</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 월 무제한 분석 (3개 모듈 모두)</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> AI 디자인 시안 무제한 재생성</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 멤버 시트 5인 + 권한 관리</li>
+          <li><span data-icon="check" data-size="14" class="text-success"></span> 화이트라벨 PDF (로고·색상)</li>
         </ul>
       </div>
 
     </div>
 
     <div class="text-center mt-32">
-      <a class="btn btn-primary btn-lg btn-min-280" href="7_결제.html">선택한 플랜으로 결제 <span data-icon="arrowRight" data-size="16"></span></a>
-      <div class="mt-16 text-12 text-subtle">결제 즉시 잠금 해제 · 단건은 자동 갱신 없음 · 구독은 언제든 해지 가능</div>
+      <a class="btn btn-primary btn-lg btn-min-280" id="plan-checkout-btn" href="1_5_모듈선택.html">선택한 플랜으로 결제 <span data-icon="arrowRight" data-size="16"></span></a>
+      <div class="mt-16 text-12 text-subtle">결제 즉시 잠금 해제 · 단건/풀세트는 자동 갱신 없음 · 구독은 언제든 해지 가능</div>
     </div>
   </div>
 </section>

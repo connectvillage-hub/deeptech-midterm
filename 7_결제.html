@@ -14,7 +14,7 @@
 <header class="gnb">
   <div class="gnb-left">
     <a href="1_랜딩.html" class="logo">
-      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+      <img src="images/logo.png" alt="인테리어 첫단추" class="logo-img"/>
     </a>
     <nav class="gnb-nav">
       <a href="1_랜딩.html">서비스 소개</a>
@@ -197,27 +197,80 @@
 
 <script src="js/shared.js"></script>
 <script>
-  // ?plan=single (default) | subscription · ?return=results 처리
+  // ?plan=single|subscription · ?modules=permit,estimate,design,bundle · ?return=results 처리
   (function() {
     const params = new URLSearchParams(location.search);
     const plan = params.get('plan') || 'single';
     const ret = params.get('return') || '';
+    const fmt = function(n){ return n.toLocaleString('ko-KR'); };
+
+    const MODULE_LABELS = {
+      permit: '인허가 법규 검토',
+      estimate: '공사 견적 + 공기',
+      design: 'AI 디자인 시안'
+    };
+
+    const setText = function(id, text){
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
 
     if (plan === 'subscription') {
-      document.getElementById('order-product').textContent = '프로 구독';
-      document.getElementById('order-subtitle').textContent = '월간 자동 결제 · AI 시안 무제한 + 통합 분석 무제한';
-      document.getElementById('order-price').textContent = '140,000원';
-      document.getElementById('order-vat').textContent = '14,000원';
-      document.getElementById('order-discount-row').style.display = 'none';
-      document.getElementById('order-total').textContent = '154,000';
-      document.getElementById('pay-submit-btn').textContent = '154,000원 결제하기 (월간 구독)';
+      setText('order-product', '프로 구독');
+      setText('order-subtitle', '월간 자동 결제 · 3개 모듈 무제한');
+      setText('order-price', '140,000원');
+      setText('order-vat', '14,000원');
+      const discRow = document.getElementById('order-discount-row');
+      if (discRow) discRow.classList.add('is-hidden');
+      setText('order-total', '154,000');
+      setText('pay-submit-btn', '154,000원 결제하기 (월간 구독)');
+    } else {
+      // 단건/풀세트
+      const modulesRaw = (params.get('modules') || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
+      const isBundle = modulesRaw.indexOf('bundle') >= 0 || modulesRaw.length >= 3;
+      const singles = modulesRaw.filter(function(m){ return MODULE_LABELS[m]; });
+
+      let amount, productName, subtitle;
+      if (isBundle) {
+        amount = 60000;
+        productName = '풀세트 결제';
+        subtitle = '인허가 + 견적·공기 + 디자인 (3개 모듈)';
+      } else if (singles.length === 0) {
+        // 폴백: 모듈 정보 없으면 풀세트로
+        amount = 60000;
+        productName = '풀세트 결제';
+        subtitle = '인허가 + 견적·공기 + 디자인 (3개 모듈)';
+      } else {
+        amount = singles.length * 29000;
+        productName = singles.length === 1 ? '단건 결제' : '단건 결제 (' + singles.length + '개 모듈)';
+        subtitle = singles.map(function(m){return MODULE_LABELS[m];}).join(' · ');
+      }
+
+      // VAT 별도 표시 (표시 가격 = 결제 가격), 첫 결제 할인 라인은 숨김
+      const vat = Math.round(amount / 11); // 부가세 포함가 기준 1/11
+      const supply = amount - vat;
+
+      setText('order-product', productName);
+      setText('order-subtitle', subtitle);
+      setText('order-price', fmt(supply) + '원');
+      setText('order-vat', fmt(vat) + '원');
+      const discRow = document.getElementById('order-discount-row');
+      if (discRow) discRow.classList.add('is-hidden');
+      setText('order-total', fmt(amount));
+      setText('pay-submit-btn', fmt(amount) + '원 결제하기');
     }
 
     document.getElementById('pay-submit-btn').addEventListener('click', function() {
-      // 데모: 결제 완료 후 결과 페이지로 (paid=true 플래그)
-      const target = (ret === 'results')
-        ? '3_결과.html?paid=true#results'
-        : '4_마이페이지.html?paid=true#payment-history';
+      const modulesParam = params.get('modules');
+      const modulesQs = modulesParam ? '&modules=' + encodeURIComponent(modulesParam) : '';
+      let target;
+      if (ret === 'aidesign') {
+        target = '2_5_AI시안.html?paid=true' + modulesQs;
+      } else if (ret === 'results') {
+        target = '3_결과.html?paid=true' + modulesQs + '#results';
+      } else {
+        target = '4_마이페이지.html?paid=true#payment-history';
+      }
       location.href = target;
     });
   })();

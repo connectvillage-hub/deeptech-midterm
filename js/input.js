@@ -118,7 +118,30 @@ function setupOwnDesignUpload() {
 }
 
 
-const STEP_ORDER = ['basic', 'address', 'biztype', 'reference', 'design'];
+/* 페이지별 모듈 식별 (각 페이지 HTML이 inline script로 window.PAGE_MODULE_QUERY 설정) */
+const PAGE_MODULE_QUERY = (typeof window !== 'undefined' && window.PAGE_MODULE_QUERY) || 'bundle';
+
+/* STEP_ORDER를 HTML의 첫 .stepper에서 자동 추론
+   각 페이지 HTML 안의 stepper에 실제로 있는 step 라벨만 STEP_ORDER에 포함됨.
+   인허가 페이지에는 step이 [기본/주소/업종] 3개만 있으므로 STEP_ORDER = ['basic','address','biztype']
+   풀세트 페이지에는 5개 모두 있음. */
+function deriveStepOrder() {
+  const stepper = document.querySelector('.stepper');
+  if (!stepper) return ['basic'];
+  const LABEL_TO_ID = { '기본':'basic', '주소':'address', '업종':'biztype', '참고':'reference', '디자인':'design' };
+  const result = [];
+  Array.from(stepper.children).forEach(function(el){
+    if (!el.classList || !el.classList.contains('step')) return;
+    const spans = el.querySelectorAll('span');
+    const lastSpan = spans[spans.length - 1];
+    const text = (lastSpan && lastSpan.textContent.trim()) || '';
+    const id = LABEL_TO_ID[text];
+    if (id) result.push(id);
+  });
+  return result.length ? result : ['basic'];
+}
+
+const STEP_ORDER = deriveStepOrder();
 const STORAGE_KEY = 'interior_input_state_v2';
 
 /* ----- 화면 전환 ----- */
@@ -137,14 +160,17 @@ function showStep(id) {
 function updateTopProgress(stepId) {
   const idx = STEP_ORDER.indexOf(stepId);
   if (idx < 0) return;
-  const pct = ((idx + 1) / STEP_ORDER.length) * 100;
+  const total = STEP_ORDER.length;
+  const pct = ((idx + 1) / total) * 100;
   const label = document.getElementById('top-progress-label');
   const pctEl = document.getElementById('top-progress-pct');
   const bar = document.getElementById('top-progress-bar');
-  if (label) label.textContent = (idx + 1) + ' / 5 · ' + (STEP_LABELS[stepId] || stepId);
+  if (label) label.textContent = (idx + 1) + ' / ' + total + ' · ' + (STEP_LABELS[stepId] || stepId);
   if (pctEl) pctEl.textContent = Math.round(pct) + '%';
   if (bar) bar.style.width = pct + '%';
 }
+
+/* 페이지가 모듈별로 분리됨에 따라 stepper 숨김 / 모듈 라벨은 HTML에 직접 박혀 있음 — JS 처리 불필요 */
 
 function getCurrentStep() {
   const active = document.querySelector('main > .screen.is-active');
@@ -357,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('[data-go]').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       const target = btn.getAttribute('data-go');
-      if (STEP_ORDER.indexOf(target) < 0) return;
+      if (STEP_ORDER.indexOf(target) < 0) return; // 이 페이지에 없는 step은 무시
       e.preventDefault();
       const current = getCurrentStep();
       const goingForward = STEP_ORDER.indexOf(target) > STEP_ORDER.indexOf(current);

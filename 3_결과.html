@@ -14,7 +14,7 @@
 <header class="gnb">
   <div class="gnb-left">
     <a href="1_랜딩.html" class="logo">
-      <span class="mark">C</span><span>CONVIL</span><span class="product-name">인테리어 첫단추</span>
+      <img src="images/logo.png" alt="인테리어 첫단추" class="logo-img"/>
     </a>
     <nav class="gnb-nav">
       <a href="1_랜딩.html">서비스 소개</a>
@@ -44,8 +44,8 @@
       <span id="loading-pct" class="loading-pct">0%</span>
     </div>
     <span class="eyebrow">진행 중 · 평균 30초 소요</span>
-    <h1 class="page-title text-32 text-center mt-8 mb-8">4개 AI 모듈이 동시에 분석 중입니다</h1>
-    <p class="page-subtitle text-center max-w-560">통합 분석은 인허가·견적·공기·디자인 모듈을 병렬 실행합니다.</p>
+    <h1 class="page-title text-32 text-center mt-8 mb-8">선택한 AI 모듈이 동시에 분석 중입니다</h1>
+    <p class="page-subtitle text-center max-w-560">맞춤 분석은 선택하신 모듈을 병렬 실행합니다.</p>
 
     <div class="loading-modules">
       <div id="m-permit" class="card loading-mod-row">
@@ -117,7 +117,7 @@
 <section class="screen" id="results">
   <div class="page">
     <div class="flex items-center gap-12 mb-12 flex-wrap">
-      <span class="badge badge-blue">통합 분석 리포트 #20260511-A720</span>
+      <span class="badge badge-blue">맞춤 분석 리포트 #20260511-A720</span>
       <span class="text-12 text-subtle">2026. 5. 11. 14:32 발행 · 유효기간 90일</span>
       <span class="preview-mode-badge ml-auto"><span data-icon="lock" data-size="11"></span> 무료 미리보기</span>
       <a href="4_마이페이지.html#payment-history" class="paid-success-badge ml-auto no-underline"><span data-icon="check" data-size="12" data-stroke="3"></span> 결제 완료 · 관리 →</a>
@@ -125,17 +125,6 @@
     <h1 class="page-title text-32">부산 해운대구 해운대로 570 · 카페/베이커리</h1>
     <p class="page-subtitle">제2종 근린생활시설 → 일반음식점 전환 · 1층 101호 · 94.2㎡ (28.5평)</p>
 
-    <!-- 결제 CTA 배너 (결제 전) -->
-    <div class="paid-cta-banner animate-in">
-      <div class="flex items-center gap-16">
-        <span class="icon-box-lg icon-box-on-dark"><span data-icon="sparkles" data-size="22"></span></span>
-        <div>
-          <div class="text-15 fw-700 text-white mb-4">20분간 입력하신 분석 결과가 준비되었습니다</div>
-          <div class="text-13 text-faded-9">결제 즉시 4개 모듈 상세 + AI 시안 원본 + PDF + 공유 링크가 열립니다.</div>
-        </div>
-      </div>
-      <button class="btn btn-primary btn-md show-paywall-btn"><span data-icon="lock" data-size="14"></span> 50,000원 결제하기</button>
-    </div>
 
     <!-- Signal banner -->
     <div class="animate-in signal-banner signal-banner-warning">
@@ -152,9 +141,8 @@
       <div class="signal-banner-actions">
         <!-- 잠금 상태 -->
         <button class="btn btn-primary btn-md locked-only show-paywall-btn"><span data-icon="lock" data-size="14"></span> 상세 결과 잠금 해제</button>
-        <button class="btn btn-outline btn-md locked-only show-paywall-btn"><span data-icon="filePdf" data-size="14"></span> PDF 다운로드 <span data-icon="lock" data-size="12"></span></button>
         <!-- 해제 상태 -->
-        <button class="btn btn-primary btn-md unlocked-only" data-go="report"><span data-icon="filePdf" data-size="14"></span> 통합 리포트 보기</button>
+        <button class="btn btn-primary btn-md unlocked-only" data-go="report"><span data-icon="filePdf" data-size="14"></span> 맞춤 리포트 보기</button>
         <button class="btn btn-outline btn-md unlocked-only" id="share-link-btn-results"><span data-icon="share" data-size="14"></span> 공유 링크 발급</button>
         <a class="btn btn-outline btn-md unlocked-only" href="2_입력.html"><span data-icon="refresh" data-size="14"></span> 재분석</a>
       </div>
@@ -802,7 +790,7 @@
 </section>
 
 <!-- ============================================================
-     SCREEN 4 — 통합 리포트
+     SCREEN 4 — 맞춤 리포트
 ============================================================ -->
 <section class="screen" id="report">
   <div class="page">
@@ -811,7 +799,7 @@
         <div class="report-header-eyebrow">
           <span>CONVIL · 인테리어 첫단추</span>
           <span class="dot">·</span>
-          <span>통합 분석 리포트</span>
+          <span>맞춤 분석 리포트</span>
           <span class="dot">·</span>
           <span class="report-header-doc-id">#20260511-A720</span>
         </div>
@@ -844,7 +832,7 @@
     </div>
 
     <!-- Permit section — 4개 카테고리 (건축 / 소방 / 영업 인허가 / 간판) -->
-    <section class="mb-40">
+    <section class="mb-40 report-module-section" data-module="permit">
       <div class="report-section-divider">
         <div class="flex items-center gap-12"><span class="section-num-badge">01</span><h2 class="text-20 fw-800 ls-tight mt-0">인허가 법규 리스크 분석</h2></div>
         <span class="signal signal-warning signal-xs"><span class="pulse"></span> 11건 검토 · 6건 조치 필요</span>
@@ -1308,7 +1296,7 @@
     <div class="sample-paywall-wrap">
       <div class="sample-locked">
         <!-- Design section (단일 추천 시안) — 새 02 -->
-        <section class="mb-40">
+        <section class="mb-40 report-module-section" data-module="design">
           <div class="report-section-divider">
             <div class="flex items-center gap-12"><span class="section-num-badge">02</span><h2 class="text-20 fw-800 ls-tight mt-0">AI 레퍼런스 디자인 시안</h2></div>
             <span class="signal signal-success signal-xs"><span class="pulse"></span> 추천 시안 1안</span>
@@ -1385,7 +1373,7 @@
         </section>
 
         <!-- Schedule section — 새 03 -->
-        <section class="mb-40">
+        <section class="mb-40 report-module-section" data-module="estimate">
           <div class="report-section-divider">
             <div class="flex items-center gap-12"><span class="section-num-badge">03</span><h2 class="text-20 fw-800 ls-tight mt-0">시공 기간</h2></div>
             <span class="signal signal-warning signal-xs" id="schedule-signal"><span class="pulse"></span> 45일 · 5개 공정</span>
@@ -1455,7 +1443,7 @@
         </section>
 
         <!-- Cost section — 새 04 -->
-        <section class="mb-40">
+        <section class="mb-40 report-module-section" data-module="estimate">
           <div class="report-section-divider">
             <div class="flex items-center gap-12"><span class="section-num-badge">04</span><h2 class="text-20 fw-800 ls-tight mt-0">표준 견적</h2></div>
             <span class="signal signal-warning signal-xs" id="cost-signal"><span class="pulse"></span> 3,650만 · 평당 128만</span>
@@ -1684,7 +1672,7 @@
     <div class="paywall-body">
       <div class="text-13 fw-700 mb-12">결제 시 포함 항목</div>
       <ul class="paywall-checklist mb-24">
-        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>4개 모듈 상세 페이지 (인허가·견적·공기·디자인)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>선택한 모듈 상세 페이지 (인허가 / 견적+공기 / 디자인)</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>권장 조치 사항 & 법적 근거</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>견적 항목별 단가 내역 (BoQ)</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>AI 디자인 시안 1안 원본 (4096×2304)</li>
@@ -1799,7 +1787,7 @@
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span><strong>AI 디자인 시안 무제한 생성</strong> — 횟수 제한 없이 새로운 컨셉 렌더링</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>대화형 시안 챗 무제한 이용 — 무드·자재·컬러를 자유롭게 조합</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>4K 원본 이미지 무제한 다운로드 (4096×2304)</li>
-        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>월 무제한 통합 분석 리포트 (인허가·견적·공기·디자인)</li>
+        <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>월 무제한 맞춤 분석 리포트 (3개 모듈 모두)</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>화이트라벨 PDF (로고·색상 커스터마이징)</li>
         <li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>멤버 시트 5인 포함 (팀 공동 작업)</li>
       </ul>

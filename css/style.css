@@ -44,6 +44,8 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;min-height:100%;font-family:var(--ws-font-sans);background:var(--ws-bg-base);color:var(--ws-fg-strong);font-size:16px;line-height:1.5;letter-spacing:0.006em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+/* 스크롤바 등장/소멸 시 콘텐츠가 좌우로 흔들리는 시각 불균형 방지 */
+html{scrollbar-gutter:stable}
 h1,h2,h3,h4,h5,h6{font-family:var(--ws-font-sans);color:var(--ws-fg-strong);margin:0;letter-spacing:-0.022em;font-weight:700}
 p{margin:0 0 12px;color:var(--ws-fg-default);font-size:16px;line-height:1.5}
 a{color:var(--ws-fg-link);text-decoration:none}
@@ -55,6 +57,7 @@ a:hover{text-decoration:underline;text-underline-offset:2px}
 .gnb .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-0.018em;color:var(--ws-fg-strong);text-decoration:none}
 .gnb .logo .mark{width:24px;height:24px;border-radius:6px;background:var(--ws-fg-strong);color:white;display:grid;place-items:center;font-weight:800;font-size:12px;letter-spacing:0}
 .gnb .logo .product-name{color:var(--ws-fg-subtle);font-weight:500;margin-left:4px}
+.gnb .logo .logo-img{height:50px;width:auto;display:block;object-fit:contain}
 .gnb-nav{display:flex;gap:24px;align-items:center}
 .gnb-nav a{color:var(--ws-fg-muted);font-size:14px;font-weight:500;letter-spacing:-0.006em;text-decoration:none;cursor:pointer}
 .gnb-nav a:hover{color:var(--ws-fg-strong)}
@@ -557,6 +560,147 @@ footer a:hover{color:var(--ws-fg-default)}
 /* AI 권장 액션 리스트 */
 .action-list{padding-left:18px;margin:0;font-size:13px;color:var(--ws-fg-default);line-height:1.7}
 
+/* 입력 페이지 — 현재 분석 중인 모듈 칩 */
+.active-module-chip{display:inline-flex;align-items:center;gap:8px;background:var(--brand-tint);color:var(--brand);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:10px}
+.active-module-chip .amc-dot{width:6px;height:6px;background:var(--brand);border-radius:999px;animation:amc-pulse 1.6s ease-in-out infinite}
+.active-module-chip .amc-text{color:var(--ws-fg-muted);font-weight:600}
+.active-module-chip .amc-name{font-weight:700;color:var(--brand)}
+@keyframes amc-pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* PRICING — 단건 카드 feature blocks (아이콘 + 2줄 텍스트) */
+.pricing-feature-block{display:flex;gap:12px;align-items:flex-start;padding:8px 0}
+.pricing-feature-block .pf-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--brand-tint);display:grid;place-items:center;color:var(--brand)}
+.pricing-feature-block .pf-text-title{font-size:14px;font-weight:700;color:var(--ws-fg-strong);letter-spacing:-0.012em}
+.pricing-feature-block .pf-text-sub{font-size:12px;color:var(--ws-fg-muted);margin-top:2px}
+
+/* PRICING — 단건 카드 하단 강조 박스 */
+.pricing-highlight-box{background:var(--ws-bg-subtle);border-radius:10px;padding:12px 14px;margin-top:16px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ws-fg-muted);line-height:1.4}
+
+/* PRICING — popular 배지 가운데 정렬 + 긴 텍스트 변형 */
+.pricing-popular-badge-center{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--ws-fg-strong);color:white;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;letter-spacing:0.01em}
+
+/* PRICING — 정가 취소선 */
+.pricing-price-strike{font-size:14px;color:var(--ws-fg-subtle);text-decoration:line-through;font-weight:500;margin-left:8px;letter-spacing:0}
+
+/* 랜딩 — 솔루션 선택 섹션 (problem과 solution 사이) */
+.solution-picker{margin:80px auto 0;max-width:1100px;text-align:center}
+.solution-picker-eyebrow{display:inline-block;background:var(--brand);color:white;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:-0.005em;margin-bottom:18px}
+.solution-picker-title{font-size:36px;font-weight:800;letter-spacing:-0.022em;line-height:1.25;margin:0 0 14px}
+.solution-picker-desc{font-size:15px;color:var(--ws-fg-muted);line-height:1.7;margin:0 0 24px}
+.solution-picker-proof{display:inline-flex;align-items:center;gap:16px;font-size:13px;color:var(--ws-fg-muted);margin-bottom:36px}
+.solution-picker-proof .avatars{display:inline-flex;align-items:center}
+.solution-picker-proof .avatars span{width:24px;height:24px;border-radius:999px;border:2px solid white;margin-left:-6px;display:inline-block}
+.solution-picker-proof .avatars span:first-child{margin-left:0;background:#FF8A65}
+.solution-picker-proof .avatars span:nth-child(2){background:#7B86FF}
+.solution-picker-proof .avatars span:nth-child(3){background:#FFCC4D}
+.solution-picker-proof .avatars span:nth-child(4){background:var(--brand);color:white;font-size:9px;font-weight:700;display:inline-grid;place-items:center;padding-top:1px}
+.solution-picker-proof .proof-divider{width:1px;height:14px;background:var(--ws-border-default)}
+.solution-picker-proof strong{color:var(--ws-fg-strong);font-weight:800}
+
+.picker-card{padding:28px;text-align:left;display:flex;flex-direction:column;gap:14px;cursor:default}
+.picker-card-title{font-size:18px;font-weight:800;letter-spacing:-0.018em;margin:8px 0 0}
+.picker-card-desc{font-size:13px;color:var(--ws-fg-muted);line-height:1.6;margin:0}
+.picker-card-preview{padding:16px 0;border-top:1px solid var(--ws-border-divider);border-bottom:1px solid var(--ws-border-divider);margin:4px 0}
+.picker-card-cta{display:block;text-align:center;background:var(--brand-tint);color:var(--brand);font-size:14px;font-weight:700;padding:12px;border-radius:10px;text-decoration:none;transition:background .15s}
+.picker-card-cta:hover{background:var(--brand-soft)}
+/* picker-card 가격 행 (CTA 위) */
+.picker-card-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:auto;padding:4px 0 2px}
+.picker-card-price{font-size:22px;font-weight:800;color:var(--ws-fg-strong);letter-spacing:-0.02em;line-height:1}
+.picker-card-price-unit{font-size:12px;color:var(--ws-fg-subtle);font-weight:500;margin-left:2px}
+.picker-card-price-meta{font-size:11px;color:var(--ws-fg-subtle);font-weight:600;background:var(--ws-bg-subtle);padding:3px 8px;border-radius:999px}
+/* picker-integrated (다크 CTA) 가격 행 */
+.picker-integrated-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.picker-integrated-price{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:white;line-height:1}
+.picker-integrated-price-unit{font-size:13px;color:rgba(255,255,255,0.7);font-weight:500;margin-left:2px}
+.picker-integrated-strike{font-size:12px;color:rgba(255,255,255,0.5);text-decoration:line-through;font-weight:500}
+
+.picker-integrated{margin-top:24px;background:var(--ws-fg-strong);color:white;border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;text-align:left;background-image:radial-gradient(circle at 80% 50%, rgba(96,140,255,0.2) 0%, transparent 60%)}
+.picker-integrated-left .pi-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.06em;color:#80B3FF;margin-bottom:8px}
+.picker-integrated-left .pi-title{font-size:30px;font-weight:800;letter-spacing:-0.024em;line-height:1.25;margin:0 0 14px;color:white}
+.picker-integrated-left .pi-desc{font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0}
+.picker-integrated-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0}
+.picker-integrated-save{font-size:12px;color:rgba(255,255,255,0.7)}
+.picker-integrated-save strong{color:#FFC18A;font-weight:800}
+
+/* 모듈 선택 페이지 — 컴팩트한 가운데 정렬 컨테이너 */
+.select-page-wide{max-width:1080px;padding-left:24px;padding-right:24px;margin-left:auto;margin-right:auto}
+
+/* 자동 통합 패키지 전환 토스트 */
+.bundle-auto-toast{position:fixed;top:24px;left:50%;transform:translate(-50%,-20px);background:var(--ws-fg-strong);color:white;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-0.012em;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.18);z-index:9000;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.bundle-auto-toast.is-shown{opacity:1;transform:translate(-50%,0)}
+.bundle-auto-toast.is-leaving{opacity:0;transform:translate(-50%,-12px)}
+.bundle-auto-toast [data-icon]{color:#7DDDA0}
+
+/* 모듈 선택 페이지 V2 — 결과 미리보기가 들어간 풍부한 카드 */
+.select-rich-card{padding:28px;display:flex;flex-direction:column;gap:14px;cursor:pointer;text-align:left;position:relative;transition:border-color .15s,box-shadow .15s}
+.select-rich-card .mc-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;padding-right:36px}
+.select-rich-card .picker-card-title{font-size:18px;font-weight:800;letter-spacing:-0.018em;margin:6px 0 0;color:var(--ws-fg-strong)}
+.select-rich-card .picker-card-desc{font-size:12px;color:var(--ws-fg-muted);line-height:1.6;margin:0}
+.select-rich-card .picker-card-preview{padding:16px 0;border-top:1px solid var(--ws-border-divider);border-bottom:1px solid var(--ws-border-divider);margin:6px 0}
+/* 체크박스(라디오)를 카드 우측 상단 고정 위치로 */
+.select-rich-radio{position:absolute;top:20px;right:20px;flex-shrink:0}
+.select-rich-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px;flex-wrap:nowrap}
+.select-rich-price{font-size:22px;font-weight:800;color:var(--ws-fg-strong);letter-spacing:-0.02em;line-height:1;white-space:nowrap}
+.select-rich-unit{font-size:12px;color:var(--ws-fg-subtle);font-weight:500;margin-left:2px}
+.select-rich-meta{font-size:11px;color:var(--ws-fg-subtle);display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.select-rich-card.is-selected{border-color:var(--brand);background:var(--brand-tint);outline:2px solid var(--brand);outline-offset:-2px}
+.select-rich-card.is-selected .picker-card-preview{border-color:rgba(35,103,255,0.18)}
+
+/* 통합 패키지 다크 풀폭 카드 */
+.select-bundle-dark{background:var(--ws-fg-strong);color:white;border:0;border-radius:20px;padding:32px 40px;position:relative;cursor:pointer;background-image:radial-gradient(circle at 85% 50%, rgba(96,140,255,0.22) 0%, transparent 60%);transition:box-shadow .2s,transform .08s}
+.select-bundle-dark:hover{box-shadow:0 12px 32px rgba(0,0,0,0.18)}
+.select-bundle-inner{display:flex;align-items:center;gap:32px;padding-right:48px}
+.select-bundle-text{flex:1;min-width:0}
+.select-bundle-text .pi-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.06em;color:#80B3FF;margin-bottom:8px}
+.select-bundle-title{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin:0 0 8px;color:white}
+.select-bundle-desc{font-size:13px;color:rgba(255,255,255,0.72);line-height:1.55;margin:0}
+.select-bundle-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;text-align:right}
+.select-bundle-price-row{display:flex;align-items:baseline;gap:10px;justify-content:flex-end}
+.select-bundle-price{font-size:28px;font-weight:800;letter-spacing:-0.022em;color:white;line-height:1}
+.select-bundle-unit{font-size:13px;color:rgba(255,255,255,0.7);font-weight:500;margin-left:2px}
+.select-bundle-strike{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:line-through;font-weight:500}
+.select-bundle-save{font-size:12px;color:#FFC18A;font-weight:600}
+.select-bundle-save strong{color:#FFC18A;font-weight:800}
+/* 통합 패키지 라디오: 카드 우측 상단 고정 */
+.select-bundle-radio{position:absolute;top:24px;right:24px;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5);flex-shrink:0}
+.select-bundle-dark .select-bundle-radio .plan-dot-inner{background:white}
+/* 다크 카드 선택 표시 — 배경은 그대로 유지하고 강한 파란 글로우 + 두꺼운 보더로 강조 */
+.select-bundle-dark.is-selected{background:var(--ws-fg-strong) !important;background-image:radial-gradient(circle at 85% 50%, rgba(96,140,255,0.35) 0%, transparent 65%) !important;outline:3px solid var(--brand);outline-offset:-3px;box-shadow:0 0 0 6px rgba(35,103,255,0.18),0 12px 32px rgba(35,103,255,0.22)}
+.select-bundle-dark.is-selected .select-bundle-radio{background:var(--brand);border-color:var(--brand)}
+.select-bundle-dark.is-selected .select-bundle-radio .plan-dot-inner{background:white}
+/* 선택된 다크 카드의 텍스트는 그대로 (흰색) — 가독성 유지 */
+.select-bundle-dark.is-selected .select-bundle-title,
+.select-bundle-dark.is-selected .select-bundle-desc,
+.select-bundle-dark.is-selected .select-bundle-price{color:white}
+.select-bundle-badge{position:absolute;top:-12px;left:32px;background:white;color:var(--ws-fg-strong);font-size:11px;font-weight:700;padding:6px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;box-shadow:0 2px 8px rgba(0,0,0,0.12)}
+
+@media (max-width:768px){
+  .select-rich-card{padding:20px}
+  .select-rich-card .picker-card-title{font-size:16px}
+  .select-rich-price{font-size:20px}
+  .select-bundle-inner{flex-direction:column;align-items:stretch;gap:16px;text-align:center}
+  .select-bundle-right{align-items:center}
+  .select-bundle-title{font-size:20px}
+  .select-bundle-badge{right:50%;transform:translateX(50%)}
+  .select-bundle-radio{align-self:center}
+}
+
+/* 모듈 선택 페이지 — plan-card 체크박스 변형 (다중 선택) */
+.plan-card--check .plan-radio{border-radius:6px}
+.plan-card--check .plan-dot-inner{width:10px;height:10px;border-radius:2px;background:transparent;border-right:2.5px solid white;border-bottom:2.5px solid white;transform:rotate(45deg) translate(-1px,-2px);border-radius:0}
+.plan-card--bundle{border:2px solid var(--ws-fg-strong);background:linear-gradient(180deg,#fafbfc 0%,#fff 100%)}
+.plan-card--bundle.is-selected{border-color:var(--brand)}
+.plan-card-original{font-size:13px;color:var(--ws-fg-subtle);text-decoration:line-through;margin-left:8px;font-weight:500}
+.plan-card-save{display:inline-block;background:var(--brand-tint);color:var(--brand);font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;margin-top:8px}
+
+/* 모듈 선택 — 하단 고정 요약바 */
+.select-summary{position:sticky;bottom:0;background:#EEF4FF;border:1px solid #DBE5FF;padding:20px 28px;margin:32px 0 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 -4px 16px rgba(35,103,255,0.06);border-radius:14px}
+.select-summary-info{display:flex;flex-direction:column;gap:4px}
+.select-summary-count{font-size:12px;color:var(--ws-fg-muted);font-weight:600}
+.select-summary-total{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--ws-fg-strong)}
+.select-summary-hint{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--brand-tint);border-radius:10px;font-size:12px;color:var(--brand);font-weight:600;margin-bottom:16px}
+.select-summary-hint.is-hidden{display:none}
+
 /* Eyebrow 변형 */
 .eyebrow-light{color:#80B3FF}
 
@@ -579,15 +723,141 @@ footer a:hover{color:var(--ws-fg-default)}
 .cost-num-unit{font-size:12px;color:var(--ws-fg-subtle);font-weight:500}
 
 @media(max-width:768px){
-  .gnb{padding:0 16px}
+  /* GNB */
+  .gnb{padding:0 16px;flex-wrap:wrap;height:auto;min-height:64px}
   .gnb-nav{display:none}
+  .gnb .logo .logo-img{height:38px}
+  .gnb-actions{gap:6px}
+
+  /* 공통 페이지 패딩 */
   .page,.page-narrow{padding:24px 16px 60px}
   .hero{padding:48px 16px 60px}
-  .hero-h1{font-size:40px}
+  .hero-h1{font-size:36px;line-height:1.15}
+  .hero-sub{font-size:14px}
   .section-pad,.section-pad-bottom,.section-pad-final{padding-left:16px;padding-right:16px}
+  .section-h2{font-size:26px}
+  .section-h2-sm{font-size:22px}
+  .section-h2-xs{font-size:20px}
+  .page-title{font-size:24px}
+  .page-title.text-32{font-size:24px}
+
+  /* 그리드 일괄 1열 */
+  .pricing-grid,.cols-2,.cols-3,.cols-4,.cols-5{grid-template-columns:1fr}
+  .card-row-2,.card-row-3-16,.card-row-3-12,.card-row-4-12,.card-row-5-12{grid-template-columns:1fr}
+
+  /* HERO 통계 */
+  .hero-stats{gap:24px;flex-wrap:wrap;justify-content:center}
+  .hero .btn-lg{flex:1 1 100%;min-width:0}
+
+  /* PROBLEM 카드 */
+  .problem-row{grid-template-columns:1fr;gap:12px}
+  .problem-card{padding:24px}
+
+  /* SOLUTION PICKER 카드 통합 */
+  .solution-picker{margin:48px 12px 0}
+  .solution-picker-title{font-size:24px}
+  .solution-picker-desc{font-size:13px}
+  .picker-card{padding:22px}
+  .picker-integrated{flex-direction:column;align-items:stretch;padding:24px;text-align:center}
+  .picker-integrated-right{align-items:center}
+  .picker-integrated-left .pi-title{font-size:22px}
+
+  /* PRICING 카드 */
+  .pricing-card{padding:24px}
+  .pricing-feature-block{padding:6px 0}
+  .pricing-popular-badge-center{font-size:10px;padding:5px 11px}
+
+  /* 결과 페이지 */
   .report-header-banner{grid-template-columns:1fr;padding:24px}
-  .pricing-grid,.cols-3,.cols-4,.cols-5{grid-template-columns:1fr}
-  .hero-stats{gap:24px;flex-wrap:wrap}
+  .signal-banner{flex-direction:column;align-items:stretch;padding:20px}
+  .signal-banner-actions{flex-wrap:wrap}
+  .signal-banner-actions .btn{flex:1 1 100%}
+
+  /* 결제 페이지 좌우 → 1열 */
+  .grid.cols-2fr-1fr{grid-template-columns:1fr}
+  .sticky-summary{position:static}
+
+  /* AI 시안 좌우 1열 (그리드는 .cols-1fr-1fr — 위에서 처리됨) */
+
+  /* 마이페이지 헤더 */
+  .mp-header{flex-direction:column;align-items:flex-start;gap:12px}
+  .mp-table-header{flex-direction:column;align-items:flex-start;gap:8px;padding:16px}
+  table{font-size:12px}
+
+  /* 입력 페이지 stepper 가로 스크롤 */
+  .stepper{overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+  .stepper .step{flex-shrink:0}
+  .top-bar-progress .page-narrow{padding:12px 16px}
+  .active-module-chip{font-size:11px;padding:5px 10px}
+  .active-module-chip .amc-name{font-size:11px}
+
+  /* 폼 그리드 */
+  .grid.cols-1fr-1fr{grid-template-columns:1fr}
+  .grid.cols-2.gap-12,.grid.cols-3.gap-12{grid-template-columns:1fr}
+  .bottom-nav{flex-direction:column-reverse;gap:12px}
+  .bottom-nav .btn{width:100%}
+
+  /* 모듈 선택 페이지 */
+  .select-summary{flex-direction:column;align-items:stretch;gap:16px;padding:16px}
+  .select-summary .btn{width:100%}
+
+  /* paywall (구버전 - 다크) */
+  .paywall-content{max-width:none;width:calc(100vw - 24px);margin:12px;border-radius:18px}
+  .paywall-header,.paywall-body{padding:24px 20px}
+  .paywall-checklist{font-size:12px}
+  .paywall-plan-bar{padding:14px 16px;font-size:13px}
+  .paywall-trust{flex-direction:column;gap:6px;align-items:center}
+
+  /* paywall V2 (AI시안) */
+  .paywall-v2-content{padding:24px 18px 22px;border-radius:18px}
+  .paywall-v2-features{padding:18px 16px}
+  .paywall-v2-features-grid{grid-template-columns:1fr;gap:14px}
+  .paywall-v2-plan{padding:14px 16px;gap:10px}
+  .paywall-v2-plan-title{font-size:14px}
+  .paywall-v2-plan-price{font-size:15px}
+  .paywall-v2-trust{flex-direction:column;gap:8px;align-items:center}
+
+  /* 푸터 */
+  footer{flex-direction:column;align-items:flex-start;gap:12px;padding:24px 16px;text-align:left}
+}
+
+/* === 매우 작은 폰 (480px 이하) 추가 세부 대응 === */
+@media (max-width:480px){
+  .gnb .logo .logo-img{height:34px}
+  .hero-h1{font-size:30px}
+  .hero{padding:36px 16px 48px}
+  .section-h2{font-size:22px}
+  .section-h2-sm{font-size:20px}
+  .solution-picker-title{font-size:20px}
+  .pricing-price{font-size:26px}
+  .picker-integrated-left .pi-title{font-size:18px}
+  .stat-value{font-size:24px}
+  .stat-label{font-size:11px}
+
+  /* 다중 line button text wrap */
+  .btn-lg{font-size:14px;padding:12px 20px}
+  .btn-md{font-size:13px}
+
+  /* 결과 시그널 배너 */
+  .signal-banner-headline{font-size:16px}
+  .paid-cta-banner{flex-direction:column;align-items:stretch;gap:12px;padding:20px}
+  .paid-cta-banner .btn{width:100%}
+
+  /* paywall 더 좁게 */
+  .paywall-v2-title{font-size:22px;line-height:1.25}
+  .paywall-v2-features-title{font-size:13px}
+  .paywall-v2-feature .pvf-title{font-size:12px}
+  .paywall-v2-feature .pvf-sub{font-size:11px}
+  .paywall-v2-close{top:16px;right:16px}
+
+  /* PROBLEM 카드 */
+  .problem-card-title{font-size:18px}
+  .speech-bubble p{font-size:13px}
+  .problem-closing strong{font-size:14px}
+
+  /* 모듈선택 카드 */
+  .plan-card{padding:20px}
+  .plan-price{font-size:30px}
 }
 
 /* ============================================================
@@ -815,7 +1085,7 @@ body:not(.is-locked) .locked-only{display:none}
 
 /* 결제 모달 stacked 플랜 (1열 풀너비 바형) */
 .paywall-plans{display:flex;flex-direction:column;gap:10px}
-.paywall-plan-bar{display:flex;align-items:center;justify-content:center;padding:18px 24px;border-radius:14px;font-weight:700;cursor:pointer;text-decoration:none;gap:12px;font-size:15px;transition:opacity 150ms ease,transform 80ms ease}
+.paywall-plan-bar{display:flex;align-items:center;justify-content:center;padding:18px 24px;border-radius:14px;font-weight:700;cursor:pointer;text-decoration:none;gap:12px;font-size:15px;border:none;width:100%;font-family:inherit;transition:opacity 150ms ease,transform 80ms ease,box-shadow 150ms ease}
 .paywall-plan-bar:hover{opacity:0.92;text-decoration:none}
 .paywall-plan-bar:active{transform:scale(0.99)}
 .paywall-plan-bar--primary{background:var(--brand);color:white}
@@ -823,6 +1093,63 @@ body:not(.is-locked) .locked-only{display:none}
 .paywall-plan-bar--dark{background:var(--ws-fg-strong);color:white}
 .paywall-plan-bar--dark:hover{color:white}
 .paywall-plan-bar-popular{background:rgba(255,255,255,0.22);padding:4px 10px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:0.5px}
+/* 라디오 카드 동작: 선택 안 된 옵션은 톤 다운 */
+.paywall-plans .paywall-plan-bar:not(.is-selected){opacity:0.55}
+.paywall-plans .paywall-plan-bar.is-selected{opacity:1;box-shadow:0 0 0 3px rgba(35,103,255,0.35)}
+
+/* ===== Paywall V2 — 흰색 배경 + 일러스트 + 2x2 feature 그리드 + 3개 결제 옵션 ===== */
+.paywall-v2-content{background:white;border-radius:24px;width:min(720px, calc(100vw - 32px));max-height:calc(100vh - 40px);overflow-y:auto;padding:32px 36px 28px;position:relative;display:flex;flex-direction:column;gap:24px;color:var(--ws-fg-default);box-shadow:0 24px 60px rgba(0,0,0,0.18)}
+.paywall-v2-close{position:absolute;top:24px;right:24px;width:36px;height:36px;border-radius:999px;background:var(--ws-bg-subtle);border:none;display:grid;place-items:center;cursor:pointer;color:var(--ws-fg-muted);z-index:2}
+.paywall-v2-close:hover{background:var(--ws-coolneutral-94)}
+.paywall-v2-header{position:relative;padding-right:180px;min-height:160px}
+.paywall-v2-badge{display:inline-flex;align-items:center;gap:6px;background:var(--ws-bg-subtle);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--ws-fg-default);margin-bottom:18px}
+.paywall-v2-title{font-size:30px;font-weight:800;letter-spacing:-0.024em;line-height:1.22;margin:0 0 14px;color:var(--ws-fg-strong)}
+.paywall-v2-desc{font-size:13px;color:var(--ws-fg-muted);line-height:1.7;margin:0}
+.paywall-v2-hero{position:absolute;top:0;right:0;width:160px;height:150px;display:grid;place-items:center;background:linear-gradient(135deg,#EFF4FF 0%,#E0FFE5 100%);border-radius:20px;color:var(--brand)}
+.paywall-v2-hero-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--brand) 0%,#22C55E 100%);border-radius:16px;display:grid;place-items:center;color:white;box-shadow:0 12px 24px rgba(35,103,255,0.25)}
+
+.paywall-v2-features{background:var(--ws-bg-subtle);border-radius:18px;padding:22px 24px;transition:background-color .25s ease}
+/* 프로 구독 선택 시 — 아주 연한 파란 배경 (단건/풀세트와 시각적으로 구분) */
+.paywall-v2-features.is-plan-subscription{background:#EEF4FF}
+.paywall-v2-features-title{font-size:14px;font-weight:800;margin-bottom:18px;color:var(--ws-fg-strong)}
+.paywall-v2-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.paywall-v2-feature{display:flex;gap:12px;align-items:flex-start}
+.paywall-v2-feature .pvf-icon{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--brand-tint);display:grid;place-items:center;color:var(--brand)}
+.paywall-v2-feature .pvf-title{font-size:13px;font-weight:700;color:var(--ws-fg-strong);letter-spacing:-0.012em;display:flex;align-items:center;gap:6px;flex-wrap:wrap;line-height:1.35}
+.paywall-v2-feature .pvf-sub{font-size:11px;color:var(--ws-fg-muted);margin-top:4px;line-height:1.5}
+.paywall-v2-feature .pvf-chip{background:var(--brand-tint);color:var(--brand);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;font-family:var(--ws-font-mono,monospace)}
+
+.paywall-v2-plans{display:flex;flex-direction:column;gap:10px}
+.paywall-v2-plan{display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:14px;border:1.5px solid var(--ws-border-default);background:white;color:var(--ws-fg-strong);cursor:pointer;font-family:inherit;text-align:left;position:relative;transition:background-color .18s,color .18s,border-color .15s,box-shadow .15s,transform .08s;width:100%}
+.paywall-v2-plan:hover{border-color:var(--brand)}
+.paywall-v2-plan:active{transform:scale(0.997)}
+/* 선택된 옵션: 파란 배경 + 흰 텍스트 (모든 옵션에 동일 적용) */
+.paywall-v2-plan.is-selected{background:var(--brand);color:white;border-color:var(--brand);box-shadow:0 0 0 3px rgba(35,103,255,0.28)}
+.paywall-v2-plan.is-selected:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
+/* 선택 시 자식 요소 톤 자동 변환 */
+.paywall-v2-plan.is-selected .paywall-v2-plan-icon{background:rgba(255,255,255,0.22);color:white}
+.paywall-v2-plan.is-selected .paywall-v2-plan-sub{color:rgba(255,255,255,0.85)}
+.paywall-v2-plan.is-selected .paywall-v2-plan-chip-blue{background:rgba(255,255,255,0.22);color:white}
+.paywall-v2-plan-ribbon{position:absolute;top:-2px;left:18px;background:#FFB300;color:white;font-size:10px;font-weight:800;padding:5px 8px 7px;border-radius:0 0 6px 6px;letter-spacing:0.5px}
+.paywall-v2-plan-icon{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--brand-tint);display:grid;place-items:center;color:var(--brand);transition:background-color .18s,color .18s}
+.paywall-v2-plan-body{flex:1;min-width:0}
+.paywall-v2-plan-title{font-size:16px;font-weight:800;letter-spacing:-0.014em;display:flex;align-items:center;gap:8px;color:inherit}
+.paywall-v2-plan-sub{font-size:12px;margin-top:3px;font-weight:500;color:var(--ws-fg-muted);transition:color .18s}
+.paywall-v2-plan-price{font-size:17px;font-weight:800;letter-spacing:-0.012em;display:flex;align-items:center;gap:8px;color:inherit}
+.paywall-v2-plan-chip{background:rgba(255,255,255,0.22);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px}
+.paywall-v2-plan-chip-blue{background:var(--brand-tint);color:var(--brand);font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;transition:background-color .18s,color .18s}
+
+.paywall-v2-trust{display:flex;justify-content:center;gap:24px;font-size:12px;color:var(--ws-fg-muted);padding-top:14px;border-top:1px solid var(--ws-border-divider);flex-wrap:wrap}
+.paywall-v2-trust span{display:inline-flex;align-items:center;gap:6px}
+.paywall-v2-footnote{text-align:center;font-size:11px;color:var(--ws-fg-subtle);margin-top:-12px}
+
+@media (max-width:560px){
+  .paywall-v2-content{padding:24px 20px}
+  .paywall-v2-header{padding-right:0;min-height:auto}
+  .paywall-v2-hero{display:none}
+  .paywall-v2-features-grid{grid-template-columns:1fr}
+  .paywall-v2-title{font-size:24px}
+}
 
 /* 모달 하단 신뢰 신호 */
 .paywall-trust{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;flex-wrap:wrap}

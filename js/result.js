@@ -5,6 +5,177 @@
 
 const RESULT_SCREENS = ['loading', 'results', 'permit', 'cost', 'schedule', 'design-detail', 'report'];
 
+/* ===== 모듈 → 결과 페이지 매핑 =====
+   - permit:   인허가 (로딩 행 m-permit, 결과 카드 data-go="permit")
+   - estimate: 견적+공기 (로딩 행 m-cost+m-time, 결과 카드 cost+schedule)
+   - design:   디자인 (로딩 행 m-design, 결과 카드 design-detail)
+   - bundle:   세 모듈 모두 */
+const RESULT_MODULE_MAP = {
+  permit:   { label: '인허가 법규 검토',   loadingRows: ['m-permit'],            moduleCards: ['permit'] },
+  estimate: { label: '공사 견적 + 공기',    loadingRows: ['m-cost', 'm-time'],     moduleCards: ['cost', 'schedule'] },
+  design:   { label: 'AI 디자인 시안',      loadingRows: ['m-design'],             moduleCards: ['design-detail'] },
+  bundle:   { label: '풀세트 (3개 모듈)',   loadingRows: ['m-permit','m-cost','m-time','m-design'], moduleCards: ['permit','cost','schedule','design-detail'] }
+};
+const ALL_LOADING_ROWS = ['m-permit','m-design','m-time','m-cost'];
+
+function parseActiveResultModules() {
+  const qs = new URLSearchParams(location.search);
+  const raw = (qs.get('modules') || '').split(',').map(function(s){return s.trim();}).filter(Boolean);
+  const valid = raw.filter(function(m){ return RESULT_MODULE_MAP[m]; });
+  return valid.length ? valid : ['bundle'];
+}
+
+const ACTIVE_RESULT_MODULES = parseActiveResultModules();
+
+function getActiveResultScope() {
+  const rows = {};
+  const cards = {};
+  const labels = [];
+  ACTIVE_RESULT_MODULES.forEach(function(m) {
+    const info = RESULT_MODULE_MAP[m];
+    info.loadingRows.forEach(function(r){ rows[r] = true; });
+    info.moduleCards.forEach(function(c){ cards[c] = true; });
+    labels.push(info.label);
+  });
+  const isBundle = ACTIVE_RESULT_MODULES.indexOf('bundle') >= 0;
+  const singles = ACTIVE_RESULT_MODULES.filter(function(m){return m !== 'bundle';});
+  return {
+    isBundle: isBundle,
+    singleCount: singles.length,
+    loadingRows: Object.keys(rows),
+    moduleCards: Object.keys(cards),
+    labels: labels,
+    moduleNamesText: labels.join(' · ')
+  };
+}
+
+const ACTIVE_SCOPE = getActiveResultScope();
+
+/* 결제 시 가격 계산 (단건 모듈수 × 29,000원, 풀세트는 60,000원) */
+function calcResultPaymentAmount() {
+  if (ACTIVE_SCOPE.isBundle) return 60000;
+  return ACTIVE_SCOPE.singleCount * 29000;
+}
+
+/* 모듈별 paywall "결제 시 포함 항목" 정의 */
+const PAYWALL_ITEMS_BY_MODULE = {
+  permit: [
+    '인허가 법규 검토 상세 페이지',
+    '위반 항목별 권장 조치 사항 & 법적 근거',
+    '신호등 판정 (적/황/녹) 상세 근거'
+  ],
+  estimate: [
+    '공사 견적 + 공기 상세 페이지',
+    '항목별 단가 내역 (BoQ)',
+    '공정별 일정 · 간트차트',
+    '평당 비교 + 지역 평균 대비'
+  ],
+  design: [
+    'AI 디자인 시안 상세 페이지',
+    'AI 디자인 시안 1안 원본 (4096×2304)',
+    '무드보드 · 조명·마감 가이드'
+  ]
+};
+const PAYWALL_COMMON_ITEM = '브랜드 PDF 다운로드 + 공유 링크 (90일 유효)';
+
+function getPaywallItems() {
+  if (ACTIVE_SCOPE.isBundle) {
+    return [].concat(
+      PAYWALL_ITEMS_BY_MODULE.permit,
+      PAYWALL_ITEMS_BY_MODULE.estimate,
+      PAYWALL_ITEMS_BY_MODULE.design,
+      [PAYWALL_COMMON_ITEM]
+    );
+  }
+  const items = [];
+  ACTIVE_RESULT_MODULES.forEach(function(m){
+    if (PAYWALL_ITEMS_BY_MODULE[m]) items.push.apply(items, PAYWALL_ITEMS_BY_MODULE[m]);
+  });
+  items.push(PAYWALL_COMMON_ITEM);
+  return items;
+}
+
+/* 결과 페이지에 활성 모듈만 보이도록 적용 */
+function applyActiveResultModules() {
+  // 1) 로딩 화면: 비활성 모듈 행 숨김
+  ALL_LOADING_ROWS.forEach(function(id) {
+    const row = document.getElementById(id);
+    if (!row) return;
+    row.classList.toggle('is-hidden', ACTIVE_SCOPE.loadingRows.indexOf(id) < 0);
+  });
+
+  // 2) 결과 화면 module-card: 비활성만 숨김
+  document.querySelectorAll('#results .module-card[data-go]').forEach(function(card) {
+    const go = card.getAttribute('data-go');
+    card.classList.toggle('is-hidden', ACTIVE_SCOPE.moduleCards.indexOf(go) < 0);
+  });
+
+  // 3) "4개 분석 모듈 결과" 헤더 동적
+  const header = document.querySelector('#results h2.fw-800');
+  if (header) header.textContent = ACTIVE_SCOPE.moduleCards.length + '개 분석 모듈 결과';
+
+  // 4) 활성 모듈 1개면 그리드 1열로
+  const grid = document.querySelector('#results .grid.cols-2');
+  if (grid && ACTIVE_SCOPE.moduleCards.length === 1) {
+    grid.classList.remove('cols-2');
+    grid.classList.add('cols-1');
+  }
+
+  // 5) 로딩 헤딩 — 모듈명으로 더 구체화
+  const loadingH1 = document.querySelector('#loading .page-title');
+  if (loadingH1 && ACTIVE_SCOPE.labels.length > 0) {
+    loadingH1.textContent = ACTIVE_SCOPE.moduleNamesText + ' 분석 중입니다';
+  }
+
+  // 6) 결제 배너의 금액 + paywall 모달의 단건 가격 동적
+  const amount = calcResultPaymentAmount();
+  const amountText = amount.toLocaleString('ko-KR') + '원';
+  const ctaLabel = ACTIVE_SCOPE.isBundle ? '풀세트 결제' : '단건 결제';
+
+  // 결제 CTA 배너 (결과 페이지 상단)
+  const bannerBtn = document.querySelector('.paid-cta-banner .btn-primary');
+  if (bannerBtn) {
+    bannerBtn.innerHTML = '<span data-icon="lock" data-size="14"></span> ' + amountText + ' 결제하기';
+    if (typeof renderIcons === 'function') renderIcons(bannerBtn);
+  }
+
+  // 리포트(#report) 화면의 모듈 섹션 — 활성 모듈만 표시 + 번호 자동 재지정
+  const reportSections = document.querySelectorAll('.report-module-section[data-module]');
+  let reportNum = 0;
+  reportSections.forEach(function(sec){
+    const mod = sec.getAttribute('data-module');
+    const isActive = ACTIVE_RESULT_MODULES.indexOf(mod) >= 0 || ACTIVE_SCOPE.isBundle;
+    sec.classList.toggle('is-hidden', !isActive);
+    if (isActive) {
+      reportNum += 1;
+      const numBadge = sec.querySelector('.section-num-badge');
+      if (numBadge) numBadge.textContent = String(reportNum).padStart(2, '0');
+    }
+  });
+
+  // paywall 모달 "결제 시 포함 항목" 동적 생성
+  const checklist = document.querySelector('.paywall-checklist');
+  if (checklist) {
+    const items = getPaywallItems();
+    checklist.innerHTML = items.map(function(text){
+      return '<li><span class="pc-check"><span data-icon="check" data-size="12" data-stroke="3"></span></span>' + text + '</li>';
+    }).join('');
+    if (typeof renderIcons === 'function') renderIcons(checklist);
+  }
+
+  // paywall 모달의 단건 결제 버튼
+  const singleBtn = document.getElementById('pay-single');
+  if (singleBtn) {
+    const popularSpan = singleBtn.querySelector('.paywall-plan-bar-popular');
+    const txtSpan = singleBtn.querySelector('span:not(.paywall-plan-bar-popular)');
+    if (txtSpan) txtSpan.textContent = ctaLabel + ' — ' + amountText;
+    if (popularSpan) popularSpan.classList.toggle('is-hidden', !ACTIVE_SCOPE.isBundle);
+    // 결제 페이지가 어떤 모듈을 받는지 알 수 있도록 modules 쿼리 부착
+    const modulesParam = encodeURIComponent(ACTIVE_RESULT_MODULES.join(','));
+    singleBtn.setAttribute('href', '7_결제.html?plan=single&modules=' + modulesParam + '&return=results');
+  }
+}
+
 function showResultScreen(id) {
   document.querySelectorAll('main > .screen').forEach(function(s) {
     s.classList.toggle('is-active', s.id === id);
@@ -645,6 +816,7 @@ function setupDesignSubModal() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  applyActiveResultModules();
   setupSampleMode();
   setupPaywall();
   setupPrintButton();
