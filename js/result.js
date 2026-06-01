@@ -261,7 +261,7 @@ function setupSampleMode() {
     '<span data-icon="info" data-size="16"></span>' +
     '이건 샘플 리포트입니다. 실제 분석은 본인 자리 정보 기반으로 생성됩니다.' +
     '</div>' +
-    '<a href="2_입력.html" class="btn btn-primary btn-sm">내 분석 시작 →</a>';
+    '<a href="1_5_모듈선택.html" class="btn btn-primary btn-sm">내 분석 시작 →</a>';
   reportPage.insertBefore(notice, reportPage.firstChild);
   renderIcons(notice);
 }
@@ -312,7 +312,7 @@ function wrapDetailScreensForPaywall() {
       '<span class="eyebrow">UNLOCK</span>' +
       '<h3 class="section-title mt-12 mb-8"><span data-icon="lock" data-size="14"></span> 상세 분석 잠김</h3>' +
       '<p class="text-13 text-muted mb-20" style="margin-bottom:20px">결제 후 전체 분석을 확인할 수 있습니다.</p>' +
-      '<button class="btn btn-primary btn-md w-full show-paywall-btn">잠금 해제 (50,000원)</button>' +
+      '<button class="btn btn-primary btn-md w-full show-paywall-btn">잠금 해제 (' + calcResultPaymentAmount().toLocaleString('ko-KR') + '원)</button>' +
       '</div>';
 
     // 다시 조립: 헤더 → paid-locked → overlay
@@ -342,7 +342,7 @@ function completePayment() {
     history.replaceState(null, '', location.pathname + location.hash);
   }
   showPaidToast();
-  // 1.5초 후 통합 리포트로 자동 이동
+  // 1.5초 후 맞춤 리포트로 자동 이동
   setTimeout(function() {
     showResultScreen('report');
   }, 1500);
@@ -353,7 +353,7 @@ function showPaidToast() {
   t.className = 'toast-paid animate-in';
   t.innerHTML =
     '<span class="toast-paid-icon"><span data-icon="check" data-size="18" data-stroke="3"></span></span>' +
-    '<div><div class="text-13 fw-700 text-strong">결제가 완료되었습니다</div><div class="text-12 text-subtle">통합 리포트로 이동합니다…</div></div>';
+    '<div><div class="text-13 fw-700 text-strong">결제가 완료되었습니다</div><div class="text-12 text-subtle">맞춤 리포트로 이동합니다…</div></div>';
   document.body.appendChild(t);
   renderIcons(t);
   setTimeout(function() {

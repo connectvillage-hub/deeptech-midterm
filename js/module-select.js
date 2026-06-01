@@ -24,7 +24,7 @@
   }
 
   function autoSwitchToBundleIfAllSingles(){
-    // 3개 단건 모두 선택된 상태 → 자동으로 통합 패키지로 전환
+    // 3개 단건 모두 선택된 상태 → 자동으로 풀세트로 전환
     const selected = getSelected().map(c => c.dataset.module);
     const allSingles = singles.every(k => selected.includes(k)) && !selected.includes('bundle');
     if (!allSingles) return false;
@@ -43,7 +43,7 @@
       toast = document.createElement('div');
       toast.id = 'bundle-auto-toast';
       toast.className = 'bundle-auto-toast';
-      toast.innerHTML = '<span data-icon="check" data-size="14" data-stroke="3"></span> 더 저렴한 통합 패키지로 자동 전환했어요 (37,000원 절약)';
+      toast.innerHTML = '<span data-icon="check" data-size="14" data-stroke="3"></span> 더 저렴한 풀세트로 자동 전환했어요 (27,000원 절약)';
       document.body.appendChild(toast);
       if (typeof renderIcons === 'function') renderIcons(toast);
     }
