@@ -7,12 +7,12 @@ const RESULT_SCREENS = ['loading', 'results', 'permit', 'cost', 'schedule', 'des
 
 /* ===== 모듈 → 결과 페이지 매핑 =====
    - permit:   인허가 (로딩 행 m-permit, 결과 카드 data-go="permit")
-   - estimate: 견적+공기 (로딩 행 m-cost+m-time, 결과 카드 cost+schedule)
+   - estimate: 견적·기간 (로딩 행 m-cost+m-time, 결과 카드 cost+schedule)
    - design:   디자인 (로딩 행 m-design, 결과 카드 design-detail)
    - bundle:   세 모듈 모두 */
 const RESULT_MODULE_MAP = {
   permit:   { label: '인허가 법규 검토',   loadingRows: ['m-permit'],            moduleCards: ['permit'] },
-  estimate: { label: '공사 견적 + 공기',    loadingRows: ['m-cost', 'm-time'],     moduleCards: ['cost', 'schedule'] },
+  estimate: { label: '공사 견적 및 기간',    loadingRows: ['m-cost', 'm-time'],     moduleCards: ['cost', 'schedule'] },
   design:   { label: 'AI 디자인 시안',      loadingRows: ['m-design'],             moduleCards: ['design-detail'] },
   bundle:   { label: '풀세트 (3개 모듈)',   loadingRows: ['m-permit','m-cost','m-time','m-design'], moduleCards: ['permit','cost','schedule','design-detail'] }
 };
@@ -65,7 +65,7 @@ const PAYWALL_ITEMS_BY_MODULE = {
     '신호등 판정 (적/황/녹) 상세 근거'
   ],
   estimate: [
-    '공사 견적 + 공기 상세 페이지',
+    '공사 견적 및 기간 상세 페이지',
     '항목별 단가 내역 (BoQ)',
     '공정별 일정 · 간트차트',
     '평당 비교 + 지역 평균 대비'

@@ -206,7 +206,7 @@
 
     const MODULE_LABELS = {
       permit: '인허가 법규 검토',
-      estimate: '공사 견적 + 공기',
+      estimate: '공사 견적 및 기간',
       design: 'AI 디자인 시안'
     };
 
@@ -234,12 +234,12 @@
       if (isBundle) {
         amount = 60000;
         productName = '풀세트 결제';
-        subtitle = '인허가 + 견적·공기 + 디자인 (3개 모듈)';
+        subtitle = '인허가 + 견적·기간 + 디자인 (3개 모듈)';
       } else if (singles.length === 0) {
         // 폴백: 모듈 정보 없으면 풀세트로
         amount = 60000;
         productName = '풀세트 결제';
-        subtitle = '인허가 + 견적·공기 + 디자인 (3개 모듈)';
+        subtitle = '인허가 + 견적·기간 + 디자인 (3개 모듈)';
       } else {
         amount = singles.length * 29000;
         productName = singles.length === 1 ? '단건 결제' : '단건 결제 (' + singles.length + '개 모듈)';
