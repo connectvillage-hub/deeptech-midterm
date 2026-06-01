@@ -197,7 +197,8 @@
 
 <script src="js/shared.js"></script>
 <script>
-  // ?plan=single|subscription · ?modules=permit,estimate,design,bundle · ?return=results 처리
+  // ?plan=single|subscription, ?modules=permit,estimate,design,bundle, ?return=results|aidesign 처리
+  // 가격 정책: plan=single + modules에 따라 결정 (단건 29,000 · 모듈수 / bundle 60,000), plan=subscription 140,000/월
   (function() {
     const params = new URLSearchParams(location.search);
     const plan = params.get('plan') || 'single';
@@ -216,14 +217,18 @@
     };
 
     if (plan === 'subscription') {
+      // 단건/풀세트와 동일한 방식: 표시 가격 = 결제 가격 (VAT 포함가), VAT는 1/11로 분리 표시
+      const subAmount = 140000;
+      const subVat = Math.round(subAmount / 11);
+      const subSupply = subAmount - subVat;
       setText('order-product', '프로 구독');
       setText('order-subtitle', '월간 자동 결제 · 3개 모듈 무제한');
-      setText('order-price', '140,000원');
-      setText('order-vat', '14,000원');
+      setText('order-price', fmt(subSupply) + '원');
+      setText('order-vat', fmt(subVat) + '원');
       const discRow = document.getElementById('order-discount-row');
       if (discRow) discRow.classList.add('is-hidden');
-      setText('order-total', '154,000');
-      setText('pay-submit-btn', '154,000원 결제하기 (월간 구독)');
+      setText('order-total', fmt(subAmount));
+      setText('pay-submit-btn', fmt(subAmount) + '원 결제하기 (월간 구독)');
     } else {
       // 단건/풀세트
       const modulesRaw = (params.get('modules') || '').split(',').map(function(s){return s.trim();}).filter(Boolean);

@@ -232,6 +232,17 @@
   if (urlSaysPaid()) {
     try { localStorage.setItem(PAID_KEY, '1'); } catch (e) {}
   }
+  // "맞춤 분석 완료" 버튼이 결제 여부와 무관하게 현재 URL의 modules 쿼리를 결과 페이지에 전달하도록 사전 부착
+  (function attachFinishModules(){
+    function apply(){
+      const finishBtn = document.getElementById('ai-finish-btn');
+      if (!finishBtn) return;
+      const m = (new URLSearchParams(location.search).get('modules')) || 'design';
+      finishBtn.setAttribute('href', '3_결과.html?modules=' + encodeURIComponent(m) + '#loading');
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
+    else apply();
+  })();
 
   if (isPaid()) return; // 결제 완료 — 잠금 없음
 
@@ -298,7 +309,7 @@
     if (singleBtn) {
       const titleEl = singleBtn.querySelector('.pay-title-text');
       const priceEl = singleBtn.querySelector('.pay-price-text');
-      if (titleEl) titleEl.textContent = isBundle ? '풀세트 결제' : '단건 결제';
+      if (titleEl) titleEl.textContent = isBundle ? '풀세트 패키지 결제' : '단건 결제 (디자인 모듈)';
       if (priceEl) priceEl.textContent = amountText;
       const ribbon = singleBtn.querySelector('.paywall-v2-plan-ribbon');
       if (ribbon && isBundle) ribbon.textContent = 'BEST';

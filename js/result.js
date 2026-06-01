@@ -12,7 +12,7 @@ const RESULT_SCREENS = ['loading', 'results', 'permit', 'cost', 'schedule', 'des
    - bundle:   세 모듈 모두 */
 const RESULT_MODULE_MAP = {
   permit:   { label: '인허가 법규 검토',   loadingRows: ['m-permit'],            moduleCards: ['permit'] },
-  estimate: { label: '공사 견적 및 기간',    loadingRows: ['m-cost', 'm-time'],     moduleCards: ['cost', 'schedule'] },
+  estimate: { label: '공사 견적 및 기간',    loadingRows: ['m-cost', 'm-time'],     moduleCards: ['cost'] },
   design:   { label: 'AI 디자인 시안',      loadingRows: ['m-design'],             moduleCards: ['design-detail'] },
   bundle:   { label: '풀세트 (3개 모듈)',   loadingRows: ['m-permit','m-cost','m-time','m-design'], moduleCards: ['permit','cost','schedule','design-detail'] }
 };
